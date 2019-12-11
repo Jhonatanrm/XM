@@ -1315,11 +1315,11 @@ span.input-group-text {
 }
 
 .xm-btnrequi {
-    color: #DDD6D6;
+    color:#ddd6d6;
     margin: 0;
     white-space: nowrap;
-    background: none;
-    border-color: #DDD6D6;
+    background: 0 0;
+    border-color:#ddd6d6;
     border-radius: 0;
     min-width: 100px;
     min-height: 50px;
@@ -4106,7 +4106,7 @@ textarea.form-control.is-invalid {
 .btn {
     display: inline-block;
     font-weight: 400;
-    color: #212529;
+    
     text-align: center;
     vertical-align: middle;
     -webkit-user-select: none;
@@ -4114,11 +4114,11 @@ textarea.form-control.is-invalid {
     -ms-user-select: none;
     user-select: none;
     background-color: transparent;
-    border: 1px solid transparent;
+
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 0.25rem;
+ 
     -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4152,39 +4152,7 @@ fieldset:disabled a.btn {
     pointer-events: none;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
 
-.btn-primary.focus,
-.btn-primary:focus {
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-}
-
-.btn-primary.disabled,
-.btn-primary:disabled {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle {
-    color: #fff;
-    background-color: #0062cc;
-    border-color: #005cbf;
-}
-
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.show>.btn-primary.dropdown-toggle:focus {
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-}
 
 .btn-secondary {
     color: #fff;
@@ -12646,11 +12614,6 @@ ul.xm-collapseiteminter li:hover {
     margin-right: 40px;
 }
 
-.btn-group {
-    width: 100% !important;
-    border-bottom: solid 2px #75787b;
-}
-
 
 /*Checkboxes styles*/
 
@@ -13942,8 +13905,19 @@ table tr:hover td {
     }
     .btn-disabled {
         cursor: no-drop !important;
-        background-color: gainsboro !important;
+        background-color: transparent;
+        border-color: #C4C4C4;
+        color: #929090;
     }
+
+    .btn-disabled:hover{
+        cursor: no-drop !important;
+        background-color: transparent;
+        border-color: #C4C4C4;
+        color: #929090;
+    }
+
+
     .xm-btn.xm-btnsecondary.xm-modal-submit.btn-disabled {
         background-color: transparent !important;
     }
@@ -14022,4 +13996,15 @@ table tr:hover td {
     font-weight: bold;
     font-size: 25px;
   }
+
+  .btn-day-stand-out, .btn-primary:hover{
+    color:#409;
+    border-color: #409;
+    background: 0 0;
+    font-size: 25px;
+    font-weight: 900;
+  }
   
+  .btn.btn-primary.xm-btnrequi span{
+      display: block;
+  }
