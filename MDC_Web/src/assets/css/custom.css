@@ -1097,25 +1097,13 @@ button.col-md-6.col-sm-6.xm-btninvi h6:before {
     padding: 20px 17px;
 }
 
-.table .thead-dark th {
-    color: #fff;
-    background-color: #343a40;
-    border-color: #454d55;
-}
 
-.table .thead-dark th {
-    color: inherit;
-    border-color: #dee2e6;
-}
 
 .table thead th {
     vertical-align: middle;
     border-bottom: 2px solid #dee2e6;
 }
 
-.table thead th {
-    border-bottom: 2px solid #dee2e6;
-}
 
 .table td,
 .table th {
@@ -1125,17 +1113,7 @@ button.col-md-6.col-sm-6.xm-btninvi h6:before {
     font-size: 15px;
 }
 
-.table td,
-.table th {
-    padding: 0.75rem;
-    vertical-align: top;
-    border-top: 1px solid #dee2e6;
-}
 
-.table td,
-.table th {
-    padding: 20px;
-}
 
 .form--check-label-label {
     font-weight: 400;
@@ -1702,9 +1680,6 @@ svg {
     vertical-align: middle;
 }
 
-table {
-    border-collapse: collapse;
-}
 
 table {
     border-collapse: collapse;
@@ -3240,7 +3215,7 @@ pre code {
 .table {
     width: 100%;
     margin-bottom: 1rem;
-    color: #6a6a6a;
+    color: #f2f2f2;
 }
 
 table {
