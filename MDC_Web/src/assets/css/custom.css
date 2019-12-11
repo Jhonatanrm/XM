@@ -13398,7 +13398,7 @@ table tr:nth-child(2n) {
 }
 
 table tr:hover td {
-    background-color: #440099 !important;
+    background-color: #FAF5FF !important;
     opacity: 40%;
     color: #fafafa;
 }
