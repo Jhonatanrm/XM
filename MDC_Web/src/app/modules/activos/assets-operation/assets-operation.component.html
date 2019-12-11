@@ -1,0 +1,46 @@
+<div class="row xm-contentform">
+    <div class="col">
+        <div class="row">
+            <div class="col-md-12 pt-3 pb-3 pl-5 xm-titleform">
+                <h5>{{tittle}}</h5>
+            </div>
+        </div>
+        <div class="row flex-box-center">
+            <div class="col-md-12 conteiner-detalles">
+                <div class="col-md-12">
+                    <app-dashboard-detail [text]='text'></app-dashboard-detail>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <app-filter-assets-operation (filters)="selectedFilters($event)"></app-filter-assets-operation>
+        </div>
+        <div class="col-md-12">
+            <app-table-assets-operation [selectedType]="selectedType" [selectedSubstation]="selectedSubstation"
+                [controlValue]="controlValue" (flagButtonControl)="controlModalOption($event)">
+            </app-table-assets-operation>
+        </div>
+
+        <div class="row">
+            <div class="col-sm-8" ></div>
+            <div class="col-sm-2">
+                <button 
+                    class="xm-btn xm-btnsecondary" 
+                    style="height: 36px;" 
+                    [disabled]="isValid" 
+                    [ngClass]="{'btn-disabled':isValid}"
+                    (click)="sendReport($event)">
+                    Reporte
+                    <i class="material-icons"> save_alt </i>
+                </button>
+            </div>
+        </div>
+        <a 
+        href="http://xmmdccommonmodelapi-dllo.azurewebsites.net/api/v1/substations/excelexport
+        ">reportLink</a>
+
+    </div>
+    <app-modal-form [component]="'app-subestacion-crear'" [tittle]="'Subestación'" [project]='project' [form]='Form'
+        [flagButton]="false" [flagButtonView]="flagButtonView" (formSubmit)='onSubmit($event)'>
+    </app-modal-form>
+</div>

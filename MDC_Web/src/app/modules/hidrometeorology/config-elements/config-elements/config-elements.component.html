@@ -1,0 +1,41 @@
+<div class="row xm-contentform p-1 m-2">
+
+    <div class="col-12">
+
+        <div class="row  xm-titleform ">
+            <h5>{{title}}</h5>
+        </div>
+
+        <div class="row">
+            <div class="col-6 mb-3">
+                <div class="row">
+                    <div class="col-12 mb-3">
+                        <app-service-providers (selectedProvider)="onSelectedProvider($event)"
+                            (selectedService)="onSelectedService($event)"></app-service-providers>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 ">
+                        <app-variables *ngIf="provider" [provider]="provider" [service]="service"
+                            (loadedElementTypeDetail)="onLoadedElementTypeDetail($event)"></app-variables>
+                    </div>
+                </div>
+            </div>
+            <div class="col-6 p-0" >
+                <app-parameters *ngIf="provider" [provider]="provider"></app-parameters>
+            </div>
+        </div>
+
+        <div class="row ">
+            <div class="col-12">
+                <app-type-elements *ngIf="elementTypeDetails" [elementTypeDetails]="elementTypeDetails"></app-type-elements>
+            </div>
+        </div>
+
+        <div class="row justify-content-end ">
+            <div class="col-2 xm-buttons-state-process ">
+                <button  class="xm-btn xm-btnprimary" (click)="submit()"  [disabled]="elementTypeDetails?.length > 0">Actualizar </button>
+            </div>
+        </div>
+    </div>
+</div>

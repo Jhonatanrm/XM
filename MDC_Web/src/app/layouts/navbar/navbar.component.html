@@ -1,0 +1,83 @@
+<nav id="xm-navleft" class="col-md-2 d-none d-md-block xm-navleft">
+    <h1 class="xm-logo">
+        <img class="img-fluid" src="./../assets/images/logo.png" alt="">
+    </h1>
+    <div class="sidebar-sticky">
+        <div class="accordion xm-collapse" id="accordionExample">
+
+            <div class="" id="heading1">
+
+                <a class="xm-groupitem" href="#" (click)="clickEventHandler($event)" data-toggle="collapse"
+                    data-target="#collapse1" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="xm-btngroup">
+                        <i class="material-icons xm-icoitem">assignment_turned_in</i>
+                        <div>Proyectos</div>
+                    </div>
+                    <div class="xm-icodown"><i class="material-icons">keyboard_arrow_down</i></div>
+                </a>
+
+            </div>
+
+            <div id="collapse1" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                <ul class="xm-collapseiteminter">
+                    <li>
+                        <a routerLink="/transmision">
+                            Transmisión
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/generacion">
+                            Generación
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="" id="heading1">
+
+                <a class="xm-groupitem" href="#" (click)="clickEventHandler($event)" data-toggle="collapse"
+                    data-target="#collapse2" aria-expanded="true" aria-controls="collapseOne">
+                    <div class="xm-btngroup">
+                        <i class="material-icons xm-icoitem">assignment_turned_in</i>
+                        <div>Activos operación</div>
+                    </div>
+                    <div class="xm-icodown"><i class="material-icons">keyboard_arrow_down</i></div>
+                </a>
+
+            </div>
+
+            <div id="collapse2" class="collapse " aria-labelledby="headingOne" data-parent="#accordionExample">
+                <ul class="xm-collapseiteminter">
+                    <li>
+                        <a routerLink="/assets-operation">
+                            Transmisión
+                        </a>
+                    </li>
+                    <li>
+                        <a routerLink="/activos-transmision/1">
+                            Generación
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="" id="heading3">
+                <a class="xm-groupitem" href="#" (click)="clickEventHandler($event)" aria-expanded="true">
+
+                    <div class="xm-btngroup">
+                        <i class="material-icons xm-icoitem">assignment_turned_in</i>
+                        <a routerLink="/requirements">
+                            Requerimientos
+                        </a>
+                    </div>
+                </a>
+
+            </div>
+
+        </div>
+    </div>
+    <!-- <div id="xm-icoaside" class="xm-icoaside">
+        <i class="material-icons">format_indent_increase</i>
+    </div> -->
+</nav>

@@ -1,0 +1,22 @@
+<div class="xm-cards">
+    <div class="xm-cardtitle">
+        <h6>
+            Nivel de Tensión {{index+1}}
+        </h6>
+        <div class="xm-carddelt">
+            <a href="" (click)="onDelete($event)"> <i class="material-icons i-stage">delete</i>
+                Borrar</a>
+        </div>
+    </div>
+    <div class="xm-cardform">
+        <div class="row">
+            <div class="col-md-6" [formGroupName]="index">
+                <i class="material-icons" placement="top" >help_outline</i>
+                <input type="text" id="VoltageLevelKindId" class="form-control" placeholder="Nivel de Tensión"
+                    formControlName="VoltageLevelKind"
+                    >
+            </div>
+
+        </div>
+    </div>
+</div>

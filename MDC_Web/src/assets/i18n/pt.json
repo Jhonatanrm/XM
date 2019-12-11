@@ -1,0 +1,30 @@
+{
+    "Login" : {
+        "Title" : "Este é o login"
+    },
+    "Home" : {
+        "Title" : "Este é o começo",
+        "NavBarItemAnalyst" : "Analista",
+        "NavBarItemCoordinator" : "Coordenador",
+        "NavBarItemManager" : "Administrador",
+        "NavBarItemTechnical" : "Técnico",
+        "NavBarItemSupervisor" : "Supervisor"
+    },
+    "Call-Station": {
+        "Title" : "Esta é a estação de telefone"
+    },
+    "Geo-Location": {
+        "Title" : "Esta es la Geolocalización"
+    },
+    "Transversal" : {
+        "NavBarItemHome" : "Home",
+        "NavBarItemCallStation" : "Estação Telefônica",
+        "NavBarItemZoneReference" : "Geolocalização",
+        "NavBarTitle": "Principal",
+        "NavBarItemTest": "Pruebas"
+    },
+    "Concept-Test" : {
+        "Title" : "Pruebas de concepto",
+        "NavBarItemUpload" : "Cargar Archivo"
+    }
+}

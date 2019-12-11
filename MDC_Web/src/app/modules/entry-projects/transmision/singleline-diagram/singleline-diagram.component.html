@@ -1,0 +1,114 @@
+<div class="container">
+
+    <div class="row">
+        <div class="col-md-12 pt-3 pb-3 pl-5 xm-titleform ">
+            <h5>Diagramas unifilares</h5>
+        </div>
+    </div>
+
+
+    <div class="col-md-12 conteiner-detalles">
+        <div class="col-md-12">
+                <app-dashboard-detail [text]="text" ></app-dashboard-detail>
+        </div>
+    </div>
+
+
+    <div class="row">
+
+        <div class="col-md-3" *ngIf="!queryMode">
+            <app-upload-xm [maxSizeFile]="maxSizeFile" [maxLengthFile]="maxLengthFile" [formartFile]="formartFile"
+                [arrayListFiles]="arrayListFilesToShow"></app-upload-xm>
+        </div>
+        <div class="col-md-1" *ngIf="!queryMode">
+            <em class="material-icons" data-toggle="tooltip" data-placement="top"
+                title="En esta opción podrá adjuntar uno o varios documentos">
+                help_outline
+            </em>
+        </div>
+
+        <div class="col-md-4" *ngFor='let file of arrayListFilesToShow; let i = index;'>
+            <div class="xm-cards">
+                <div class="xm-cardtitle">
+                    <h6 *ngIf="i > 9">
+                        Anexo {{i+1}}
+                    </h6>
+                    <h6 *ngIf="!(i > 9)">
+                        Anexo 0{{i+1}}
+                    </h6>
+                    <div class="xm-carddelt">
+                        <a href="" *ngIf="!queryMode" (click)="onDeleteFileAndDate(i, $event)">
+                            <i class="material-icons i-stage2">delete</i>
+                            Borrar</a>
+                    </div>
+                </div>
+                <div class="xm-cardform">
+
+                    <div class="form-group" *ngIf="file.name !== null">
+
+                        <a href="#" (click)="viewFile(file, $event)" *ngIf="!file.sended">{{file.name.substr(0, 27)}}{{file.name.length > 27 ? '...'  : ''}}  </a>
+                        <a href="{{file.urlDocument}}" *ngIf="file.sended" target="_blank">{{file.name.substr(0, 27)}}{{file.name.length > 27 ? '...'  : ''}} </a>
+                        <a href="#" class="ml-2" (click)="downloadFile(file, $event)">
+                            <i class="material-icons">
+                                save_alt
+                            </i>
+                        </a>
+                    </div>
+
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+    <div *ngIf="!queryMode" class="xm-newet xm-newetbuttons">
+        <div class="row">
+            <div class="col-md-2 offset-md-6">
+                <button type="button" (click)="clickBack()" class="xm-btn xm-btnsecondary">Atrás
+                </button>
+            </div>
+            <div class="col-md-2 ">
+                <button type="button" class="xm-btn xm-btnsecondary"><i class="material-icons">save</i> Guardar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" (click)="sendUnifilarDiagram()"  class="xm-btn xm-btnprimary">
+                    <i class="material-icons">send</i> Enviar
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div *ngIf="queryMode" class="xm-newet xm-newetbuttons">
+        <div class="row">
+            
+            <div class="col-md-2 offset-md-6" >
+                <button type="button" (click)="clickBack()" class="xm-btn xm-btnterciary ">Cancelar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <!-- 57 en bd es rechazado en la bd -->
+                <button type="button"  class="xm-btn xm-btnsecondary"> Rechazar
+                </button>
+            </div>
+            <div class="col-md-2">
+                    <!-- 56 en bd es aprobado -->
+                <button type="button" (click)="changeStateRequirement()" class="xm-btn xm-btnprimary">
+                    Aprobar
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+
+</div>
+
+<app-wait *ngIf="!hiddenLoader"></app-wait>

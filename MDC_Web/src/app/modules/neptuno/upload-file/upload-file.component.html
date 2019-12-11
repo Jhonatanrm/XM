@@ -1,0 +1,17 @@
+<div class="row">
+  <div class="col-md-3 d-flex align-items-center">
+    <label class="xm-btn xm-btnsecondary" for="uploadFile">
+      {{file ? file.name : 'Adjuntar archivo NEP'}}
+    </label>
+    <input type="file" class="form-control-file "
+           hidden
+           [accept]="acceptedFormat"
+           (change)="onSelectFile($event)"
+           id="uploadFile">
+    <a *ngIf="file" href="#" (click)="deleteFile($event)">
+      <span class="material-icons" style="font-size: 30px;">
+      delete
+    </span>
+    </a>
+  </div>
+</div>

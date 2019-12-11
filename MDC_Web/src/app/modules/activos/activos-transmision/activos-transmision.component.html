@@ -1,0 +1,60 @@
+<div class="row xm-contentform">
+    <div class="col">
+        <ngb-tabset class="tabs-form-basic" (tabChange)="activosTabChange($event)">
+
+            <ngb-tab>
+                <ng-template ngbTabTitle><b>Subestación</b></ng-template>
+                <ng-template ngbTabContent>
+
+                    <app-subestacion *ngIf="nextTab == 'ngb-tab-0'" [subestacionForm]='Form' [project]='project'
+                        [asset]='asset' [hasRequirement]="hasRequirement" (formSubmit)='onSubmitSubestacion($event)'>
+                    </app-subestacion>
+
+                </ng-template>
+            </ngb-tab>
+
+            <ngb-tab>
+                <ng-template ngbTabTitle><b>Líneas</b></ng-template>
+                <ng-template ngbTabContent>
+
+                    <app-linea *ngIf="nextTab == 'ngb-tab-1'" [lineaForm]='Form' [project]='project'
+                        [hasRequirement]="hasRequirement" (formSubmit)='onSubmitLinea($event)'>
+                    </app-linea>
+
+                </ng-template>
+            </ngb-tab>
+
+            <ngb-tab>
+                <ng-template ngbTabTitle><b>Transmisión</b></ng-template>
+                <ng-template ngbTabContent>
+                </ng-template>
+            </ngb-tab>
+
+            <ngb-tab>
+                <ng-template ngbTabTitle><b>Transformación</b></ng-template>
+                <ng-template ngbTabContent>
+                </ng-template>
+            </ngb-tab>
+
+            <ngb-tab>
+                <ng-template ngbTabTitle><b>Compensación</b></ng-template>
+                <ng-template ngbTabContent>
+                </ng-template>
+            </ngb-tab>
+
+            <ngb-tab>
+                <ng-template ngbTabTitle><b>Comunicaciones</b></ng-template>
+                <ng-template ngbTabContent>
+                </ng-template>
+            </ngb-tab>
+
+            <ngb-tab>
+                <ng-template ngbTabTitle><b>Otros Elementos</b></ng-template>
+                <ng-template ngbTabContent>
+                </ng-template>
+            </ngb-tab>
+
+        </ngb-tabset>
+    </div>
+</div>
+<app-wait *ngIf="wait"></app-wait>

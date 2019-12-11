@@ -1,0 +1,54 @@
+<!-- <article class="xm-table col-md-12 xm-table2">
+    <app-table-xm [arrayList]="objectSearch.items" [columNameList]="columNameList" [rowNameList]="rowNameList"
+        [columNameSortList]="columNameSortList" [collectionSize]="objectSearch.metadata.pagination.totalCount"
+        [pageSize]="objectSearch.metadata.pagination.limit" [filterInfo]="filterInfo" [buttonList]="buttonList"
+        [load]="load" (tableXmEmitter)="onEventChild($event)" (functionButton)="eventClickInButtons($event)"
+        [page]="objectSearch.metadata.pagination.currentPage" [flagSearch]="false">
+    </app-table-xm>
+</article> -->
+<div class="container">
+    <div *ngIf="load">
+        <div *ngIf="objectSearch.items?.length > 0">
+            <table class="table table-hover">
+                <thead class="xm-campos thead-dark">
+                    <tr class="xm-txt">
+                        <th *ngFor="let column of columNameList; let i = index;" scope="{{column}}">{{column}}
+                        </th>
+                        <th *ngIf="buttonList.length" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let row of objectSearch.items; let x = index;" style="cursor:pointer; cursor: hand;">
+                        <ng-container *ngFor="let atribute of rowNameList; let y = index;">
+                            <td *ngIf=" !(rowStyle?.length > 0) || (atribute !== 'remainingDays')">{{row[atribute]}}
+                            </td>
+                            <td [class]="rowStyle[x]" *ngIf="rowStyle?.length > 0 && (atribute == 'remainingDays')">
+                                {{row[atribute]}}</td>
+                        </ng-container>
+                        <th *ngIf="buttonList.length">
+
+                            <div class="btn-group" role="group" aria-label="ButtonsGroup">
+
+                                <button *ngFor="let buttonElement of buttonList"
+                                    (click)="clickedIconButton(row, buttonElement)" type="button"
+                                    class="btn btn-default"><span>
+                                        <i
+                                            class="material-icons {{buttonElement.className}}">{{buttonElement.iconName}}</i></span>
+                                </button>
+                            </div>
+
+                        </th>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div *ngIf="!load" style="text-align: center;">
+        <br><br><br>
+        <div class="spinner-border loader-table-subestation" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>

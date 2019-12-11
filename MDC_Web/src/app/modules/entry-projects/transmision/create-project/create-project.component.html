@@ -1,0 +1,475 @@
+<form action="" (ngSubmit)="onSubmit(singupForm)" #singupForm="ngForm" #aForm>
+    <div class="xm-titleform">
+        <h5>Registro Formulario Transmisión</h5>
+    </div>
+    <div class="row xm-contentform">
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label for="">Código</label>
+                <input id="idCodeProyect" name="nameCodeProyect" readonly type="text" class="form-control"
+                    placeholder="" [value]="idProyect">
+            </div>
+
+            <div class="form-group">
+                <label for="txtnameProjectId">Nombre del proyecto</label>
+                <input type="text" class="form-control" id="txtnameProjectId" name="txtnameProject" placeholder=""
+                    required [autofocus]="true" minlength="3" maxlength="64" [(ngModel)]="transmisionDTO.ProjectName"
+                    [readonly]="queryMode" (blur)="focusOut($event)" #txtnameProjectVar="ngModel" [ngClass]="{
+                                    'is-invalid':
+                                        (txtnameProjectVar.touched || txtnameProjectVar.dirty) &&
+                                        !txtnameProjectVar.valid ||
+                                        validation_alert_danger.txtnameProject
+
+                                }" />
+                <span class="invalid-feedback">
+                    <span *ngIf="txtnameProjectVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                    <span *ngIf="txtnameProjectVar.errors?.minlength">
+                        El valor minimo del campo es de 3 caracteres
+                    </span>
+                    <span *ngIf="txtnameProjectVar.errors?.maxlength">
+                        El valor maximo del campo es de 64 caracteres
+                    </span>
+                </span>
+            </div>
+
+            <div class="form-group" *ngIf="promoterList && promoterList.length > 0">
+                <label for="selectPromotorId">Promotor del proyecto</label>
+
+                <app-ng-select id="selectPromotorId" name="selectPromotor" *ngIf="promoterList.length !== 0"
+                    class="form-control select-control" style="border-color: transparent;" [arrayList]="promoterList"
+                    [bindLabel]="'name'" [bindValue]="'id'" [(ngModel)]="transmisionDTO.PromoterId"
+                    (change)="focusOut('selectPromotor')" #selectPromotorVar="ngModel" [placeholder]="placeholder"
+                    [disabled]="queryMode" required [ngClass]="{
+                                    'is-invalid':
+                                    ((selectPromotorVar.touched || selectPromotorVar.dirty) &&
+                                        !selectPromotorVar.valid ||
+                                        validation_alert_danger.selectPromotor) && transmisionDTO.PromoterId == null
+                                    }"></app-ng-select>
+                <button class="nuevo-promotor" type="button">+ Promotor</button>
+                <span class="invalid-feedback">
+                    <span *ngIf="transmisionDTO.PromoterId == null">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            <div class="form-group">
+                <label for="exampleFormControlTextarea1">Descripción</label>
+            </div>
+            <textarea class="form-control" [(ngModel)]="transmisionDTO.ProjectDescription"
+                id="exampleFormControlTextarea2" name="areaDesc" rows="5" required minlength="3" maxlength="255"
+                [readonly]="queryMode" #areaDescVar="ngModel" (blur)="focusOut($event)" [ngClass]="{
+                      'is-invalid':(areaDescVar.touched || areaDescVar.dirty) &&
+                      !areaDescVar.valid ||
+                      validation_alert_danger.areaDesc
+                  }">
+          </textarea>
+            <span class="invalid-feedback">
+                <span *ngIf="areaDescVar.errors?.required">
+                    El campo es requerido.
+                </span>
+                <span *ngIf="areaDescVar.errors?.minlength">
+                    El valor minimo del campo es de 3 caracteres
+                </span>
+                <span *ngIf="areaDescVar.errors?.maxlength">
+                    El valor maximo del campo es de 255 caracteres
+                </span>
+            </span>
+        </div>
+
+
+    </div>
+
+    <div class="row xm-contentform">
+        <div class="col-md-4 ">
+            <div class="form-group">
+                <label for="datePOPId">Fecha de puesta en operación
+                    (FPO)</label>
+                <div class="input-group">
+                    <input id="datePOPId" class="form-control" placeholder="dd-mm-aaaa" name="datePOP" [readonly]="true"
+                        ngbDatepicker #d="ngbDatepicker" [(ngModel)]="projectFPO" [minDate]="minDateFPOAfter"
+                        [required]="!stagesBoolean" (blur)="focusOut('datePOP')" #datePOPVar="ngModel" [ngClass]="{
+                        'is-invalid':
+                        (datePOPVar.touched || datePOPVar.dirty) &&
+                        (!datePOPVar.valid ||
+                        validation_alert_danger.datePOP) 
+
+                    }">
+                    <div [hidden]="stagesBoolean || queryMode" class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"
+                            (blur)="focusOut('datePOP')"></button>
+                    </div>
+                    <span class="invalid-feedback" style="display: block !important;">
+                        <span *ngIf="datePOPVar.errors?.required && singupForm.submitted">
+                            El campo es requerido.
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4 ">
+            <label for="selectProyectTypeId">Tipo de proyecto</label>
+            <div class="form-label-group">
+                <ng-select id="selectProyectTypeId" name="selectProyectType" class="form-control select-control"
+                    style="border-color: transparent;" [items]="projectTypeList" bindLabel="detailValue"
+                    [loading]="!projectTypeList" [(ngModel)]="typeProjectSelect" (change)="onSelectTypeProject($event)"
+                    [clearable]="false" required #selectProyectTypeVar="ngModel" [disabled]="queryMode"
+                    (change)="focusOut('selectProyectType')" [ngClass]="{
+                            'is-invalid':(selectProyectTypeVar.touched || selectProyectTypeVar.dirty)
+                            && !selectProyectTypeVar.valid || validation_alert_danger.selectProyectType
+                        }">
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        {{item.detailValue}}
+                    </ng-template>
+                </ng-select>
+                <span class="invalid-feedback">
+                    <span *ngIf="selectProyectTypeVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group" *ngIf="showUpload">
+                <label for="inputAdjudicacion">Adjudicación</label>
+                <input id="inputAdjudicacion" name="inputAdjudicacion" readonly type="text" class="form-control"
+                    placeholder="" [(ngModel)]="award" required #inputAdjudicacionVar="ngModel" [ngClass]="{
+                    'is-invalid': !inputAdjudicacionVar.valid && singupForm.submitted
+                }">
+                <span class="invalid-feedback">
+                    <span *ngIf="inputAdjudicacionVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row xm-contentformbg" *ngIf="showUpload">
+
+        <div class="col-md-4">
+            <label for="">¿El proyecto es por convocatoria?</label>
+
+            <div class="xm-check align-items-center check-container" style="border-color: transparent;"
+                (blur)="focusOut('radioUpmeyes')" [ngClass]="{
+                'is-invalid':(radioUpmeyesVar.touched || radioUpmeyesVar.dirty) &&
+                !radioUpmeyesVar.valid ||
+                validation_alert_danger.radioUpmeyes
+                }">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="radioUpmeyes" id="radioUpmeyes" [value]="true"
+                        required #radioUpmeyesVar="ngModel" (blur)="focusOut('radioUpmeyes')" [(ngModel)]="radioUpme"
+                        [disabled]="queryMode" (change)="onSelectAnnouncement(radioUpme)">
+                    <label class="form-check-label" for="radioUpmeyes">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="radioUpmeyes" id="radioUpmeNo" [value]="false"
+                        required #radioUpmeyesVar="ngModel" (blur)="focusOut('radioUpmeyes')" [(ngModel)]="radioUpme"
+                        [disabled]="queryMode" (change)="onSelectAnnouncement(radioUpme)">
+                    <label class="form-check-label" for="radioUpmeNo">No</label>
+                </div>
+
+            </div>
+            <span class="invalid-feedback">
+                <span *ngIf="radioUpmeyesVar.errors?.required">
+                    El campo es requerido.
+                </span>
+            </span>
+        </div>
+
+        <div class="col-md-8 xm-proyecc" *ngIf="radioUpme">
+            <div class="xm-labels">
+                Número de la convocatoria
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-5">
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" id="nameNumberAnnoucement" name="nameNumberAnnoucement"
+                            readonly="true" (blur)="focusOut($event)" [(ngModel)]="nameNumberAnnoucement">
+
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+
+                        <input type="text" class="form-control" id="txtnumberAnnoucementId" name="txtnumberAnnoucement"
+                            [(ngModel)]="numberAnnoucement" (keyup)="validNumberAnnoucement(numberAnnoucement)"
+                            (change)="validNumberAnnoucement(numberAnnoucement)" maxlength="3" [readonly]="queryMode"
+                            #txtnumberAnnoucementVar="ngModel" (blur)="focusOut($event)" placeholder="00" [ngClass]="{
+                              'is-invalid':(txtnumberAnnoucementVar.touched || txtnumberAnnoucementVar.dirty) &&
+                              !txtnumberAnnoucementVar.valid ||
+                              validation_alert_danger.txtnumberAnnoucement
+                          }">
+                        <span class="invalid-feedback">
+                            <span *ngIf="txtnumberAnnoucementVar.errors?.required">
+                                El campo es requerido.
+                            </span>
+                        </span>
+
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <ng-select id="selectYearUpmeId" name="selectYearUpme" class="form-control"
+                            style="border-color: transparent;" [items]="yearsUpme" [loading]="!yearsUpme"
+                            (scroll)="onScroll($event)" [clearable]="false" [(ngModel)]="yearUpemSelect"
+                            [disabled]="queryMode" #selectYearUpmeVar="ngModel" (change)="focusOut('selectYearUpme')"
+                            [ngClass]="{
+                                  'is-invalid':(selectYearUpmeVar.touched || selectYearUpmeVar.dirty) &&
+                                  !selectYearUpmeVar.valid ||
+                                  validation_alert_danger.selectYearUpme
+                              }">
+                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                {{item}}
+                            </ng-template>
+
+                        </ng-select>
+                        <span class="invalid-feedback">
+                            <span *ngIf="selectYearUpmeVar.errors?.required">
+                                El campo es requerido.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <xm-stages [submitFather]="submitFather" [stagesBoolean]="stagesBoolean" [minDateFPOAfter]="minDateFPOAfter"
+        [stagesList]="stagesList" [maxDate]="maxDate" (modelFormEmitter)="onEventChild($event)">
+    </xm-stages>
+
+
+
+
+    <div class="row xm-contentformbg" *ngIf="(!showUpload && typeProjectSelect) || showUploadAlso">
+        <div class="xm-labels col-md-12">
+            <h5>Concepto de conexión de la UPME</h5>
+        </div>
+        <div class="col-md-12">
+            <app-upload-xm *ngIf="!queryMode" [maxSizeFile]="maxSizeFile" [maxLengthFile]="maxLengthFile"
+                [formartFile]="formartFile" [arrayListFiles]="arrayListFiles"></app-upload-xm>
+        </div>
+
+
+        <div class="col-md-4" *ngFor='let file of arrayListFiles; let i = index;'>
+            <div class="xm-cards">
+                <div class="xm-cardtitle2">
+                    <h6 *ngIf="i > 9">
+                        Concepto de conexión de la UPME {{i+1}}
+                    </h6>
+                    <h6 *ngIf="!(i > 9)">
+                        Concepto de conexión de la UPME 0{{i+1}}
+                    </h6>
+                    <div class="xm-carddelt">
+                        <a href="" *ngIf="!queryMode" (click)="onDeleteFileAndDate(i, $event)">
+                            <i class="material-icons i-stage2">delete</i>
+                            Borrar</a>
+                    </div>
+                </div>
+                <div class="xm-cardform">
+
+                    <div class="form-group" *ngIf="file.name !== null">
+                        <label for="inputEmail">Concepto UPME</label>
+                        <br>
+                        <a href="#" (click)="viewFile(file, $event)" *ngIf="!file.sended">{{file.name.substr(0, 27)}}{{file.name.length > 27 ? '...'  : ''}} </a>
+                        <a href="{{file.urlDocument}}" *ngIf="file.sended" target="_blank">{{file.name.substr(0, 27)}}{{file.name.length > 27 ? '...'  : ''}} </a>
+                        <a href="#" class="ml-2" (click)="downloadFile(file, $event)">
+                            <i class="material-icons">
+                                save_alt
+                            </i>
+                        </a>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">FPO UPME</label>
+                        <div class="input-group">
+                            <input class="form-control" placeholder="dd-mm-aaaa" name="dateFile{{i}}"
+                                [(ngModel)]="file.datePicker" readonly="true" ngbDatepicker
+                                (ngModelChange)="onselectDateOfDocument(file)" #d="ngbDatepicker" #dateFile="ngModel"
+                                [ngClass]="{ 'is-invalid':  ((file.datePicker == null) && singupForm.submitted)  }"
+                                required>
+                            <div class="input-group-append">
+                                <button *ngIf="!queryMode" class="btn btn-outline-secondary calendar"
+                                    (click)="d.toggle()" type="button"></button>
+                            </div>
+                            <span class="invalid-feedback">
+                                <span *ngIf="dateFile.invalid && singupForm.submitted">
+                                    El campo es requerido.
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row xm-contentform mt-5">
+        <div class="col-md-4 ">
+            <div class="form-group">
+                <label for="selectAreaOperativeId">Área operativa</label>
+                <ng-select id="selectAreaOperativeId" name="selectAreaOperative" class="form-control select-control"
+                    style="border-color: transparent;" [items]="areaList" bindLabel="name" [loading]="!areaList"
+                    (change)="focusOut('selectAreaOperative')" [(ngModel)]="areaSelect" (change)="onSelectArea($event)"
+                    [disabled]="queryMode" style="border: none !important;" required #selectAreaOperativeVar="ngModel"
+                    [ngClass]="{
+                                    'is-invalid':
+                                        (selectAreaOperativeVar.touched || selectAreaOperativeVar.dirty) &&
+                                        !selectAreaOperativeVar.valid ||
+                                        validation_alert_danger.selectAreaOperative
+                                }">
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        {{item.name}}
+                    </ng-template>
+                </ng-select>
+                <span class="invalid-feedback">
+                    <span *ngIf="selectAreaOperativeVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="selectSubAreaOperativeId">Sub-área operativa</label>
+                <ng-select id="selectSubAreaOperativeId" name="selectSubAreaOperative"
+                    class="form-control select-control" style="border-color: transparent;" [items]="subAreaListSelect"
+                    bindLabel="name" (change)="focusOut('selectSubAreaOperative')" [(ngModel)]="subAreaSelect"
+                    [disabled]="queryMode" [clearable]="false" required #selectSubAreaOperativeVar="ngModel" [ngClass]="{
+                                    'is-invalid':
+                                        (selectSubAreaOperativeVar.touched || selectSubAreaOperativeVar.dirty)&&
+                                        !selectSubAreaOperativeVar.valid ||
+                                        validation_alert_danger.selectSubAreaOperative
+
+                                }">
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        {{item.name}}
+                    </ng-template>
+                </ng-select>
+
+                <span class="invalid-feedback">
+                    <span *ngIf="selectSubAreaOperativeVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row xm-contentform">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="connectionPoint1">Punto de conexión 01</label>
+                <input type="text" class="form-control" id="connectionPoint1" name="connectionPoint1"
+                    [readonly]="queryMode" [(ngModel)]="transmisionDTO.ConnectionPoint1" integersNumbersOnly />
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="connectionPoint2">Punto de conexión 02</label>
+                <input type="text" class="form-control" integersNumbersOnly [readonly]="queryMode"
+                    [(ngModel)]="transmisionDTO.ConnectionPoint2" id="connectionPoint2" name="connectionPoint2" />
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="xm-labels">
+                ¿Incluye PMU?
+            </div>
+
+            <div class="xm-check">
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="includePMU" id="pmuYes"
+                        [(ngModel)]="transmisionDTO.IncludeUnitFasorialMeasurement" [disabled]="queryMode"
+                        [value]="true">
+                    <label class="form-check-label" for="pmuYes">Si</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="includePMU" id="pmuNo"
+                        [(ngModel)]="transmisionDTO.IncludeUnitFasorialMeasurement" [disabled]="queryMode"
+                        [value]="false">
+                    <label class="form-check-label" for="pmuNo">No</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row xm-contentformbg" *ngIf="idProyect !== null">
+        <div class="col-md-12">
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea3">Observación relacionada con el cambio</label>
+            </div>
+            <textarea class="form-control text-area-white-xm" id="idTextObservation" name="nameTextObservation" rows="8"
+                maxlength="250" [(ngModel)]="transmisionDTO.comments" #nameTextObservationVar="ngModel" required
+                [disabled]="queryMode"
+                [ngClass]="{ 'is-invalid':
+                            ((nameTextObservationVar.touched || nameTextObservationVar.dirty) &&
+                            !nameTextObservationVar.valid ||
+                            validation_alert_danger.nameTextObservation) && nameTextObservationVar.errors?.required }"></textarea>
+            <span class="invalid-feedback">
+                <span *ngIf="nameTextObservationVar.errors?.required">
+                    El campo es requerido.
+                </span>
+            </span>
+        </div>
+    </div>
+
+    <div *ngIf="!queryMode" class="xm-newet xm-newetbuttons">
+        <div class="row">
+            <div class="col-md-2" *ngIf="editId != null && editId"
+                [ngClass]="{ 'offset-md-6': editId != null && editId}">
+                <button type="button" (click)="clickBack()" class="xm-btn xm-btnsecondary">Atrás
+                </button>
+            </div>
+            <div class="col-md-2" [ngClass]="{ 'offset-md-8': editId == null || !editId}">
+                <button type="button" class="xm-btn xm-btnsecondary"><i class="material-icons">save</i> Guardar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button type="submit" class="xm-btn xm-btnprimary" [ngClass]="{'is-block':!singupForm.valid}">
+                    <i class="material-icons">send</i> Enviar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="queryMode" class="xm-newet xm-newetbuttons">
+        <div class="row">
+            
+            <div class="col-md-2 offset-md-6" *ngIf="editId != null && editId">
+                <button type="button" (click)="clickBack()" class="xm-btn xm-btnterciary ">Cancelar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <!-- 57 en bd es rechazado en la bd -->
+                <button type="button"  class="xm-btn xm-btnsecondary"> Rechazar
+                </button>
+            </div>
+            <div class="col-md-2">
+                    <!-- 56 en bd es aprobado -->
+                <button type="button" (click)="clickStateRequirement(56)" class="xm-btn xm-btnprimary">
+                    Aprobar
+                </button>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<app-wait *ngIf="!hiddenLoader"></app-wait>

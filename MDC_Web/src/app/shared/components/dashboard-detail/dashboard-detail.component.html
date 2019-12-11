@@ -1,0 +1,25 @@
+<div class="conteiner-detail">
+    <div class="subestacion-detalles flex-box-center col-md-3">
+        <i class="material-icons">info</i>
+        <span *ngIf="object">Detalles del Proyecto</span>
+        <span *ngIf="text || html">Descripción</span>
+        <i class="material-icons" *ngIf="!open" (click)="openDetail()">keyboard_arrow_down</i>
+        <i class="material-icons" *ngIf="open" (click)="openDetail()">keyboard_arrow_up</i>
+    </div>
+    <div class="detail-dashboard col-md-9" *ngIf="open">
+        <div class="col">
+            <p *ngIf="text">
+                {{text}}
+            </p>
+            <p *ngIf="object">
+                Seleccione el botón "Crear activos" para declarar los activos y
+                parámetros del proyecto: {{object?.projectName}} de tipo: {{object?.conectionType}}
+                con sub-área operativa {{object?.subArea.name}} <span *ngIf="object.hasStages">y que consta de
+                    {{object?.stages.length}} etapas</span>
+            </p>
+            <div *ngIf="html">
+                <div [innerHTML]="html"></div>
+            </div>
+        </div>
+    </div>
+</div>

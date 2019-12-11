@@ -1,0 +1,61 @@
+<div class="container">
+
+
+    <div class="row">
+        <div class="col-md-12 pt-3 pb-3 pl-5 xm-titleform">
+            <h5>Listado Proyectos de Transmisión</h5>
+        </div>
+    </div>
+    <div class="xm-newet xm-createbuttons">
+        <div class="row align-items-center">
+            <h6 class="col-md-3 col-sm-6 pl-5">Proyectos totales:<span class="xm-total">{{totalProjects}}</span></h6>
+            <button id="idBtnViewProject" name="nameBtnViewProject" class="col-md-6 col-sm-6 xm-btninvi"
+                [hidden]="viewStages" (click)="viewBy('etapas')">
+                <i class="material-icons i-eye px-2">remove_red_eye</i>
+                <h6>Visualizar por etapas</h6>
+            </button>
+            <button class="col-md-6 col-sm-6 xm-btninvi" [hidden]="!viewStages" id="idBtnViewStage"
+                name="nameBtnViewStage" (click)="viewBy('proyectos')">
+                <i class="material-icons i-eye px-2">visibility_off</i>
+                <h6>Visualizar por etapas</h6>
+            </button>
+
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-8"></div>
+
+        <div class="col-md-2">
+            <button class="xm-btn xm-btnsecondary"><i class="material-icons">save_alt</i>
+                Reporte
+            </button>
+        </div>
+        <div class="col-md-2">
+
+            <a class="xm-btn xm-btnprimary" routerLink="/transmision/createProject"> <i
+                    class="material-icons">note_add</i>
+                Nuevo
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<article class="xm-table col-md-12">
+    <app-table-xm *ngIf="showTableTransmisionProject" [arrayList]="transmisionSearch.items"
+        [columNameList]="columNameList" [rowNameList]="rowNameList" [columNameSortList]="columNameSortList"
+        [collectionSize]="transmisionSearch.metadata.pagination.totalCount"
+        [pageSize]="transmisionSearch.metadata.pagination.limit" [filterInfo]="filterInfo" [buttonList]="buttonList"
+        (tableXmEmitter)="onEventChild($event)" (functionButton)="eventClickInButtons($event)"
+        (rowItem)="onRowClick($event)" [page]="transmisionSearch.metadata.pagination.currentPage" ></app-table-xm>
+    <app-table-xm *ngIf="showTableTransmisionStageProject" [arrayList]="transmisionStageSearch.items"
+        [columNameList]="columNameList" [rowNameList]="rowNameList" [columNameSortList]="columNameSortList"
+        [collectionSize]="transmisionStageSearch.metadata.pagination.totalCount"
+        [pageSize]="transmisionStageSearch.metadata.pagination.limit" [filterInfo]="filterInfo"
+        [buttonList]="buttonList" (rowItem)="onRowClick($event)" (tableXmEmitter)="onEventChild($event)"
+        [page]="transmisionStageSearch.metadata.pagination.currentPage"></app-table-xm>
+</article>
+<br>
+<br>

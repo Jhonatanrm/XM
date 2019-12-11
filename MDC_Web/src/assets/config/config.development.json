@@ -1,0 +1,13 @@
+{
+    "env": { "name": "DEV" },
+    "tenants": [
+        { "name": "empresa1", "tenant": "empresa1.com.co" }
+    ],
+    "portTypes" : [
+        {"name": "TCP/IP"},
+        {"name": "Directo"},
+        {"name": "Directo Virtual"},
+        {"name": "Telefónico"},
+        {"name": "Telefónico Virtual"}
+    ]
+}

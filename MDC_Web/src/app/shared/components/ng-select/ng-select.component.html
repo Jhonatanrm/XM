@@ -1,0 +1,21 @@
+        <ng-select
+            [items]="arrayBuffer"
+            [virtualScroll]="true"
+            [bindLabel]="bindLabel"
+            [bindValue]="bindValue"
+            [placeholder]="placeholder"
+            [loading]="!arrayList"
+            (scroll)="onScroll($event)"
+            (ngModelChange)="writeValue($event)"
+            [(ngModel)]="val"
+            (scrollToEnd)="onScrollToEnd()"
+            [clearable]="false"
+            [disabled]="disabled"
+            >
+    <ng-template ng-header-tmp>
+         <small class="form-text text-muted">Loaded {{arrayBuffer.length}} of {{arrayList.length}}</small>
+    </ng-template>
+    <ng-template ng-option-tmp let-item="item" let-index="index">
+        {{item[bindLabel]}}
+    </ng-template>
+</ng-select>

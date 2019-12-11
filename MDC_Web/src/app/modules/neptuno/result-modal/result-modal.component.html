@@ -1,0 +1,121 @@
+<div [class]="response?.errorMessages?.length !== 0 ? 'modal-header-error' :'modal-header-exitoso'">
+  <h5 class="modal-title xm-title-alert" id="exitoso" *ngIf="response?.variables && response?.variables.length !== 0">
+    <i class="uil uil-check-circle xm-modal-icon-title-exitoso"></i>
+  </h5>
+  <h5 class="modal-title xm-title-alert" id="error" *ngIf="response?.errorMessages && response?.errorMessages.length !== 0">
+    <i class="uil uil-exclamation-triangle xm-modal-icontitle"></i>
+    Alerta
+  </h5>
+  <div class="xm-text-alert" *ngIf="response?.variables && response?.variables.length !== 0">
+    <p>
+      Información recibida con éxito, el archivo se envió correctamente para el día energético
+      {{energeticDate}}
+    </p>
+  </div>
+  <div class="xm-text-alert" *ngIf="response?.errorMessages && response?.errorMessages.length !== 0">
+    <p>El archivo contiene errores, por favor verificar la información.</p>
+  </div>
+  <button type="button" class="close" (click)="dismiss()">
+    <span aria-hidden="true">×</span>
+  </button>
+</div>
+<div class="modal-body">
+  <p class="mb-4">
+    <span class="mr-4">
+      <strong>Agente:</strong> {{agent?.name}}
+    </span>
+    <span class="mr-4">
+      <strong>Fecha:</strong> {{actualDate}}
+    </span>
+    <span>
+      <strong>Hora:</strong> {{time}}
+    </span>
+  </p>
+  <div class="card shadow">
+    <div class="table-responsive max-height">
+
+      <table class="table align-items-center table-flush" *ngIf="response?.variables && response?.variables.length !== 0">
+        <thead class="thead-light">
+        <tr>
+          <th scope ="col">Elemento</th>
+          <th scope="col">Identidad</th>
+          <th scope="col">Variable</th>
+          <th scope="col">Detalle</th>
+          <th scope="col">Valor</th>
+          <th scope="col">Estado</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let variable of response?.variables">
+          <td>
+           {{variable.element}}
+          </td>
+          <td>
+           {{variable.identity}}
+          </td>
+          <td>
+            {{variable.variable}}
+          </td>
+          <td>
+            {{variable.detail}}
+          </td>
+          <td>
+           {{variable.value}}
+          </td>
+          <td>
+            Cargado
+          </td>
+        </tr>
+        </tbody>
+      </table>
+
+      <table class="table align-items-center table-flush" *ngIf="response?.errorMessages && response?.errorMessages.length !== 0">
+        <thead class="thead-light">
+        <tr>
+          <th scope ="col">Linea</th>
+          <th scope="col">Contenido linea</th>
+          <th scope="col">Clasificación</th>
+          <th scope="col">Tipo error</th>
+          <th scope="col">Objeto</th>
+          <th scope="col">Valor de referencia</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <tr *ngFor="let errrorMessage of response?.errorMessages">
+          <td>
+            {{errrorMessage.line }}
+          </td>
+          <td>
+            {{errrorMessage.lineContent}}
+          </td>
+          <td>
+            <ng-container [ngSwitch]="errrorMessage.errorClassification">
+              <p *ngSwitchCase="1">ERROR</p>
+              <p *ngSwitchCase="2">ADVERTENCIA</p>
+            </ng-container>
+          </td>
+          <td>
+            {{errrorMessage.typeError}}
+          </td>
+          <td>
+            {{errrorMessage.objectError }}
+          </td>
+          <td>
+            {{errrorMessage.referenceValue }}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <div class="d-flex justify-content-end w-100">
+    <button type="button" class="xm-btn xm-btnsecondary w-25 mr-2"  (click)="dismiss()">Cerrar</button>
+    <button type="button" class="xm-btn xm-btnprimary w-25"
+            *ngIf="response?.allowForwarding && (!response?.variables || response?.variables.length === 0)"
+            (click)="save()">Enviar Archivo</button>
+  </div>
+</div>

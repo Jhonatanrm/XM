@@ -1,0 +1,112 @@
+
+    <div class="xm-stages">
+        <div class="row">
+            <div class="col-md-12 xm-labels">
+                ¿El proyecto entra por etapas?
+            </div>
+
+            <div class="col-md-2">
+                <div class="xm-check">
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" [(ngModel)]="stagesBoolean" (change)="onStages(stagesBoolean)"
+                            type="radio" name="inlineRadioOptions" id="inlineRadio1" [value]="true"
+                            disabled
+                            >
+
+                            <label class="form-check-label" for="inlineRadio1">SI</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" [(ngModel)]="stagesBoolean" (change)="onStages(stagesBoolean)"
+                            type="radio" name="inlineRadioOptions" id="inlineRadio2" [value]="false"
+                            disabled
+                            >
+                        <label class="form-check-label" for="inlineRadio2">NO</label>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="xm-newet" *ngIf="stagesBoolean">
+        <div class="row">
+            <div class="col-md-4" *ngFor="let stage of stagesList; let i = index;">
+                <div class="xm-cards">
+                    <div class="xm-cardtitle">
+                        <h6 *ngIf="i > 9">
+                            Etapa {{i+1}}
+                        </h6>
+                        <h6 *ngIf="!(i > 9)">
+                            Etapa 0{{i+1}}
+                        </h6>
+                        <div class="xm-carddelt">
+                            <a href="" (click)="onDeleteStage(stage, $event)"> <i
+                                    class="material-icons i-stage">delete</i>
+                                Borrar</a>
+                        </div>
+                    </div>
+                    <div class="xm-cardform">
+
+                        <div class="form-group">
+                            <label for="DatepickerId{{i}}">FPO</label>
+                            <div class="input-group">
+                                <input class="form-control" placeholder="dd-mm-aaaa" name="date{{i}}" #date="ngModel"
+                                    [(ngModel)]="stage.date" readonly="true" (ngModelChange)="onSelectDateStage(stage)"
+                                    ngbDatepicker
+                                    [minDate]="i == 0 ? currentDate : stagesList[i-1].date ? stagesList[i-1].date : minDateFPOAfter"
+                                    [maxDate]="stagesList.length > i+1 ? stagesList[i+1].date : maxDate"
+                                    #d="ngbDatepicker"
+                                    [ngClass]="{ 'is-invalid':  ((stage.date == null) && submitFather)  }" required
+                                    >
+                                <div class="input-group-append"
+                                    [hidden]=" i == 0 ? false : stagesList[i-1].date ? false : true">
+                                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                        type="button"></button>
+                                </div>
+                                <span class="invalid-feedback">
+                                    <span *ngIf="date.invalid && submitFather">
+                                        El campo es requerido.
+                                    </span>
+                                </span>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Descripción</label>
+                            <textarea class="form-control" [(ngModel)]="stage.StageDescription" name="desc{{i}}"
+                                #areaDescVar="ngModel" (blur)="onBlur(event)"
+                                [ngClass]="{ 'is-invalid':  areaDescVar.invalid && submitFather  }" required
+                                rows="3"></textarea>
+                            <span class="invalid-feedback">
+                                <span *ngIf="areaDescVar.invalid && submitFather ">
+                                    El campo es requerido.
+                                </span>
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="xm-cards xm-cardshidden">
+                    <div class="xm-cardtitle">
+                        <h6>
+                            Etapa
+                        </h6>
+                    </div>
+                    <div class="xm-cardform">
+                        <div class="xm-cardlink">
+                            <a href="" (click)="addStageAElement($event)"><i
+                                    class="material-icons i-stage">add_circle_outline</i></a>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>

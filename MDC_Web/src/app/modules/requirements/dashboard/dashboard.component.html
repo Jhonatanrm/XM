@@ -1,0 +1,24 @@
+<div class="row xm-contentform">
+    <div class="col">
+        <div class="row">
+            <div class="col-md-12 pt-3 pb-3 pl-5 xm-titleform">
+                <h5>{{tittle}}</h5>
+            </div>
+        </div>
+        <div class="row flex-box-center">
+            <div class="col-md-12 conteiner-detalles">
+                <div class="col-md-12">
+                    <app-dashboard-detail [text]="text"></app-dashboard-detail>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+            <app-filter (state)="selectState($event)"></app-filter>
+        </div>
+        <div class="col-md-12">
+            <app-table [filterState]="filterState"></app-table>
+        </div>
+
+    </div>
+</div>

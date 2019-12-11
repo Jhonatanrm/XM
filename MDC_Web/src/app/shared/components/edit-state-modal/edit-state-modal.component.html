@@ -1,0 +1,96 @@
+<div class="modal-header">
+  <div class="text-center w-100">
+    <h5 *ngIf="!hasChanged">Modifica el estado del proyecto</h5>
+    <h5 *ngIf="hasChanged">Justificación del cambio de estado del proyecto</h5>
+  </div>
+</div>
+<div class="modal-body">
+  <form novalidate #stateForm="ngForm">
+    <div class="row">
+      <div class="col-md-6 mb-5" *ngIf="!hasChanged">
+        <ng-select [items]="states$ | async" name="state" [(ngModel)]="selectedState" bindLabel="detailValue"
+          class="form-control" #state="ngModel" [ngClass]="{ 'is-invalid': ((state.touched || state.dirty) && state.invalid)
+                   || (state.errors?.required && formSubmitted) }" placeholder="Estado del proyecto" required>
+        </ng-select>
+        <span class="invalid-feedback">
+          <span *ngIf="state.errors?.required">
+            El campo es requerido.
+          </span>
+        </span>
+      </div>
+      
+      <div *ngIf="!hasChanged && (selectedState != null && selectedState.typeMRID != null && selectedState.typeMRID === 47)" class="col-md-1">
+          <h6>Hora FPO: </h6>
+        </div>
+      <div class="col-md-2 "
+        *ngIf="!hasChanged && (selectedState != null && selectedState.typeMRID != null && selectedState.typeMRID === 47)">
+        <ng-select id="selectHourId" name="selectHour" class="form-control select-control" [items]="listHour"
+          [loading]="!listHour" [(ngModel)]="hour" [clearable]="false" required #selectHour="ngModel" [ngClass]="{ 'is-invalid': ((selectHour.touched || selectHour.dirty) && selectHour.invalid)
+                   || (selectHour.errors?.required && formSubmitted) }" style="border-color: transparent;">
+          <ng-template ng-option-tmp let-item="item" let-index="index">
+            {{item}}
+          </ng-template>
+        </ng-select>
+        <span class="invalid-feedback">
+          <span *ngIf="selectHour.errors?.required">
+            El campo es requerido.
+          </span>
+        </span>
+
+      </div>
+      <div *ngIf="!hasChanged && (selectedState != null && selectedState.typeMRID != null && selectedState.typeMRID === 47)">
+        <h5> : </h5>
+
+      </div>
+
+      <div class="col-md-2"
+        *ngIf="!hasChanged && (selectedState != null && selectedState.typeMRID != null && selectedState.typeMRID === 47)">
+
+        <ng-select id="selectMinuteId" name="selectMinute" class="form-control select-control" [items]="listMinute"
+          [loading]="!listMinute" [(ngModel)]="minute" [clearable]="false" required #selectMinuteVar="ngModel"
+          [ngClass]="{
+              'is-invalid':(selectMinuteVar.touched || selectMinuteVar.dirty)
+              && !selectMinuteVar.valid 
+          }" style="border-color: transparent;">
+          <ng-template ng-option-tmp let-item="item" let-index="index">
+            {{item}}
+          </ng-template>
+        </ng-select>
+        <span class="invalid-feedback">
+          <span *ngIf="selectMinuteVar.errors?.required">
+            El campo es requerido.
+          </span>
+        </span>
+
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="justification">Justificación:</label>
+          <textarea id="justification" class="form-control" rows="6" name="justification" #justificationVar="ngModel"
+            [(ngModel)]="justification" [ngClass]="{ 'is-invalid':
+                    ((justificationVar.touched || justificationVar.dirty) &&
+                    !justificationVar.valid ) || (justificationVar.errors?.required && formSubmitted) }"
+            [required]="!hasChanged" [readOnly]="hasChanged"></textarea>
+          <span class="invalid-feedback">
+            <span *ngIf="justificationVar.errors?.required">
+              El campo es requerido.
+            </span>
+          </span>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <div class="d-flex w-50">
+    <button (click)="dismiss()" type="button" class="xm-btn m-btnterciary mr-3">
+      Cancelar
+    </button>
+    <button *ngIf="!hasChanged" (click)="save(stateForm)" type="button" class="xm-btn xm-btnprimary">
+      Aceptar
+    </button>
+    <button *ngIf="hasChanged" (click)="goToRequirements()" type="button" class="xm-btn xm-btnprimary">
+      Ir a requisitos
+    </button>
+  </div>
+</div>

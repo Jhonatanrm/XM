@@ -1,0 +1,642 @@
+<form [formGroup]="subestacionForm" (ngSubmit)="onSubmit()">
+    <div class="row xm-contentform">
+        <div class="col">
+            <ngb-tabset [activeId]="ngbTabset" class="tabs-form-beauty tabs-4" (tabChange)="formTabChange($event)">
+                <ngb-tab id="informacionBasica">
+                    <ng-template ngbTabTitle>
+                        <i class="material-icons modal-tab-icon">
+                            list_alt
+                        </i>
+                        <span class="form-control tab-control-valid"
+                            [ngClass]="validate.getValidClassGroup(subestacionForm,'informacionBasica')">
+                            Información básica</span>
+                        <span class="badge bolita-numero">1</span>
+                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                            [switch]="'required-group'"></app-validate>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                        <div class="row" formGroupName="informacionBasica">
+                            <div class="col-md-12 offset-md-0 flex-box-center">
+                                <div class="row xm-row-par w-100">
+                                    <div class="col-md-6">
+                                        <ng-template #substationNameToolTip class="tool-tip">Nombre de la subestación
+                                        </ng-template>
+                                        <label [ngClass]="requestChangeParameter('informacionBasica','substationName')">
+                                            Nombre de subestación</label>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="substationNameToolTip"
+                                            [ngClass]="requestChangeParameter('informacionBasica','substationName')">
+                                            help_outline</i>
+
+                                        <input type="text" id="substationNameId" class="form-control" placeholder=""
+                                            formControlName="substationName" [ngClass]="[
+                                                validate.getValidClass(subestacionForm,'informacionBasica','substationName',controlRequestChange), 
+                                                requestChangeParameter('informacionBasica','substationName')]">
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'substationName'" [switch]="'required'"></app-validate>
+                                    </div>
+
+
+                                    <div class="col-md-6">
+                                        <ng-template #stageToolTip class="tool-tip">Etapa en la que entra en operación
+                                            la
+                                            subestación
+                                        </ng-template>
+                                        <label [hidden]="project.stages.length === 1">Etapa del proyecto</label>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="stageToolTip"
+                                            [hidden]="project.stages.length === 1">help_outline</i>
+                                        <ng-select id="XMStagePerSubstationId"
+                                            class="select-ng-from-control form-control" placeholder=""
+                                            [items]="project.stages" bindLabel="stageDescription"
+                                            [loading]="!project.stages" formControlName="XMStagePerSubstation"
+                                            [ngClass]="validate.getValidClass(subestacionForm,'informacionBasica','XMStagePerSubstation')"
+                                            [hidden]="project.stages.length === 1">
+                                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                                {{item.stageDescription | lowercaseFormsPipe}}
+                                            </ng-template>
+                                        </ng-select>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'XMStagePerSubstation'" [switch]="'required'"></app-validate>
+                                    </div>
+                                </div>
+                                <div class="row xm-row-impar w-100">
+                                    <div class="col-md-6">
+                                        <ng-template #departamentoToolTip class="tool-tip">Departamento donde se ubica
+                                            la
+                                            subestación
+                                        </ng-template>
+                                        <label>Departamento</label>
+                                        <i class="material-icons" placement="top"
+                                            [ngbTooltip]="departamentoToolTip">help_outline</i>
+                                        <ng-select id="DivisionPoliticaDepartamentoId"
+                                            class="select-ng-from-control form-control" placeholder=""
+                                            [items]="departamentos" bindLabel="departmentName"
+                                            [loading]="!departamentos" formControlName="DivisionPoliticaDepartamento"
+                                            [ngClass]="validate.getValidClass(subestacionForm,'informacionBasica','DivisionPoliticaDepartamento')">
+                                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                                {{item.departmentName | lowercaseFormsPipe}}
+                                            </ng-template>
+                                        </ng-select>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'DivisionPoliticaDepartamento'" [switch]="'required'">
+                                        </app-validate>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <ng-template #municipioToolTip class="tool-tip">Municipio donde se ubica la
+                                            subestación </ng-template>
+                                        <label
+                                            [ngClass]="requestChangeParameter('informacionBasica','DivisionPoliticaMunicipio')">
+                                            Municipio</label>
+                                        <i class="material-icons"
+                                            [ngClass]="requestChangeParameter('informacionBasica','DivisionPoliticaMunicipio')"
+                                            placement="top" [ngbTooltip]="municipioToolTip">help_outline</i>
+                                        <ng-select id="DivisionPoliticaMunicipioId"
+                                            class="select-ng-from-control form-control" placeholder=""
+                                            [items]="municipios.items" bindLabel="municipalityName"
+                                            formControlName="DivisionPoliticaMunicipio"
+                                            [ngClass]="[
+                                                validate.getValidClass(subestacionForm,'informacionBasica','DivisionPoliticaMunicipio','controlRequestChange'),
+                                                requestChangeParameter('informacionBasica','DivisionPoliticaMunicipio')]">
+                                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                                {{item.municipalityName | lowercaseFormsPipe}}
+                                            </ng-template>
+                                        </ng-select>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'DivisionPoliticaMunicipio'" [switch]="'required'"></app-validate>
+                                    </div>
+                                </div>
+
+                                <div class="row xm-row-par w-100">
+                                    <div class="col-md-6">
+                                        <ng-template #latitudToolTip class="tool-tip">Latitud del lugar (Grados
+                                            decimales-
+                                            datum WGS84)</ng-template>
+                                        <label
+                                            [ngClass]="requestChangeParameter('informacionBasica','latitude')">Latitud</label>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="latitudToolTip"
+                                            [ngClass]="requestChangeParameter('informacionBasica','latitude')">
+                                            help_outline</i>
+                                        <input type="number" id="latitudeId" class="form-control" step="0.001" lang="en"
+                                            placeholder="" formControlName="latitude" [ngClass]="
+                                            [(
+                                                validate.getValidDecimalNumberTowForSix(subestacionForm,'informacionBasica','latitude',7) ||
+                                                validate.getValidClass(subestacionForm,'informacionBasica','latitude','controlRequestChange')
+                                                ),
+                                                requestChangeParameter('informacionBasica','latitude')]
+                                            ">
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'latitude'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'latitude'" [switch]="'min'"></app-validate>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'latitude'" [switch]="'max'"></app-validate>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'latitude'" [switch]="'maxlengthDecimals'" [n]="'7'"></app-validate>
+
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <ng-template #longitudToolTip class="tool-tip">Longitud del lugar (Grados
+                                            decimales-
+                                            datum WGS84)</ng-template>
+                                        <label
+                                            [ngClass]="requestChangeParameter('informacionBasica','longitude')">Longitud</label>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="longitudToolTip"
+                                            [ngClass]="requestChangeParameter('informacionBasica','longitude')">help_outline</i>
+                                        <input type="number" id="longitudeId" class="form-control" step="0.001"
+                                            lang="en" placeholder="" formControlName="longitude" [ngClass]="[(
+                                            validate.getValidDecimalNumberTreeForSix(subestacionForm,'informacionBasica','longitude',7) ||
+                                            validate.getValidClass(subestacionForm,'informacionBasica','longitude','controlRequestChange')),
+                                            requestChangeParameter('informacionBasica','longitude')
+                                            ]
+                                            ">
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'longitude'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'longitude'" [switch]="'min'"></app-validate>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'longitude'" [switch]="'max'"></app-validate>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'longitude'" [switch]="'maxlengthDecimals'" [n]="'7'">
+                                        </app-validate>
+                                    </div>
+                                </div>
+
+                                <div class="row xm-row-impar w-100">
+                                    <div class="col-md-6">
+                                        <ng-template #areaToolTip class="tool-tip">Indicar el area donde esta
+                                            instalada la subestación
+                                        </ng-template>
+                                        <label>Área del proyecto</label>
+                                        <i class="material-icons" placement="top"
+                                            [ngbTooltip]="areaToolTip">help_outline</i>
+                                        <ng-select id="AreaProyectoId" class="select-ng-from-control form-control"
+                                            placeholder="" [items]="areas" bindLabel="name" [loading]="!areas"
+                                            formControlName="AreaProyecto"
+                                            [ngClass]="validate.getValidClass(subestacionForm,'informacionBasica','AreaProyecto')">
+                                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                                {{item.name | lowercaseFormsPipe}}
+                                            </ng-template>
+                                        </ng-select>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'AreaProyecto'" [switch]="'required'"></app-validate>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ng-template #subAreaToolTip class="tool-tip">Indica la subarea donde esta
+                                            instalada la subestación
+                                        </ng-template>
+                                        <label
+                                            [ngClass]="requestChangeParameter('informacionBasica','SubArea')">Sub-área
+                                            del proyecto</label>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="subAreaToolTip"
+                                            [ngClass]="requestChangeParameter('informacionBasica','SubArea')">help_outline</i>
+                                        <ng-select id="subAreaToolTipId" class="select-ng-from-control form-control"
+                                            placeholder="" [items]="subareas" bindLabel="name" [loading]="!subareas"
+                                            formControlName="SubArea" [ngClass]="[
+                                                validate.getValidClass(subestacionForm,'informacionBasica','SubArea','controlRequestChange'),
+                                                requestChangeParameter('informacionBasica','SubArea')
+                                                ]">
+                                            <ng-template ng-option-tmp let-item="item" let-index="index">
+                                                {{item.name | lowercaseFormsPipe}}
+                                            </ng-template>
+                                        </ng-select>
+                                        <app-validate [form]="subestacionForm" [group]="'informacionBasica'"
+                                            [name]="'SubArea'" [switch]="'required'"></app-validate>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="datosTecnicos">
+                    <ng-template ngbTabTitle>
+                        <i class="material-icons modal-tab-icon">
+                            flash_on
+                        </i>
+                        <span class="form-control tab-control-valid"
+                            [ngClass]="validate.getValidClassGroup(subestacionForm,'datosTecnicos')">
+                            Datos técnicos
+                        </span> <span class="badge bolita-numero">2</span>
+                        <app-validate [form]="subestacionForm" [group]="'datosTecnicos'" [switch]="'required-group'">
+                        </app-validate>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                        <div formGroupName="datosTecnicos">
+
+                            <div class="row" formArrayName="subestationConfiguration">
+                                <div class="col-md-10 offset-md-1 flex-box-center-nofull">
+                                    <div class="col-md-6 panel-form-beauty"
+                                        *ngFor="let subestacionConfiguration of subestacionForm.get('datosTecnicos').get('subestationConfiguration').controls; let i = index;"
+                                        [formGroupName]="i">
+                                        <!-- Para hacer eso se necesita Component like FormControl
+                                            <app-subestacion-configuracion [subestacionForm]="subestacionForm"
+                                                [group]="'datosTecnicos'" [subestacionConfiguration]="subestacionConfiguration"
+                                                [index]="i" >
+                                            </app-subestacion-configuracion>
+                                        -->
+
+                                        <div class="xm-cards">
+                                            <div class="xm-cardtitle">
+                                                <h6>
+                                                    Configuración de tensión nominal de operación {{i+1}}
+                                                </h6>
+                                                <ng-template #ConfigNivelTensionToolTip class="tool-tip">Configuración
+                                                    de tensión nominal de operación de la subestación
+                                                </ng-template>
+                                                <div *ngIf="flagButtonView" class="xm-carddelt">
+                                                    <a *ngIf="i != 0" href="" (click)="onDelete(i,$event)"> <i
+                                                            class="material-icons i-stage">delete</i>
+                                                        Borrar</a>
+                                                    <a *ngIf="i == 0 && subestacionForm.get('datosTecnicos').get('subestationConfiguration').controls.length > 1"
+                                                        href="" (click)="onDelete(i,$event)"> <i
+                                                            class="material-icons i-stage">delete</i>
+                                                        Borrar</a>
+                                                </div>
+                                            </div>
+                                            <div class="xm-cardform">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <ng-template #nivelTensionToolTip class="tool-tip">Tensión
+                                                            nominal de operación de la subestación
+                                                        </ng-template>
+                                                        <label
+                                                            [ngClass]="requestChangeParameterSub('datosTecnicos',i,'VoltageLevelKind')">Tensión
+                                                            nominal de operación (kV)</label>
+                                                        <i class="material-icons" placement="top"
+                                                            [ngbTooltip]="nivelTensionToolTip"
+                                                            [ngClass]="requestChangeParameterSub('datosTecnicos',i,'VoltageLevelKind')">help_outline</i>
+                                                        <div class="xm-input-append">
+                                                            <ng-select id="SubstationConfigurationKindId"
+                                                                class="select-ng-from-control form-control"
+                                                                placeholder="kV" [items]="voltageLevelKinds"
+                                                                [readonly]="controlRequestChange"
+                                                                bindLabel="detailValue" [loading]="!voltageLevelKinds"
+                                                                formControlName="VoltageLevelKind" [ngClass]="
+                                                                   [ 
+                                                                   validate.getSubValidClass(subestacionForm,'datosTecnicos','subestationConfiguration',i,'VoltageLevelKind'),
+                                                                   requestChangeParameterSub('datosTecnicos',i,'VoltageLevelKind')]
+                                                                ">
+                                                                <ng-template ng-option-tmp let-item="item"
+                                                                    let-index="index">
+                                                                    {{item.detailValue}}
+                                                                </ng-template>
+                                                            </ng-select>
+                                                            <app-validate [form]="subestacionForm"
+                                                                [group]="'datosTecnicos'"
+                                                                [array]="'subestationConfiguration'" [subgroup]="i"
+                                                                [name]="'VoltageLevelKind'" [switch]="'requiredChild'">
+                                                            </app-validate>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <ng-template #capadidadCortoToolTip class="tool-tip">Capacidad
+                                                            de corto circuito de diseño del nivel de tensión de la
+                                                            subestación.
+                                                        </ng-template>
+                                                        <label>Capacidad corto circuito (kA)</label>
+                                                        <i class="material-icons" placement="top"
+                                                            [ngbTooltip]="capadidadCortoToolTip">help_outline</i>
+                                                        <input type="text" id="shortCircuitCapacityId" placeholder="kA"
+                                                            class="form-control" formControlName="shortCircuitCapacity"
+                                                            [readonly]="true">
+                                                    </div>
+
+                                                    <div class="col-md-12">
+                                                        <ng-template #unifilarToolTip class="tool-tip">Anexar diagrama
+                                                            unifilar de la subestación donde se detallen los equipos de
+                                                            seccionamiento y de corte de las diferentes bahías, así como
+                                                            la configuración completa de la subestación
+                                                        </ng-template>
+                                                        <label>Diagrama unifilar</label>
+                                                        <i class="material-icons" placement="top"
+                                                            [ngbTooltip]="unifilarToolTip">help_outline</i>
+                                                        <div class="form-control">Unifilar</div>
+                                                        <label *ngIf="flagButtonView && !controlRequestChange"
+                                                            class="xm-btn xm-btn-label-secundary"
+                                                            for="unifilarDiagramId{{i}}"
+                                                            (click)="unifilarDiagram.click()">
+                                                            Adjuntar Archivo
+                                                            <i _ngcontent-der-c0=""
+                                                                class="material-icons label-material-icons">attach_file</i>
+                                                        </label>
+                                                        <input hidden *ngIf="flagButtonView && !controlRequestChange"
+                                                            type="file" id="unifilarDiagramId{{i}}" #unifilarDiagram
+                                                            (change)="uploadUnifilarDiagram($event,i)"
+                                                            class="form-control" placeholder="Diagrama Unifilar">
+                                                    </div>
+
+                                                    <div class="col-md-12 ">
+                                                        <ng-template #configuracionToolTip class="tool-tip">
+                                                            Configuración de
+                                                            la subestación
+                                                        </ng-template>
+                                                        <label
+                                                            [ngClass]="requestChangeParameterSub('datosTecnicos',i,'SubstationConfigurationKind')">Configuración</label>
+                                                        <i class="material-icons" placement="top"
+                                                            [ngClass]="requestChangeParameterSub('datosTecnicos',i,'SubstationConfigurationKind')"
+                                                            [ngbTooltip]="configuracionToolTip">help_outline</i>
+                                                        <ng-select id="SubstationConfigurationKindId"
+                                                            class="select-ng-from-control form-control" placeholder=""
+                                                            [readonly]="controlRequestChange"
+                                                            [items]="configurationKinds" bindLabel="detailValue"
+                                                            [loading]="!configurationKinds"
+                                                            formControlName="SubstationConfigurationKind"
+                                                            [ngClass]="[
+                                                                validate.getSubValidClass(subestacionForm,'datosTecnicos','subestationConfiguration',i,'SubstationConfigurationKind'),
+                                                                requestChangeParameterSub('datosTecnicos',i,'SubstationConfigurationKind')]">
+                                                            <ng-template ng-option-tmp let-item="item"
+                                                                let-index="index">
+                                                                {{item.detailValue | lowercaseFormsPipe}}
+                                                            </ng-template>
+                                                        </ng-select>
+                                                        <app-validate [form]="subestacionForm" [group]="'datosTecnicos'"
+                                                            [array]="'subestationConfiguration'" [subgroup]="i"
+                                                            [name]="'SubstationConfigurationKind'"
+                                                            [switch]="'requiredChild'"></app-validate>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="flagButtonView && !controlRequestChange" class="col-md-6">
+                                        <div class="xm-cards xm-cardshidden">
+                                            <div class="xm-cardtitle">
+                                                <h6>
+                                                    Configuración de tensión nominal de operación
+                                                </h6>
+                                                <div class="xm-carddelt">
+                                                    <a href="" (click)="addSubestaationConfigAElement($event)"> <i
+                                                            class="material-icons i-stage">add_circle_outline</i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="xm-cardform">
+                                                <div class="xm-cardlink">
+                                                    <a href="" (click)="addSubestaationConfigAElement($event)"><i
+                                                            class="material-icons i-stage">add_circle_outline</i></a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="datosAdministrativos" *ngIf="!controlRequestChange">
+                    <ng-template ngbTabTitle>
+                        <i class="material-icons modal-tab-icon">
+                            insert_chart_outlined
+                        </i>
+                        <span class="form-control tab-control-valid">Datos administrativos</span>
+                        <span class="badge bolita-numero">3</span>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                        <div class="row" formGroupName="datosAdministrativos">
+                            <div class="col-md-12 offset-md-0 flex-box-center">
+                                <div class="row xm-row-par w-100">
+                                    <div class="col-md-4 offset-md-2">
+                                        <div class="form-group form-check">
+                                            <input type="radio" id="stnHeropeId" value="stnHerope"
+                                                class="form-check-input" formControlName="Herope"
+                                                (click)="heropeClick('stnHerope')">
+                                            <label for="stnHeropeId" class="form-check-label">
+                                                ¿Es activo STN - Herope?
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5 offset-md-0">
+                                        <div class="form-group form-check">
+                                            <input type="radio" id="strHeropeId" value="strHerope"
+                                                class="form-check-input" formControlName="Herope"
+                                                (click)="heropeClick('strHerope')">
+                                            <label for="strHeropeId" class="form-check-label">
+                                                ¿Es activo STR - Herope?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row xm-row-impar w-100">
+                                    <div class="col-md-4 offset-md-2">
+                                        <div class="form-group form-check">
+                                            <input type="radio" id="stnCommercialId" value="stnCommercial"
+                                                class="form-check-input" formControlName="Commercial"
+                                                (click)="heroCommercialpeClick('stnCommercial')">
+                                            <label for="stnCommercialId" class="form-check-label">
+                                                ¿Es activo comercial del STN?
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5 offset-md-0">
+                                        <div class="form-group form-check">
+                                            <input type="radio" id="strCommercialId" value="strCommercial"
+                                                class="form-check-input" formControlName="Commercial"
+                                                (click)="heroCommercialpeClick('strCommercial')">
+                                            <label for="strCommercialId" class="form-check-label">
+                                                ¿Es activo comercial del STR?
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row xm-row-par w-100">
+                                    <div class="col-md-4 offset-md-2">
+                                        <div class="form-group">
+                                            <input type="checkbox" id="consignableId" class="form-check-input"
+                                                formControlName="consignable">
+                                            <label for="consignableId" class="form-check-label">¿Es activo consignable
+                                                del
+                                                sistema - SNC?
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5 offset-md-0"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="Vigencia" *ngIf="!controlRequestChange">
+                    <ng-template ngbTabTitle>
+                        <i class="material-icons modal-tab-icon">
+                            date_range
+                        </i>
+                        <span class="form-control tab-control-valid">
+                            Vigencia</span>
+                        <span class="badge bolita-numero">4</span>
+
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                        <div class="row" formGroupName="Vigencia">
+                            <div class="col-md-12 offset-md-0 flex-box-center">
+                                <div class="row xm-row-par w-100">
+                                    <div class="col-md-6">
+                                        <ng-template #versionToolTip class="tool-tip">Consecutivo de la versión del
+                                            objeto
+                                        </ng-template>
+                                        <i class="material-icons" placement="top"
+                                            [ngbTooltip]="versionToolTip">help_outline</i>
+                                        <div class="read-input">
+                                            <label>Versión:</label>
+                                            <input class="form-control" type="text" readonly value="{{ assetVersion }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <ng-template #dateStartToolTip class="tool-tip">Fecha inicio vigencia
+                                        </ng-template>
+                                        <i class="material-icons" placement="top"
+                                            [ngbTooltip]="dateStartToolTip">help_outline</i>
+                                        <div class="read-input">
+                                            <label>
+                                                Fecha inicio:
+                                            </label>
+                                            <input class="form-control" type="text" readonly
+                                                value="{{project.version.validFrom.slice(0, project.version.validFrom.indexOf('T'))}}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row xm-row-impar w-100">
+                                    <div class="col-md-6">
+                                        <ng-template #dateEndToolTip class="tool-tip">Fecha fin vigencia
+                                        </ng-template>
+                                        <i class="material-icons" placement="top"
+                                            [ngbTooltip]="dateEndToolTip">help_outline</i>
+                                        <div class="read-input">
+                                            <label>
+                                                Fecha fin:
+                                            </label>
+                                            <input class="form-control" type="text" readonly
+                                                value="{{project.version.validTo.slice(0, project.version.validTo.indexOf('T'))}}">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <ng-template #dateFPOToolTip class="tool-tip">Fecha de entrada operación
+                                        </ng-template>
+                                        <i class="material-icons" placement="top"
+                                            [ngbTooltip]="dateFPOToolTip">help_outline</i>
+                                        <div class="read-input">
+                                            <label>
+                                                Fecha puesta en operación (FPO):
+                                            </label>
+                                            <input class="form-control" type="text" readonly value="{{ projectFpo }}">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row xm-row-par w-100">
+                                    <div class="col-md-6">
+                                        <ng-template #estadoToolTip class="tool-tip">
+                                            Estado
+                                        </ng-template>
+                                        <i class="material-icons" placement="top"
+                                            [ngbTooltip]="estadoToolTip">help_outline</i>
+                                        <div class="read-input">
+                                            <label>
+                                                Estado:
+                                            </label>
+                                            <input class="form-control" type="text" readonly value="{{ assetState }}">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-6">
+                                        <ng-template #oservacionesToolTip class="tool-tip">Comentario con respecto al
+                                            cambio
+                                            de version
+                                        </ng-template>
+                                        <i class="material-icons" placement="top"
+                                            [ngbTooltip]="oservacionesToolTip">help_outline</i>
+                                        <label>Observaciones</label>
+                                        <textarea rows="3" id="versionCommentsId" class="form-control" placeholder=""
+                                            formControlName="versionComments">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab id="Justificacion" *ngIf="controlRequestChange">
+                    <ng-template ngbTabTitle>
+                        <i class="material-icons modal-tab-icon">
+                            insert_chart_outlined
+                        </i>
+                        <span class="form-control tab-control-valid">Justificación</span>
+                        <span class="badge bolita-numero">3</span>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                        <div class="row flex-box-center" formGroupName="Justificacion">
+                            <div class="col-md-12 offset-md-0 flex-box-center">
+                                <div class="row xm-row-par w-100">
+                                    <div class="col-md-12">
+                                        <ng-template #oservacionesToolTip class="tool-tip">
+                                            Justificación para la solicitud de cambio
+                                        </ng-template>
+                                        <i class="material-icons" placement="top"
+                                            [ngbTooltip]="oservacionesToolTip">help_outline</i>
+                                        <label>Justificación*</label>
+                                        <textarea rows="4" id="justificacionId" class="form-control" placeholder=""
+                                            formControlName="justificacion"
+                                            [ngClass]="validate.getValidClass(subestacionForm,'Justificacion','justificacion',controlRequestChange)">
+                                        </textarea>
+                                        <app-validate [form]="subestacionForm" [group]="'Justificacion'"
+                                            [name]="'justificacion'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="subestacionForm" [group]="'Justificacion'"
+                                            [name]="'justificacion'" [switch]="'max'"></app-validate>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-10 offset-md-0 xm-labels" style="display: flex; flex-wrap: wrap;">
+                                <div class="col-md-4 file-bottom-container2" style="display: flex;">
+                                    <ng-template #upLoadToolTip class="tool-tip">
+                                            En esta opción podrá adjuntar uno o varios documentos que soportan la solicitud del cambio
+                                    </ng-template>
+                                    <i class="material-icons" placement="top"
+                                        [ngbTooltip]="upLoadToolTip" style="order: 2;" >help_outline</i>
+                                    <app-upload-xm [maxSizeFile]="maxSizeFile" [maxLengthFile]="maxLengthFile"
+                                        [formartFile]="formartFile" [arrayListFiles]="arrayListFiles">
+                                    </app-upload-xm>
+                                </div>
+                                <div class="col-md-4 panel-form-beauty"
+                                    *ngFor='let file of arrayListFiles; let i = index;'>
+                                    <div class="xm-cards">
+                                        <div class="xm-cardtitle">
+                                            <h6>
+                                                Soporte de cambio {{i+1 | projectpipe: '':'2'}}
+                                            </h6>
+                                            <div class="xm-carddelt" style="cursor: pointer;">
+                                                <a (click)="onDeleteFileAndDate(i, $event)">
+                                                    <i class="material-icons i-stage">delete</i>
+                                                    Borrar
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="xm-cardform">
+                                            <div *ngIf="file.name !== null">
+                                                <label for="inputEmail">Adjunto:</label>
+                                                <div class="form-control">
+                                                    <a href="#" (click)="viewFile(file, $event)"
+                                                        *ngIf="!file.sended">{{file.name | slicePipe:0:16 }}</a>
+                                                    <a href="{{file.urlDocument}}" *ngIf="file.sended"
+                                                        target="_blank">{{file.name}}</a>
+                                                    <a href="#" class="ml-2" (click)="downloadFile(file, $event)">
+                                                        <i class="material-icons i-download">
+                                                            save_alt
+                                                        </i>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+</form>

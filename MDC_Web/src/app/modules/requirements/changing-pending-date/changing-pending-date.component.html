@@ -1,0 +1,63 @@
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title" style="text-align: center; color: #004499;">
+            Modifica la fecha límite de aprobación o rechazo de la solicitud de cambio
+        </h4>
+        <button type="button" class="close" aria-label="Close" (click)="modal.dismiss('Cross click')">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+    <div class="modal-body">
+        <form [formGroup]="pendingDateForm">
+            <div class="form-group">
+                <div class="col-md-12 offset-md-0 flex-box-center">
+                    <div class="row xm-row-par w-100">
+                        <div class="col-md-12">
+                            <ng-template #chgDateToolTip class="tool-tip">
+                                Seleccione la fecha nueva que desea registrar como fecha pendiente
+                            </ng-template>
+                            <label for="pendingDate" style="text-align: center;"><b>Fecha límite - días
+                                    restantes</b></label>
+                            <i class="material-icons" placement="top" [ngbTooltip]="chgDateToolTip"
+                                style="position: relative;right: -10px;">help_outline</i>
+                            <div class="input-group">
+                                <input id="pendingDateId" class="form-control" formControlName="pendingDateValue" placeholder="yyyy-mm-dd" name="dp"
+                                    ngbDatepicker #dp="ngbDatepicker">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar" (click)="dp.toggle()"
+                                        type="button"></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row xm-row-par w-100">
+                        <div class="col-md-12 offset-md-0">
+                            <ng-template #oservacionesToolTip class="tool-tip">
+                                Justificación de cambio de fecha límite de aprobación o rechazo de la solicitud de
+                                cambio
+                            </ng-template>
+                            <label>Justificación</label>
+                            <i class="material-icons" placement="top" [ngbTooltip]="oservacionesToolTip"
+                                style="position: relative;right: -10px;">help_outline</i>
+                            <textarea id="justificacionId" class="form-control" formControlName="justificacionValue"
+                                style="width: 100%;" placeholder="">
+                            </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+        <div class="row w-100">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <button type="button" class="xm-btn xm-btnterciary" (click)="cancelChangeDate()">Cancelar</button>
+            </div>
+            <div class="col-md-4">
+                <button type="button" class="xm-btn xm-btnsecondary"
+                    (click)="toAcepptCahngeDate()">Aceptar</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

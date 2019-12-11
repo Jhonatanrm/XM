@@ -1,0 +1,31 @@
+<div class="container border p-2">
+  <div class="row">
+    <div class="col-12">
+      <h6>Selecciona las variables asociadas al servicio</h6>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12">
+      <table class="table">
+        <tbody class="text-break ">
+          <tr *ngFor="let variables of provider?.variables | chunkArray: 2" class="table-borderless">
+            <td *ngFor="let variable of variables">
+              <div class="form-check form-check-inline">
+                <input type="checkbox" class="form-check-input" [(ngModel)]="variable.selected"
+                  [name]="variable.variableName" [id]="variable.variableName">
+                <label class="form-check-label" [for]="variable.variableName">{{variable.variableName}}</label>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4 xm-buttons-state-process">
+      <button (click)=submit() class="xm-btn xm-btnprimary">Cargar elementos</button>
+    </div>
+  </div>
+</div>

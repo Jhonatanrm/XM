@@ -1,0 +1,33 @@
+<div class="container border p-2">
+        <div class="row">
+                <div class="form-group col-md-6">
+                        <label for="environmentalDataProviderMrid">Proveedor</label>
+                        <ng-select id="environmentalDataProviderMrid" [(ngModel)]="provider"
+                                class="select-ng-from-control form-control" placeholder="" [items]="providers"
+                                bindLabel="name" [loading]="!providers" (change)="changeProvider($event)">
+                        </ng-select>
+                </div>
+                <div class="form-group col-md-6">
+                        <label for="xmApiConnectionMrid">Servicio</label>
+                        <ng-select id="xmApiConnectionMrid" *ngIf="provider" [(ngModel)]="service"
+                                class="select-ng-from-control form-control" placeholder="" [items]="provider.services"
+                                bindLabel="atomicApiName" [loading]="!provider.services"
+                                (change)="changeService($event)">
+                        </ng-select>
+                </div>
+        </div>
+        <div class="row">
+                <div class="col-7">
+                        Estado del servicio
+                </div>
+                <div class="col text-secondary " *ngIf="service">OFF</div>
+                <div class="col">
+                        <div class="custom-control custom-switch" *ngIf="service">
+                                <input type="checkbox"  [(ngModel)]="service.enabledApi" class="custom-control-input"
+                                        id="customSwitch1">
+                                <label class="custom-control-label" for="customSwitch1"></label>
+                        </div>
+                </div>
+                <div class="col" *ngIf="service">ON</div>
+        </div>
+</div>

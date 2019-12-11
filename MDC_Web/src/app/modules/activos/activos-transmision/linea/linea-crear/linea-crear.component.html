@@ -1,0 +1,115 @@
+<form [formGroup]="lineaForm" (ngSubmit)="onSubmit()">
+    <div class="row xm-contentform">
+        <div class="col">
+            <ngb-tabset class="tabs-form-beauty tabs-5" (tabChange)="plantaTabChange($event)">
+                <ngb-tab>
+                    <ng-template ngbTabTitle>
+                        <span>Información Básica</span>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                        <div class="row">
+                            <div class="col-md-4">
+
+                                <ng-select id ="subestacionInicialId" class="select-ng-from-control form-control select-control"
+                                    formControlName="subestacionInicial" bindLabel="SubstationName"
+                                    placeholder="Subestación Inicial" [items]="linea.subestaciones"
+                                    [loading]="!linea.subestaciones"
+                                    [ngClass]="{'is-invalid': 
+                                        (lineaForm.get('subestacionInicial').touched || lineaForm.get('subestacionInicial').dirty)
+                                        && !lineaForm.get('subestacionInicial').valid 
+                                         
+                                    }">
+                                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                                        {{item.SubstationName | titlecase}}
+                                    </ng-template>
+                                </ng-select>
+                                <span class="invalid-feedback">
+                                    <span *ngIf="lineaForm.get('subestacionInicial').errors?.required">
+                                        Este campo es requerido
+                                    </span>                                                                       
+                                </span>
+                                <div>touched : {{lineaForm.get('subestacionInicial').touched}}</div>
+                                <div>dirty : {{lineaForm.get('subestacionInicial').dirty}}</div>
+                                <div>valid : {{lineaForm.get('subestacionInicial').valid}}</div> 
+                            </div>
+
+                            <div class="col-md-4">
+                                <input 
+                                    type="text" 
+                                    id="nameId" 
+                                    class="form-control" 
+                                    placeholder="Nombre de Linea"
+                                    formControlName="name"
+                                    [ngClass]="{'is-invalid': 
+                                        (lineaForm.get('name').touched || lineaForm.get('name').dirty)
+                                        && !lineaForm.get('name').valid
+                                         
+                                    }">
+                                <span class="invalid-feedback">
+                                    <span *ngIf="lineaForm.get('name').errors?.required">
+                                        Este campo es requerido
+                                    </span>                                                                      
+                                </span>
+                                <div>touched : {{lineaForm.get('name').touched}}</div>
+                                <div>dirty : {{lineaForm.get('name').dirty}}</div>
+                                <div>valid : {{lineaForm.get('name').valid}}</div>                                
+                            </div>
+
+                            <div class="col-md-4">
+                                <input 
+                                    type="text" 
+                                    id="nameLineaId" 
+                                    class="form-control" 
+                                    placeholder="Nombre de Linea2"
+                                    formControlName="namelinea"
+                                    [ngClass]="{'is-invalid': 
+                                        (lineaForm.get('namelinea').touched || lineaForm.get('namelinea').dirty)
+                                        && !lineaForm.get('namelinea').valid                                          
+                                    }">
+                                <span class="invalid-feedback">
+                                    <span *ngIf="lineaForm.get('namelinea').errors?.required">
+                                        Este campo es requerido
+                                    </span>                                                                      
+                                </span>
+                                <div>touched : {{lineaForm.get('name').touched}}</div>
+                                <div>dirty : {{lineaForm.get('name').dirty}}</div>
+                                <div>valid : {{lineaForm.get('name').valid}}</div>                                
+                            </div>
+
+                        </div>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                    <ng-template ngbTabTitle>
+                        <span>Parámetos Eléctricos Linea</span>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                    <ng-template ngbTabTitle>
+                        <span>Relaciones</span>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                    <ng-template ngbTabTitle>
+                        <span>Datos Administrativos</span>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                    </ng-template>
+                </ngb-tab>
+                <ngb-tab>
+                    <ng-template ngbTabTitle>
+                        <span>Vigencia</span>
+                    </ng-template>
+                    <ng-template ngbTabContent>
+                    </ng-template>
+                </ngb-tab>
+            </ngb-tabset>
+        </div>
+    </div>
+</form>
+
+

@@ -1,0 +1,36 @@
+<div class="col-md-12 flex-box-center justification-conteiner">
+    <div class="row col-md-12 offset-md-0">
+        <ng-template #oservacionesToolTip class="tool-tip">
+            Justificación para la solicitud de cambio
+        </ng-template>
+        <label>Justificación</label>
+        <i class="material-icons" placement="top" [ngbTooltip]="oservacionesToolTip"
+            style="position: relative;right: -10px;">help_outline</i>
+        <textarea rows="4" id="justificacionId" class="form-control" style="width: 100%;" placeholder="">
+    </textarea>
+    </div>
+
+    <div class="col-md-4 panel-form-beauty" *ngFor='let file of arrayListFiles; let i = index;'>
+        <div class="xm-cards">
+            <div class="xm-cardtitle">
+                <h6>
+                    Soporte de cambio {{i+1 | projectpipe: '':'2'}}
+                </h6>
+            </div>
+            <div class="xm-cardform">
+                <div *ngIf="file.name !== null">
+                    <label for="inputEmail">Adjunto:</label>
+                    <div class="form-control">
+                        <a href="#" (click)="viewFile(file, $event)" *ngIf="!file.sended">{{file.name }}</a>
+                        <a href="{{file.urlDocument}}" *ngIf="file.sended" target="_blank">{{file.name}}</a>
+                        <a href="#" class="ml-2" (click)="downloadFile(file, $event)">
+                            <i class="material-icons i-download">
+                                save_alt
+                            </i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

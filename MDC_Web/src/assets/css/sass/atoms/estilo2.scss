@@ -1,0 +1,855 @@
+/* nuevas clases para arreglar el css*/
+
+.xm-btn {
+    text-decoration: none;
+    font-size: 16px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    background-color: #C7C7C7;
+    padding: 10px;
+    border-radius: 30px;
+    margin: 10px 0;
+    font-weight: 700;
+    border: none;
+}
+
+.xm-btn i {
+    margin: 0 10px;
+    position: relative !important;
+}
+
+.xm-btnprimary {
+    background-color: #440099;
+    color: #f9f9f9;
+}
+
+.xm-btnprimary:hover {
+    background-color: #2AD2C9;
+}
+
+.xm-btnsecondary {
+    background-color: transparent;
+    border: 2px solid #440099;
+    color: #440099;
+}
+
+.xm-btnsecondary:hover {
+    border: 2px solid #2AD2C9;
+    color: #2AD2C9;
+}
+
+.xm-navleft {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100;
+    padding: 0;
+    -webkit-box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+    box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+
+.xm-navleft .xm-logo {
+    margin: 0;
+    padding: 10px;
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.xm-navleft .xm-logo img {
+    width: 35%;
+}
+
+.xm-navleft .xm-icoaside {
+    width: 50px;
+    height: 50px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    position: absolute;
+    bottom: 30px;
+    cursor: pointer;
+    display: block !important;
+    text-align: center;
+    width: 100%;
+}
+
+.xm-navleft .xm-icoaside i {
+    color: #f9f9f9;
+    font-size: 40px;
+}
+
+.xm-navleft .xm-collapse .xm-groupitem {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-bottom: 1px solid #f9f9f9;
+    padding: 20px;
+    text-decoration: none;
+    font-weight: 700;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    font-size: 13px;
+    color: #440099;
+}
+
+.xm-navleft .xm-collapse .xm-groupitem .xm-btngroup {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: grey;
+}
+
+.xm-groupitem .xm-icodown {
+    color: #440099;
+}
+
+.xm-navleft .xm-collapse .xm-groupitem .xm-icoitem {
+    margin-right: 10px;
+    color: #440099;
+}
+
+.xm-navleft .xm-collapse .xm-collapseiteminter {
+    border-bottom: 1px solid #f9f9f9;
+}
+
+.xm-navleft .xm-collapse .xm-collapseiteminter li {
+    margin: 2px 0;
+}
+
+.xm-navleft .xm-collapse .xm-collapseiteminter li:first-child {
+    margin-top: 0;
+}
+
+.xm-navleft .xm-collapse .xm-collapseiteminter li:last-child {
+    margin-bottom: 0;
+}
+
+.xm-navleft .xm-collapse .xm-collapseiteminter li a {
+    background-color: #F8F8F8;
+    padding: 20px 40px;
+    display: block;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 400;
+    color: #440099;
+}
+
+.xm-navleft .xm-collapse .xm-collapseiteminter li a:hover {
+    background-color: rgba(99, 0, 223, 0.9);
+}
+
+.xm-navleft a {
+    color: #f9f9f9;
+}
+
+.xm-navleftdeltil .xm-logo img {
+    width: 80%;
+}
+
+.xm-navleftdeltil .xm-collapse .xm-groupitem {
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.xm-navleftdeltil .xm-collapse .xm-groupitem i {
+    font-size: 40px;
+}
+
+.xm-navleftdeltil .xm-collapse .xm-groupitem div {
+    display: none;
+}
+
+.xm-topbar {
+    background-color: #F5F4F4;
+    height: 60px;
+    padding: 0 30px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    width: 100%;
+    -webkit-box-shadow: 0px 2px 0 rgba(0, 0, 0, 0.1);
+    box-shadow: 0px 2px 0 rgba(0, 0, 0, 0.1);
+}
+
+.xm-topbar .breadcrumb {
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+.xm-topbar .breadcrumb .breadcrumb-item {
+    color: #C7C7C7;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    font-weight: 400;
+}
+
+.xm-topbar .breadcrumb .breadcrumb-item+.breadcrumb-item::before {
+    font-family: 'Material Icons';
+    content: '\e409';
+    font-size: 18px;
+    color: #C7C7C7;
+}
+
+.xm-topbar .xm-usertop li {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 10px;
+}
+
+.xm-topbar .xm-usertop li a {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #440099;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.xm-topbar .xm-usertop li a i {
+    margin-right: 10px;
+    font-size: 30px;
+}
+
+.xm-topbar .xm-usertop li a span {
+    font-weight: 300;
+    margin-right: 10px;
+}
+
+.xm-topbar .xm-usertop li .xm-notf {
+    position: relative;
+}
+
+.xm-topbar .xm-usertop li .xm-notf span {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    right: 0;
+    background-color: #FF6A13;
+    color: #f9f9f9;
+    font-size: 10px;
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+}
+
+.xm-forms .xm-titleform {
+    padding: 15px 30px;
+    border-bottom: 1px solid #C7C7C7;
+    display: block;
+    margin-bottom: 20px;
+}
+
+.xm-forms .xm-titleform h5 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #440099;
+}
+
+.xm-titleform {
+    color: #440099;
+}
+
+.xm-linea {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 2px;
+    background-color: #C4C4C4;
+}
+
+.xm-forms .xm-contentform {
+    padding: 15px 30px;
+}
+
+.xm-forms .xm-contentformbg {
+    padding: 30px;
+    background-color: #F5F4F4;
+}
+
+.xm-forms .xm-contentformbg .xm-labels {
+    font-size: 14px;
+    font-weight: 700;
+    color: #75787B;
+    margin-bottom: 10px;
+}
+
+.form-control {
+    border: none;
+    border-bottom: 1px solid #C7C7C7;
+    outline: 0;
+    border-radius: 0;
+    background: transparent;
+    width: 95%;
+}
+
+label {
+    font-size: 14px;
+    color: #75787B;
+    font-weight: 700;
+}
+
+.xm-labels {
+    font-size: 14px;
+    font-weight: 700;
+    color: #75787B;
+    margin-bottom: 10px;
+}
+
+.xm-cards {
+    margin-bottom: 10px;
+}
+
+.xm-cards .xm-cardtitle {
+    background-color: #440099;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 10px;
+    color: #f9f9f9;
+    border-radius: 6px 6px 0 0;
+}
+
+.xm-cards .xm-cardtitle h6 {
+    font-size: 14px;
+}
+
+.xm-cards .xm-cardtitle .xm-carddelt a {
+    font-size: 14px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    color: #f9f9f9;
+    text-decoration: none;
+}
+
+.xm-cards .xm-cardform {
+    border: 1px solid #C7C7C7;
+    border-top: none;
+    border-radius: 0px 0px 6px 6px;
+    padding: 20px;
+    background-color: white;
+    height: 100%;
+}
+
+.xm-cards .xm-cardform textarea {
+    background-color: #F8F8F8;
+    margin: 10px 0;
+}
+
+.xm-cardshidden {
+    height: 90%;
+}
+
+.xm-cardshidden .xm-cardtitle {
+    background-color: #C7C7C7;
+}
+
+.xm-cardshidden .xm-cardlink {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+}
+
+.xm-cardshidden .xm-cardlink i {
+    color: #C7C7C7;
+    font-size: 60px;
+}
+
+body {
+    display: block;
+    margin: auto;
+    font-family: "Nunito", sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    overflow-x: hidden;
+}
+
+body main {
+    height: 100%;
+}
+
+body main .xm-newet {
+    padding: 30px 0px;
+}
+
+body main .xm-newetbuttons {
+    background-color: #FFFFFF;
+    padding-right: 30px;
+}
+
+.xm-titulos {
+    color: #440099;
+}
+
+.xm-pagination {
+    background-color: #F5F4F4!important;
+    display: flex;
+    justify-content: center!important;
+    align-items: center !important;
+}
+
+.page-link.left {
+    transform: rotateY(180deg);
+    margin-right: 20px;
+}
+
+.page-link.right {
+    margin-left: 20px;
+}
+
+.xm-punticos {
+    background: none;
+    border: none;
+    color: #440099;
+}
+
+.xm-createbuttons {
+    background-color: none;
+}
+
+.xm-total {
+    padding: 0 0 0 0;
+    margin: 0 0 0 10px;
+    font-weight: bold;
+    color: orangered;
+}
+
+.nuevo-promotor {
+    color: #FF6A13;
+    background: transparent;
+    border: 0;
+    border-bottom: solid 2px #FF6A13;
+    margin: 5px;
+    float: right;
+}
+
+#exampleFormControlTextarea1 {
+    background-color: #F8F8F8;
+    border-radius: 6px;
+}
+
+#exampleFormControlTextarea2 {
+    background-color: #F8F8F8;
+    border-radius: 6px;
+    margin-top: -20px;
+}
+
+.material-icons {
+    font-size: 1.2em;
+}
+
+.form-group .material-icons {
+    color: #CBCBCB;
+    position: absolute;
+    right: 0px;
+}
+
+.form-group .material-icons.i-raro {
+    color: #CBCBCB;
+    position: relative;
+    margin: 0 0 0 -7px;
+    padding: 0 0 0 0;
+}
+
+.xm-contentformbg .material-icons.i-raro {
+    color: #CBCBCB;
+    position: relative;
+    margin: 0 0 0 10px;
+    padding: 0 0 0 0;
+}
+
+.xm-contentform .material-icons.i-raro {
+    color: #CBCBCB;
+    position: relative;
+    margin: 0 0 0 10px;
+    padding: 0 0 0 0;
+}
+
+textarea[id="exampleFormControlTextarea2"] {
+    height: 230px;
+}
+
+.xm-contentform .material-icons {
+    color: #CBCBCB;
+    right: -10px;
+    bottom: 0;
+}
+
+.xm-labels .material-icons {
+    color: #CBCBCB;
+    position: relative;
+    margin-left: 10px;
+}
+
+#espacio-adicional {
+    margin-bottom: 36px;
+}
+
+.check-container {
+    margin-top: 25px;
+}
+
+.i-stage {
+    color: #CBCBCB;
+    position: relative !important;
+    margin-right: 10px;
+}
+
+.i-eye {
+    color: #FF6A13;
+    position: relative !important;
+}
+
+th .i-flechita {
+    padding-left: 10px;
+    float: right;
+}
+
+.xm-btninvi {
+    background: none;
+    border: none;
+    display: flex;
+    align-items: center;
+}
+
+.xm-table {
+    padding: inherit;
+}
+
+
+/* css para buscardor internet */
+
+.searchbar {
+    display: flex;
+    margin-bottom: auto;
+    margin-top: auto;
+    border: 1px solid orange;
+    height: 30px;
+    background-color: #f3f3f3;
+    border-radius: 20px;
+    padding: 4px;
+    box-shadow: #818182;
+}
+
+.search_input {
+    color: black;
+    border: 0px;
+    outline: 0;
+    background: none;
+    width: 0;
+    caret-color: transparent;
+    line-height: 20px;
+    transition: width 0.2s linear;
+}
+
+.searchbar:hover>.search_input {
+    padding: 0 10px;
+    width: 300px;
+    caret-color: rgb(255, 110, 19);
+    transition: width 0.2s linear;
+}
+
+.search_input:focus {
+    padding: 0 10px;
+    width: 300px;
+    padding: 0 10px;
+    width: 300px;
+}
+
+.searchbar:hover>.search_icon {
+    background: transparent;
+    color: #FF6A13;
+}
+
+.search_icon {
+    height: 22px;
+    width: 20px;
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    color: orange;
+    margin: 0;
+    padding: 0;
+    border: 0px solid orange;
+    text-decoration: none;
+}
+
+.search_icon:hover {
+    float: right;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    color: #FF6A13;
+    border: 0px solid orange;
+    text-decoration: none;
+}
+
+
+
+.table .thead-dark th {
+    color: #409;
+    background-color: #f2f2f2;
+    border-color: #fff;
+    padding: 20px 17px;
+}
+
+.table thead th {
+    vertical-align: middle;
+    border-bottom: 2px solid #dee2e6;
+}
+
+// .table td,
+.table th {
+    padding: .75rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+    width: 15%;
+    font-size: 15px;
+}
+
+.upload-btn-wrapper {
+    position: relative;
+    overflow: hidden;
+    display: inline-block;
+  }
+
+  .upload-btn-wrapper input[type=file] {
+    font-size: 100px;
+    position: absolute;
+    left: 0;
+    top: 0;
+    opacity: 0;
+  }
+
+  .xm-input-append {
+    display: flex;
+}
+
+span.input-group-text {
+    background: transparent;
+    border: none;
+}
+
+.xm-cards .xm-cardtitle2 {
+    background-color: #F1F1F1;
+    color: #75787B;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 6px 6px 0 0;
+    border-color: #440099 !important;
+    border: 1px solid;
+}
+
+
+.text-area-white-xm {
+    background-color: #fff !important;
+    border-radius: 6px;
+    margin-top: -20px;
+}
+
+
+
+.xm-cards .xm-carddelt a {
+    font-size: 14px;
+    display: -webkit-box;
+    display: -ms-flexbox;   
+    display: flex;
+    -ms-flex-line-pack: center;
+    align-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    text-decoration: none;
+    color: #440099;
+}
+
+.xm-cards .xm-cardform {
+    border: 1px solid #C7C7C7;
+    border-top: none;
+    border-radius: 0px 0px 6px 6px;
+    padding: 20px;
+    background-color: white;
+    height: 100%;
+}
+
+.i-stage2 {
+    position: relative !important;
+    margin-right: 5px;
+}
+
+.xm-colesBotones .col-1:last-child {
+    margin: 0 25px 0 0;
+}
+
+.xm-btnrequi {
+    color: #DDD6D6;
+    margin: 0;
+    white-space: nowrap;
+    background: none;
+    border-color: #DDD6D6;
+    border-radius: 0;
+    min-width: 100px;
+    min-height: 50px;
+}   
+
+.xm-dia {
+    font-size: 12px;
+    font-weight: lighter;
+    margin: 0;
+}
+
+.btn-primary:hover {
+    color: #409;
+    border-color: #409;
+    background: none;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.btn-day-stand-out {
+    color: #409;
+    border-color: #409;
+    background: none;
+    font-size: 25px;
+    font-weight: 900;
+}
+
+.table-proyectos.table th i.abrir {
+    color: #440099;
+    margin-left: 20px;
+}
+
+.table-proyectos.table th i.comentario {
+    color: #440099;
+    margin-left: 20px;
+}
+
+
+.circle-red {
+    width: 50%;
+    height: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: red;
+}
+
+.circle-green {
+    width: 50%;
+    height: 50%;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: green;
+}
+
+.xm-btnterciary{
+    background-color: transparent;
+    color: #409;
+    border-bottom: solid 3px #409;
+    border-radius: none;
+}
+
+table {
+    overflow-y: scroll;
+    display: block;
+}
+
+.btn.btn-primary.xm-btnrequi span{
+    display: block;
+}

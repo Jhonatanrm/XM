@@ -1,0 +1,13 @@
+<form [formGroup]="plantForm" (ngSubmit)="onSubmit()">
+  <div class="row xm-contentform">
+    <div class="col">
+      <ngb-tabset (tabChange)="plantaTabChange($event)">
+        <ngb-tab>
+          <ng-template ngbTabTitle><b>Información Básica</b></ng-template>
+          <ng-template ngbTabContent>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
+  </div>
+</form>

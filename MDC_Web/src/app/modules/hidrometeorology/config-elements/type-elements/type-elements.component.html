@@ -1,0 +1,228 @@
+<!-- <div class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="xm-tabs-table" *ngIf="elements && elements.length > 0">
+        <h6>Tipo de elementos</h6>
+        <div class="col-md-12 d-flex justify-content-end w-100">
+          <div class="form-check form-check-inline">
+            <input [(ngModel)]="checkAllElements" (change)="onClickAllElements(checkAllElements)" name="allElements"
+              id="allElements" type="checkbox" class="form-check-input">
+            <label class="form-check-label" for="allElements">{{checkAllElements ? 'ON' : 'OFF'}}</label>
+          </div>
+          <i class="material-icons" ngbTooltip="Éste suiche maneja el estado de todos los elementos.">help_outline</i>
+        </div>
+
+        <ngb-tabset>
+          <ngb-tab *ngFor="let elementType of elements" [title]="elementType.measuringElementType">
+            <ng-template ngbTabContent>
+              <div class="dataTables_wrapper dt-bootstrap4 no-footer">
+                <div class="row">
+                  <div class="col-sm-12 col-md-6">
+                    <div class="dataTables_length" id="example_length">
+                      <label>
+                        Show
+                        <select name="example_length" aria-controls="example"
+                          class="custom-select custom-select-sm form-control form-control-sm">
+                          <option value="10">10</option>
+                          <option value="25">25</option>
+                          <option value="50">50</option>
+                          <option value="100">100</option>
+                        </select> entries
+                      </label>
+                    </div>
+                  </div>
+                  <div class="col-sm-12 col-md-6">
+                    <div id="example_filter" class="dataTables_filter">
+                      <label>
+                        Search:
+                        <input type="search" class="form-control form-control-sm">
+                      </label>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col-sm-12">
+                    <table class="table table-hover table-striped table-bordered dataTable no-footer"
+                      style="width:100%">
+                      <thead class="thead-light">
+                        <tr role="row">
+                          <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                            aria-sort="ascending" aria-label="Elemento: activate to sort column descending"
+                            style="width: 120px;">Elemento
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                            aria-label="Latitud: activate to sort column ascending" style="width: 173px;">Latitud
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                            aria-label="Longitud: activate to sort column ascending" style="width: 114px;">Longitud
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                            aria-label="Variable: activate to sort column ascending" style="width: 106px;">Variable
+                          </th>
+                          <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+                            aria-label="Estado: activate to sort column ascending" style="width: 353px;">Estado
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                      <tr *ngFor="let element of listOfSolarPlant">
+                        <tr *ngFor="let element of elementType.elements">
+                          <td class="sorting_1">{{element.measuringElementCode}}</td>
+                          <td>{{element.xposition}}</td>
+                          <td>{{element.yposition}}</td>
+                          <td>{{element.xmHubHeight}}</td>
+                          <td>
+                            <div class="form-group col-md-12">
+                              <div class="row m-0">
+                                <div class="col-sm-5">
+                                  <div class="form-check form-check-inline">
+                                    <input [(ngModel)]="element.requiredStorage" [name]="element.measuringElementCode"
+                                      [id]="element.measuringElementCode" type="checkbox" class="form-check-input">
+                                    <label class="form-check-label"
+                                      [for]="element.measuringElementCode">{{element.requiredStorage ? 'ON' : 'OFF'}}</label>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+  </div>
+</div> -->
+<div class="container border" *ngIf ="elementTypeDetails?.length == 0">
+
+    <div class="row" >
+      <div class="col-12">
+        <h1>No hay elementos para mostrar</h1>
+      </div>
+    </div>
+
+</div>
+
+<div class="container" *ngIf ="elementTypeDetails?.length > 0">
+
+
+    <div class="row mb-1">
+      <div class="col-6">
+        <h6>Tipo de elementos</h6>
+      </div>
+      <div class="col-6">
+        <div class="row justify-content-end">
+          <div class="col-2 form-check form-check-inline">
+            <input id="allElements" #allElements type="checkbox" class="form-check-input"
+              (change)="onClickAllElements(allElements.checked)">
+            <label class="form-check-label" for="allElements">{{allElements.checked ? 'ON' : 'OFF'}}</label>
+          </div>
+          <div>
+            <i class="material-icons" ngbTooltip="Éste suiche maneja el estado de todos los elementos.">help_outline</i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <ngb-tabset>
+          <ngb-tab *ngFor="let elementTypeDetail of elementTypeDetails"
+            [title]="elementTypeDetail.measuringElementType">
+            <ng-template ngbTabContent>
+              <table class="table table-hover">
+                <thead class="xm-campos thead-dark">
+                  <tr class="xm-txt">
+                    <th>Elemento</th>
+                    <th>Latitud</th>
+                    <th>Longitud</th>
+                    <th>Variable</th>
+                    <th>Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+
+                  <tr *ngFor="let element of elementTypeDetail.elements" style="cursor:pointer; cursor: hand;">
+                    <td>{{element.measuringElementCode}}</td>
+                    <td>{{element.xposition}}</td>
+                    <td>{{element.yposition}}</td>
+                    <td>{{element.xmHubHeight}}</td>
+                    <td>
+                      <div class="form-group col-md-12">
+                        <div class="row m-0">
+                          <div class="col-sm-5">
+                            <div class="form-check form-check-inline">
+                              <input [(ngModel)]="element.requiredStorage" [name]="element.measuringElementCode"
+                                [id]="element.measuringElementCode" type="checkbox" class="form-check-input">
+                              <label class="form-check-label"
+                                [for]="element.measuringElementCode">{{element.requiredStorage ? 'ON' : 'OFF'}}</label>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </ng-template>
+          </ngb-tab>
+        </ngb-tabset>
+      </div>
+    </div>
+
+</div>
+
+<!-- <table class="table table-hover table-striped table-bordered dataTable no-footer"
+        style="width:100%">
+        <thead class="thead-light">
+          <tr role="row">
+            <th class="sorting_asc" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+              aria-sort="ascending" aria-label="Elemento: activate to sort column descending"
+              style="width: 120px;">Elemento
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+              aria-label="Latitud: activate to sort column ascending" style="width: 173px;">Latitud
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+              aria-label="Longitud: activate to sort column ascending" style="width: 114px;">Longitud
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+              aria-label="Variable: activate to sort column ascending" style="width: 106px;">Variable
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="example" rowspan="1" colspan="1"
+              aria-label="Estado: activate to sort column ascending" style="width: 353px;">Estado
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+
+          <tr *ngFor="let element of measuringElementType[etiqueta]">
+            <td class="sorting_1">{{element.measuringElementCode}}</td>
+            <td>{{element.xposition}}</td>
+            <td>{{element.yposition}}</td>
+            <td>{{element.xmHubHeight}}</td>
+            <td>
+              <div class="form-group col-md-12">
+                <div class="row m-0">
+                  <div class="col-sm-5">
+                    <div class="form-check form-check-inline">
+                      <input [(ngModel)]="element.requiredStorage" [name]="element.measuringElementCode"
+                        [id]="element.measuringElementCode" type="checkbox" class="form-check-input">
+                      <label class="form-check-label"
+                        [for]="element.measuringElementCode">{{element.requiredStorage ? 'ON' : 'OFF'}}</label>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </td>
+          </tr>
+        </tbody>
+      </table> -->

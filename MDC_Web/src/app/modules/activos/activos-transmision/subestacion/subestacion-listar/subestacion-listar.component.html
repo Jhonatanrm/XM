@@ -1,0 +1,8 @@
+<article class="xm-table col-md-12">
+    <app-table-xm [arrayList]="assetsSearch.items" [columNameList]="columNameList" [rowNameList]="rowNameList"
+        [columNameSortList]="columNameSortList" [collectionSize]="assetsSearch.metadata.pagination.totalCount"
+        [pageSize]="assetsSearch.metadata.pagination.limit" [filterInfo]="filterInfo" [buttonList]="buttonList"
+        (tableXmEmitter)="onEventChild($event)" (functionButton)="eventClickInButtons($event)"
+        [page]="assetsSearch.metadata.pagination.currentPage" [load]="load">
+    </app-table-xm>
+</article>

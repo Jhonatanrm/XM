@@ -1,0 +1,41 @@
+<div class="row">
+
+    <div class="col-md-4 title-lineas-two">
+        <div>Subestaciones:
+            <div *ngIf="loadSubestation"><b>{{subestationCount}}</b></div>
+            <div *ngIf="!loadSubestation" class="spinner-border loader-board-subestation" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 title-lineas-two">
+        <div>Bahías corte central:
+            <div><b>0</b></div>
+        </div>
+    </div>
+    <div class="col-md-4 title-lineas-two">
+        <div>Bahías seccionamiento:
+            <div><b>0</b></div>
+        </div>
+    </div>
+    <div class="col-md-4 title-lineas-two">
+        <div>Barras:
+            <div *ngIf="loadSectionBar"><b>{{sectionBarCount}}</b></div>
+            <div *ngIf="!loadSectionBar" class="spinner-border loader-board-subestation" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 title-lineas-two">
+        <div>Bahías transferencia:
+            <div><b>0</b></div>
+        </div>
+    </div>
+
+    <div class="col-md-4 title-lineas-two">
+        <div>Bahías acople:
+            <div><b>0</b></div>
+        </div>
+    </div>
+</div>

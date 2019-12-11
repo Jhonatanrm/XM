@@ -1,0 +1,39 @@
+<div class="row xm-contentform">
+    <div class="col">
+        <div class="row">
+            <div class="col-md-12 pt-3 pb-3 pl-5 xm-titleform">
+                <h5>{{tittle}}</h5>
+            </div>
+        </div>
+
+        <div class="row flex-box-center">
+            <div class="col-md-12 conteiner-detalles">
+                <div class="col-md-12">
+                    <app-dashboard-detail [html]="html"></app-dashboard-detail>
+                </div>
+            </div>
+        </div>
+
+        <app-table-chg-prm [object]="object"></app-table-chg-prm>
+        <app-justification-chg-prm></app-justification-chg-prm>
+
+        <div class="row">
+            <div class="col-sm-6"></div>
+            <div class="col-sm-2">
+                <button type="button" (click)="clickBack()" class="xm-btn xm-btnterciary">Cancelar
+                </button>
+            </div>
+            <div class="col-sm-2">
+                <button type="button" class="xm-btn xm-btnsecondary">
+                    Rechazar
+                </button>
+            </div>
+            <div class="col-sm-2">
+                <button class="xm-btn xm-btnprimary" style="height: 36px;">
+                    Aprobar
+                    <i class="material-icons"> send </i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

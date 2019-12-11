@@ -1,0 +1,794 @@
+<form action="" (ngSubmit)="onSubmit(singupForm)" #singupForm="ngForm" #aForm>
+
+    <div class="xm-titleform">
+        <h5>Registro proyecto de generación</h5>
+    </div>
+
+    <div class="col-md-12">
+        <div class="row xm-contentform">
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <label for="">Código</label>
+                    <input id="idCodeProyect" name="nameCodeProyect" readonly type="text" class="form-control"
+                        placeholder="" [value]="idProyect">
+                </div>
+
+                <div class="form-group">
+                    <label for="idNameProject">Nombre del proyecto</label>
+                    <input type="text" class="form-control" id="idNameProject" name="txtnameProject"
+                        [(ngModel)]="generationDTO.ProjectName" minlength="3" maxlength="64" [autofocus]="true"
+                        #txtnameProjectVar="ngModel" (blur)="focusOut($event)" [ngClass]="{ 'is-invalid':
+                            (txtnameProjectVar.touched || txtnameProjectVar.dirty) &&
+                            !txtnameProjectVar.valid ||
+                            validation_alert_danger.txtnameProject }" required>
+                    <span class="invalid-feedback">
+                        <span *ngIf="txtnameProjectVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                        <span *ngIf="txtnameProjectVar.errors?.minlength">
+                            El valor minimo del campo es de 3 caracteres
+                        </span>
+                        <span *ngIf="txtnameProjectVar.errors?.maxlength">
+                            El valor maximo del campo es de 64 caracteres
+                        </span>
+                    </span>
+                </div>
+
+            </div>
+
+            <div class="col-md-8">
+                <div class="form-group2 xm-labels">
+                    <label for="exampleFormControlTextarea1">Descripción</label>
+                    <textarea class="form-control" rows="5" id="exampleFormControlTextarea1" name="nameDescProyec"
+                        [(ngModel)]="generationDTO.ProjectDescription" #nameDescProyecVar="ngModel" required
+                        [ngClass]="{ 'is-invalid':
+                            ((nameDescProyecVar.touched || nameDescProyecVar.dirty) &&
+                            !nameDescProyecVar.valid ||
+                            validation_alert_danger.nameDescProyec) && nameDescProyecVar.errors?.required }"></textarea>
+                    <span class="invalid-feedback">
+                        <span *ngIf="nameDescProyecVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                    </span>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="row xm-contentform">
+
+            <div class="col-md-4">
+
+                <div class="form-group">
+                    <label for="selectPromotorId">Promotor del proyecto</label>
+                    <div class="form-label-group">
+                        <app-ng-select id="selectPromotorId" name="selectPromotor" *ngIf="promoterList.length !== 0"
+                            class="form-control select-control" style="border-color: transparent;"
+                            [arrayList]="promoterList" [bindLabel]="'name'" [bindValue]="'id'"
+                            [(ngModel)]="generationDTO.PromoterId" #selectPromotorVar="ngModel" required [ngClass]="{ 'is-invalid':
+                            ((selectPromotorVar.touched || selectPromotorVar.dirty) &&
+                            !selectPromotorVar.valid ||
+                            validation_alert_danger.selectPromotor) && generationDTO.PromoterId == null }"
+                            [placeholder]="placeholder"></app-ng-select>
+                        <span class="invalid-feedback">
+                            <span *ngIf="generationDTO.PromoterId == null">
+                                El campo es requerido.
+                            </span>
+                        </span>
+                    </div>
+                    <button class="nuevo-promotor">+ Promotor</button>
+                </div>
+
+                <div class="form-group">
+                    <label for="datePOPId">Fecha de puesta en operación
+                        (FPO)</label>
+
+                    <div class="input-group">
+                        <input id="datePOPId" class="form-control" placeholder="dd-mm-aaaa" name="datePOP"
+                            [readonly]="true" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="projectFPO"
+                            [minDate]="minDateFPOAfter" [required]="!stagesBoolean" #datePOPVar="ngModel" [ngClass]="{ 'is-invalid':
+                                ((datePOPVar.touched || datePOPVar.dirty) &&
+                                !datePOPVar.valid ||
+                                validation_alert_danger.datePOP) &&  datePOPVar.errors?.required }">
+                        <div [hidden]="stagesBoolean" class="input-group-append">
+                            <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                type="button"></button>
+                        </div>
+                        <span class="invalid-feedback">
+                            <span *ngIf="datePOPVar.errors?.required">
+                                El campo es requerido.
+                            </span>
+                        </span>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="idGenerationResource">Tipo de recurso de generación</label>
+                    <ng-select id="idGenerationResource" name="nameGenerationResource"
+                        class="form-control select-control" style="border-color: transparent;"
+                        (change)="onSelectGenerationResource()" [items]="generationResourceList" bindLabel="detailValue"
+                        [loading]="!generationResourceList" [(ngModel)]="generationResourceSelect"
+                        #nameGenerationResourceVar="ngModel" [clearable]="false"
+                        [ngClass]="{ 'is-invalid':
+                            ((nameGenerationResourceVar.touched || nameGenerationResourceVar.dirty) &&
+                            !nameGenerationResourceVar.valid ||
+                            validation_alert_danger.nameGenerationResource) && nameGenerationResourceVar.errors?.required }" required>
+                        <ng-template ng-option-tmp let-item="item" let-index="index">
+                            {{item.detailValue}}
+                        </ng-template>
+                    </ng-select>
+
+                    <span class="invalid-feedback">
+                        <span *ngIf="nameGenerationResourceVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="IdCenProy">C.E.N proyecto (MW)</label>
+                    <div class="xm-input-append">
+                        <input id="IdCenProy" name="nameCenProy" class="form-control" [min]="0" appNumberFloatInput
+                            [decimals]="4" [format]="'0.[0000]'" type="text"
+                            (blur)="minorOrEqualsDecimal(cenProyect, capacityTransport)" [(ngModel)]="cenProyect"
+                            required #nameCenProyVar="ngModel" [ngClass]="{ 'is-invalid':
+                                ((nameCenProyVar.touched ) &&
+                                !nameCenProyVar.valid ||
+                                validation_alert_danger.nameCenProy) && nameCenProyVar.errors?.required }"
+                            placeholder="MW">
+
+                        <div class="input-group-append">
+                            <span class="input-group-text">MW</span>
+                        </div>
+                    </div>
+                        <span class="invalid-feedback">
+                            <span *ngIf="nameCenProyVar.errors?.required">
+                                El campo es requerido.
+                            </span>
+                        </span>
+                        </div>
+                    </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="idProductiveProcess">Tipo de proceso productivo</label>
+                    <ng-select id="idProductiveProcess" name="nameProductiveProcess" class="form-control select-control"
+                        style="border-color: transparent;" [items]="productiveProcessList" bindLabel="detailValue"
+                        [loading]="!productiveProcessList" [(ngModel)]="productiveProcessSelect"
+                        #nameProductiveProcessVar="ngModel" [clearable]="false"
+                        [ngClass]="{ 'is-invalid':
+                            ((nameProductiveProcessVar.touched || nameProductiveProcessVar.dirty) &&
+                            !nameProductiveProcessVar.valid ||
+                            validation_alert_danger.nameProductiveProcess) && nameProductiveProcessVar.errors?.required  }" required>
+                        <ng-template ng-option-tmp let-item="item" let-index="index">
+                            {{item.detailValue}}
+                        </ng-template>
+                    </ng-select>
+                    <span class="invalid-feedback">
+                        <span *ngIf="nameProductiveProcessVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                    </span>
+                </div>
+
+                <div class="form-group">
+                    <label for="IdCapTrans">Capacidad transporte asignado</label>
+                    <div class="xm-input-append">
+                        <input id="IdCapTrans" name="nameCapTrans" class="form-control" [min]="0" appNumberFloatInput
+                            [decimals]="4" [format]="'0.[0000]'" type="text"
+                            (blur)="minorOrEqualsDecimal(cenProyect, capacityTransport)" [(ngModel)]="capacityTransport"
+                            required #nameCapTransVar="ngModel" [ngClass]="{ 'is-invalid':
+                              ((nameCapTransVar.touched) &&
+                              !nameCapTransVar.valid ||
+                              validation_alert_danger.nameCapTrans) && nameCapTransVar.errors?.required  }"
+                            placeholder="MW">
+                        <span class="invalid-feedback">
+                            <span *ngIf="nameCapTransVar.errors?.required">
+                                El campo es requerido.
+                            </span>
+                        </span>
+                        <div class="input-group-append">
+                            <span class="input-group-text">MW</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
+    <div class="row xm-contentformbg">
+        <div class="col-md-4 xm-labels">
+            <div class="form-group">
+                ¿Obligación de energía firme (OEF)?
+            </div>
+
+
+            <div class="xm-check ">
+                <div class="form-check form-check-inline">
+
+
+                    <input class="form-check-input" [(ngModel)]="firmEnergy" (change)="onFirmEnergy(firmEnergy)"
+                        type="radio" name="FirmEnergyNameTrue" id="FirmEnergyIdTrue" [value]="true">
+                    <label class="form-check-label" for="inlineRadio1">SI</label>
+                </div>
+                <div class="form-check form-check-inline">
+                    <input class="form-check-input" [(ngModel)]="firmEnergy" (change)="onFirmEnergy(firmEnergy)"
+                        type="radio" name="FirmEnergyNameTrue" id="FirmEnergyIdTrue" [value]="false">
+                    <label class="form-check-label" for="inlineRadio2">NO</label>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" *ngIf="firmEnergy">
+            <div class="form-group">
+                <label for="idFechaOef">Fecha IPVO</label>
+                <div class="input-group">
+                    <input id="idFechaOef" class="form-control" placeholder="dd-mm-aaaa" name="nameFechaOef"
+                        [readonly]="true" ngbDatepicker #d="ngbDatepicker" [(ngModel)]="dateOEF" [minDate]="currentDate"
+                        #nameFechaOefVar="ngModel" [ngClass]="{ 'is-invalid':
+                            ((nameFechaOefVar.touched || nameFechaOefVar.dirty) &&
+                            !nameFechaOefVar.valid ||
+                            validation_alert_danger.nameFechaOef) && dateOEF == null }" required>
+                    <div [hidden]="!firmEnergy" class="input-group-append">
+                        <button class="btn btn-outline-secondary calendar" (click)="d.toggle()" type="button"></button>
+                    </div>
+                    <span class="invalid-feedback">
+                        <span *ngIf="dateOEF == null">
+                            El campo es requerido.
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4" *ngIf="firmEnergy">
+            <div class="form-group">
+                <label for="">C.E.N. ENFICC</label>
+                <div class="xm-input-append">
+                    <input id="IdCenOef" name="nameCenOef" class="form-control" [min]="0" appNumberFloatInput
+                        [decimals]="4" [format]="'0.[0000]'" type="text" [(ngModel)]="capacityOEF"
+                        (blur)="minorOrEqualsDecimal(null, null)" #nameCenOefVar="ngModel" [ngClass]="{ 'is-invalid':
+                                ((nameCenOefVar.touched ) &&
+                                !nameCenOefVar.valid ||
+                                validation_alert_danger.nameCenOef) && nameCenOefVar.errors?.required }" required
+                        placeholder="MW">
+                    <span class="invalid-feedback">
+                        <span *ngIf="nameCenOefVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                    </span>
+                    <div class="input-group-append">
+                        <span class="input-group-text">MW</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="xm-contentform">
+        <div class="row">
+            <div class="xm-labels col-md-12">
+                <h5>Concepto de conexión de la UPME</h5>
+            </div>
+            <div class="col-md-4">
+                <app-upload-xm [maxSizeFile]="maxSizeFile" [maxLengthFile]="maxLengthFile" [formartFile]="formartFile"
+                    [arrayListFiles]="arrayListFiles"></app-upload-xm>
+            </div>
+            <div class="col-md-4" *ngFor='let file of arrayListFiles; let i = index;'>
+                <div class="xm-cards">
+                    <div class="xm-cardtitle2">
+                        <h6 *ngIf="i > 9">
+                            Concepto de conexión de la UPME {{i+1}}
+                        </h6>
+                        <h6 *ngIf="!(i > 9)">
+                            Concepto de conexión de la UPME 0{{i+1}}
+                        </h6>
+                        <div class="xm-carddelt">
+                            <a href="" (click)="onDeleteFileAndDate(i, $event)"> <i
+                                    class="material-icons i-stage2">delete</i> Borrar</a>
+                        </div>
+                    </div>
+                    <div class="xm-cardform">
+
+                        <div class="form-group" *ngIf="file.name !== null">
+                            <label for="inputEmail">Concepto UPME</label>
+                            <br>
+                            <a href="#" (click)="viewFile(file, $event)" *ngIf="!file.sended">{{file.name.substr(0, 27)}}{{file.name.length > 27 ? '...'  : ''}} </a>
+                            <a href="{{file.urlDocument}}"  *ngIf="file.sended" target="_blank">{{file.name.substr(0, 27)}}{{file.name.length > 27 ? '...'  : ''}} </a>
+                            <a href="#" class="ml-2" (click)="downloadFile(file, $event)">
+                                <i class="material-icons">
+                                    save_alt
+                                </i>
+                            </a> </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">FPO UPME</label>
+                            <div class="input-group">
+                                <input class="form-control" placeholder="dd-mm-aaaa" name="dateFile{{i}}"
+                                    [(ngModel)]="file.datePicker" readonly="true" ngbDatepicker
+                                    (ngModelChange)="onselectDateOfDocument(file)" #d="ngbDatepicker"
+                                    #dateFile="ngModel"
+                                    [ngClass]="{ 'is-invalid':  ((file.datePicker == null) && singupForm.submitted)  }"
+                                    required>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary calendar" (click)="d.toggle()"
+                                        type="button"></button>
+                                </div>
+                                <span class="invalid-feedback">
+                                    <span *ngIf="dateFile.invalid && singupForm.submitted">
+                                        El campo es requerido.
+                                    </span>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="xm-contentformbg">
+        <xm-stages [submitFather]="submitFather" [stagesBoolean]="stagesBoolean" [minDateFPOAfter]="minDateFPOAfter"
+            [stagesList]="stagesList" (modelFormEmitter)="onEventChild($event)"></xm-stages>
+
+    </div>
+
+
+    <div class="row xm-contentform">
+
+        <div class="col-md-4">
+            <div class="form-group">
+                ¿Este proyecto es supeditado?
+            </div>
+
+            <div class="row align-items-center xm-contentform">
+
+                <div class="xm-check">
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline5" name="customRadioInline5"
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline5">SI</label>
+                    </div>
+                    <div class="custom-control custom-radio custom-control-inline">
+                        <input type="radio" id="customRadioInline6" name="customRadioInline5"
+                            class="custom-control-input">
+                        <label class="custom-control-label" for="customRadioInline6">NO</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">Proyecto al cual esta supeditado</label>
+
+                <select class="form-control" id="exampleFormControlSelect1">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+    </div>
+
+    <div class="row xm-contentformbg">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="selectAreaOperativeId">Área operativa</label>
+                <ng-select id="selectAreaOperativeId" name="selectAreaOperative" class="form-control select-control "
+                    style="border-color: transparent;" [items]="areaList" bindLabel="name" [loading]="!areaList"
+                    [(ngModel)]="areaSelect" (change)="onSelectArea($event)" #selectAreaOperativeVar="ngModel"
+                    [clearable]="false" [ngClass]="{ 'is-invalid':
+                            ((selectAreaOperativeVar.touched || selectAreaOperativeVar.dirty) &&
+                            !selectAreaOperativeVar.valid ||
+                            validation_alert_danger.selectAreaOperative) && selectAreaOperativeVar.errors?.required }"
+                    required>
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        {{item.name}}
+                    </ng-template>
+                </ng-select>
+                <span class="invalid-feedback">
+                    <span *ngIf="selectAreaOperativeVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="selectSubAreaOperativeId">Sub-área operativa</label>
+                <ng-select id="selectSubAreaOperativeId" name="selectSubAreaOperative"
+                    class="form-control select-control" style="border-color: transparent;" [items]="subAreaListSelect"
+                    bindLabel="name" [(ngModel)]="subAreaSelect" [clearable]="false"
+                    #selectSubAreaOperativeVar="ngModel" (change)="onchangeSubArea()"
+                    [ngClass]="{ 'is-invalid':
+                            ((selectSubAreaOperativeVar.touched || selectSubAreaOperativeVar.dirty) &&
+                            !selectSubAreaOperativeVar.valid ||
+                            validation_alert_danger.selectSubAreaOperative) && selectSubAreaOperativeVar.errors?.required}" required>
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        {{item.name}}
+                    </ng-template>
+                </ng-select>
+                <span class="invalid-feedback">
+                    <span *ngIf="selectSubAreaOperativeVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-4 xm-proyecc">
+
+            <div class="xm-labels">
+                <label for="">Recomendación eléctrica</label>
+            </div>
+
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="">IPOEMP</label>
+
+                        <select class="form-control" id="exampleFormControlSelect1">
+                            <option>1</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleInputEmail1">Fecha</label>
+                        <input type="date" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                            placeholder="Enter email">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-12">
+
+            <div class="form-group">
+                <label for="exampleFormControlTextarea3">Descripción recomendación eléctrica</label>
+            </div>
+            <textarea class="form-control text-area-white-xm" id="exampleFormControlTextarea3" rows="8"></textarea>
+        </div>
+    </div>
+
+
+
+
+    <div class="row xm-contentform">
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label for="">Sistema de transporte al que conecta</label>
+
+                <ng-select id="idSelectSystemTransport" name="nameSelectSystemTransport"
+                    class="form-control select-control" style="border-color: transparent;"
+                    [items]="transportConectionSystemList" bindLabel="detailValue"
+                    [loading]="!transportConectionSystemList" [(ngModel)]="transportSystemSelect"
+                    #nameTransportSystemVar="ngModel" [clearable]="false" (change)="onSelectTransportConection()"
+                    [ngClass]="{ 'is-invalid':
+                            ((nameTransportSystemVar.touched || nameTransportSystemVar.dirty) &&
+                            !nameTransportSystemVar.valid ||
+                            validation_alert_danger.nameSelectSystemTransport) && nameTransportSystemVar.errors?.required }"
+                    required>
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        {{item.detailValue}}
+                    </ng-template>
+                </ng-select>
+                <span class="invalid-feedback">
+                    <span *ngIf="nameTransportSystemVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+
+        </div>
+
+        <div class="col-md-4" *ngIf="transportSystemSelect?.codeValue === '3'">
+            <div class="form-group">
+                <label for="">Punto de conexión</label>
+                <input type="text" class="form-control" id="idPontconectionText" name="namePointConectionText"
+                    [(ngModel)]="generationDTO.connectionPointName" #namePointConectionTextVar="ngModel" required
+                    [ngClass]="{ 'is-invalid':
+                            ((namePointConectionTextVar.touched ) &&
+                            !namePointConectionTextVar.valid ||
+                            validation_alert_danger.namePointConectionText) && namePointConectionTextVar.errors?.required }">
+                <span class="invalid-feedback">
+                    <span *ngIf="namePointConectionTextVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-4"
+            *ngIf="transportSystemSelect?.codeValue === '2' || transportSystemSelect?.codeValue === '1'">
+            <div class="form-group">
+                <label for="namePointConexionList">Punto de conexión</label>
+                <ng-select id="idPointConexionList" name="namePointConexionList" class="form-control select-control"
+                    style="border-color: transparent;" [items]="linesAndBarsList.items" bindLabel="assetName"
+                    [loading]="!linesAndBarsList.items" [(ngModel)]="lineAndBarsSelect"
+                    #namePointConexionListVar="ngModel" [clearable]="false"
+                    [ngClass]="{ 'is-invalid':
+                            ((namePointConexionListVar.touched || namePointConexionListVar.dirty) &&
+                            !namePointConexionListVar.valid ||
+                            validation_alert_danger.namePointConexionList) && namePointConexionListVar.errors?.required }" required>
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        {{item.assetName}}
+                    </ng-template>
+                </ng-select>
+                <span class="invalid-feedback">
+                    <span *ngIf="namePointConexionListVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+        <div class="col-md-4" *ngIf="showTipoDespacho">
+            <div class="form-group">
+                <label for="idTypeDespachoList">Tipo de despacho</label>
+                <ng-select id="idTypeDespachoList" name="nameTypeDespachoList" class="form-control select-control"
+                    style="border-color: transparent;" [items]="typeDespachoList" bindLabel="detailValue"
+                    [loading]="!typeDespachoList" [(ngModel)]="typeDespachoSelect" #nameTypeDespachoListVar="ngModel"
+                    [clearable]="false"
+                    [ngClass]="{ 'is-invalid':
+                            ((nameTypeDespachoListVar.touched || nameTypeDespachoListVar.dirty) &&
+                            !nameTypeDespachoListVar.valid ||
+                            validation_alert_danger.nameTypeDespachoList) && nameTypeDespachoListVar.errors?.required }" required>
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        {{item.detailValue}}
+                    </ng-template>
+                </ng-select>
+                <span class="invalid-feedback">
+                    <span *ngIf="nameTypeDespachoListVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row xm-contentform" *ngIf="showTypeCicle">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">Tipo de ciclo</label>
+                <ng-select id="idTypeCicle" name="nameTypeCicle" class="form-control select-control"
+                    style="border-color: transparent;" [items]="typeCicleList" bindLabel="detailValue"
+                    [loading]="!typeCicleList" [(ngModel)]="typeCicleSelect" #nameTypeCicleVar="ngModel" required
+                    [clearable]="false" [ngClass]="{ 'is-invalid':
+                            ((nameTypeCicleVar.touched || nameTypeCicleVar.dirty) &&
+                            !nameTypeCicleVar.valid ||
+                            validation_alert_danger.nameTypeCicle) && nameTypeCicleVar.errors?.required }">
+                    <ng-template ng-option-tmp let-item="item" let-index="index">
+                        {{item.detailValue}}
+                    </ng-template>
+                </ng-select>
+                <span class="invalid-feedback">
+                    <span *ngIf="nameTypeCicleVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+    </div>
+
+    <div class="row xm-contentform" *ngIf="showFieldsEolico">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">Temperatura ambiente promedio anual</label>
+
+                <div class="xm-input-append">
+                    <input type="text" (keyup)="onKeyTemperature()" integersNumbersOnly
+                        name="nameTempText" id="idTempText" class="form-control" placeholder="°C"
+                        [maxlength]="temperatureEnviromentLength" [(ngModel)]="generationDTO.averageRoomTemperature"
+                        #nameTempTextVar="ngModel" required [ngClass]="{ 'is-invalid':
+                                ((nameTempTextVar.touched ) &&
+                                !nameTempTextVar.valid ||
+                                validation_alert_danger.nameTempText) && nameTempTextVar.errors?.required }">
+                    <div class="input-group-append">
+                        <span class="input-group-text">°C</span>
+                    </div>
+                    <span class="invalid-feedback">
+                        <span *ngIf="nameTempTextVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                    </span>
+
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">Velocidad del viento a altura de buje promedio anual</label>
+                <div class="xm-input-append">
+                    <input type="text" class="form-control" id="idVeltext" name="nameVelText"
+                        (keyup)="onKeyDensidad($event, false)" [format]="'000.[000]'" [min]="0" appNumberFloatInput
+                        [decimals]="3" placeholder="km/h" [(ngModel)]="generationDTO.windSpeed"
+                        #nameVelTextVar="ngModel" required [ngClass]="{ 'is-invalid':
+                                ((nameVelTextVar.touched) &&
+                                !nameVelTextVar.valid ||
+                                validation_alert_danger.nameVelText) && nameVelTextVar.errors?.required }">
+                    <div class="input-group-append">
+                        <span class="input-group-text">km/h</span>
+                    </div>
+                    <span class="invalid-feedback">
+                        <span *ngIf="nameVelTextVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                    </span>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">Densidad del viento a altura de buje promedio anual</label>
+
+                <div class="xm-input-append">
+                    <input id="idDensVientText" name="nameDensVientText" [min]="0" appNumberFloatInput [decimals]="3"
+                        [format]="'000.[000]'" [(ngModel)]="density" (keyup)="onKeyDensidad($event, true)" type="text"
+                        class="form-control" placeholder="kg/m³" #nameDensVientTextVar="ngModel" required [ngClass]="{ 'is-invalid':
+                                ((nameDensVientTextVar.touched ) &&
+                                !nameDensVientTextVar.valid ||
+                                validation_alert_danger.nameDensVientText) && nameDensVientTextVar.errors?.required }">
+                    <div class="input-group-append">
+                        <span class="input-group-text">kg/m³</span>
+                    </div>
+                    <span class="invalid-feedback">
+                        <span *ngIf="nameDensVientTextVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                    </span>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row xm-contentform" *ngIf="showFieldsSun">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">Irradiación global horizontal promedio anual</label>
+
+                <div class="xm-input-append">
+                    <input type="number" class="form-control" placeholder="kWh/m2.dia" required
+                        id="idGlobalIrradiationText" name="nameGlobalIrradiationText"
+                        [(ngModel)]="generationDTO.averageHorizontalGlobalIrradiation"
+                        #nameGlobalIrradiationTextVar="ngModel" naturalNumbersOnly maxlength="6"
+                        [ngClass]="{ 'is-invalid':
+                                ((nameGlobalIrradiationTextVar.touched ) &&
+                                !nameGlobalIrradiationTextVar.valid ||
+                                validation_alert_danger.nameGlobalIrradiationText) && nameGlobalIrradiationTextVar.errors?.required }">
+                    <div class="input-group-append">
+                        <span class="input-group-text">kWh/m2.dia</span>
+                    </div>
+                    <span class="invalid-feedback">
+                        <span *ngIf="nameGlobalIrradiationTextVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                    </span>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="idModulesIrradiationText">Irradiación en el panel de los módulos fotovoltaicos promedio
+                    anual</label>
+                <div class="xm-input-append">
+                    <input type="number" class="form-control" placeholder="kWh/m2" required
+                        id="idModulesIrradiationText" name="nameModulesIrradiationText"
+                        [(ngModel)]="generationDTO.averagePanelIrradiation" #nameModulesIrradiationTextVar="ngModel"
+                        naturalNumbersOnly maxlength="6"
+                        [ngClass]="{ 'is-invalid':
+                                ((nameModulesIrradiationTextVar.touched ) &&
+                                !nameModulesIrradiationTextVar.valid ||
+                                validation_alert_danger.nameModulesIrradiationText) && nameModulesIrradiationTextVar.errors?.required }">
+
+                    <div class="input-group-append">
+                        <span class="input-group-text">kWh/m2</span>
+                    </div>
+                    <span class="invalid-feedback">
+                        <span *ngIf="nameModulesIrradiationTextVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label for="">Temperatura ambiente promedio anual</label>
+
+                <div class="xm-input-append">
+                    <input type="text" class="form-control" placeholder="°C" required id="idTemperature2Text"
+                        name="nameTemperature2Text" [(ngModel)]="generationDTO.averageRoomTemperature"
+                        [maxlength]="temperatureEnviromentLength" #nameTemperature2TextVar="ngModel" 
+                        integersNumbersOnly (keyup)="onKeyTemperature()"
+                        [ngClass]="{ 'is-invalid':
+                                ((nameTemperature2TextVar.touched ) &&
+                                !nameTemperature2TextVar.valid ||
+                                validation_alert_danger.nameTemperature2Text) && nameTemperature2TextVar.errors?.required }">
+
+                    <div class="input-group-append">
+                        <span class="input-group-text">°C</span>
+                    </div>
+                    <span class="invalid-feedback">
+                        <span *ngIf="nameTemperature2TextVar.errors?.required">
+                            El campo es requerido.
+                        </span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row xm-contentformbg" *ngIf="editId !== null">
+            <div class="col-md-12">
+
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea3">Observación relacionada con el cambio</label>
+                </div>
+            <textarea class="form-control text-area-white-xm" id="idTextObservation" name="nameTextObservation" rows="8"
+                maxlength="250" [(ngModel)]="generationDTO.comments" #nameTextObservationVar="ngModel" required
+                    [ngClass]="{ 'is-invalid':
+                        ((nameTextObservationVar.touched || nameTextObservationVar.dirty) &&
+                        !nameTextObservationVar.valid ||
+                        validation_alert_danger.nameTextObservation) && nameTextObservationVar.errors?.required }"></textarea>
+                <span class="invalid-feedback">
+                    <span *ngIf="nameTextObservationVar.errors?.required">
+                        El campo es requerido.
+                    </span>
+                </span>
+            </div>
+        </div>
+
+
+    <div class="xm-newet xm-newetbuttons">
+        <div class="row">
+            <div class="col-md-2 offset-md-8">
+                <button class="xm-btn xm-btnsecondary"><i class="material-icons">save</i>
+                    Guardar
+                </button>
+            </div>
+            <div class="col-md-2">
+                <button class="xm-btn xm-btnprimary" type="submit"> <i class="material-icons">send</i>
+                    Enviar
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+</form>
+
+<app-wait *ngIf="!hiddenLoader"></app-wait>

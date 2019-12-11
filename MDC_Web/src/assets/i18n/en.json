@@ -1,0 +1,36 @@
+{
+    "Login" : {
+        "Title" : "This is login"
+    },
+    "Home" : {
+        "Title" : "This is home",
+        "NavBarItemAnalyst" : "Analyst",
+        "NavBarItemCoordinator" : "Coordinator",
+        "NavBarItemManager" : "Manager",
+        "NavBarItemTechnical" : "Technical",
+        "NavBarItemSupervisor" : "Supervisor"
+    },
+    "Call-Station": {
+        "Title" : "This is call station"
+    },
+    "Geo-Location": {
+        "Title" : "Esta es la Geolocalización"
+    },
+    "Transversal" : {
+        "NavBarItemHome" : "Home",
+        "NavBarItemCallStation" : "Call Station",
+        "NavBarItemZoneReference" : "Geolocation",
+        "NavBarTitle": "Main",
+        "NavBarItemTest": "Test"
+    },
+    "Concept-Test" : {
+        "Title" : "Concept-test",
+        "NavBarItemUpload" : "Upload File"
+    },
+
+    "MessagesError" : {
+        "sizeFile" : "size file max 25 MB"
+    }
+
+    
+}

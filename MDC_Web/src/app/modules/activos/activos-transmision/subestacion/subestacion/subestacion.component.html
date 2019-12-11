@@ -1,0 +1,45 @@
+<div class="row flex-box-center">
+    <div class="col-md-12 conteiner-detalles">
+        <div class="col-md-12">
+            <app-dashboard-detail [object]='project'></app-dashboard-detail>
+        </div>
+    </div>
+    <div class="col-md-8">
+        <app-subestacion-tablero [project]='project'></app-subestacion-tablero>
+    </div>
+    <div class="col-md-2 offset-md-2">
+        <app-modal-form [component]="'app-subestacion-crear'" [tittle]="'Subestación'" [project]='project'
+            [form]='subestacionForm' [flagButton]="!hasRequirement" [flagButtonView]="true"
+            (formSubmit)='onSubmit($event)'>
+        </app-modal-form>
+    </div>
+</div>
+
+<app-subestacion-listar [project]='project' [hasRequirement]="hasRequirement"></app-subestacion-listar>
+
+<div class="row">
+    <div class="col-sm-8" *ngIf="!hasRequirement"></div>
+    <div class="col-sm-6" *ngIf="hasRequirement"></div>
+    <div class="col-sm-2">
+        <button type="button" (click)="clickBack()" class="xm-btn xm-btnterciary">Cancelar
+        </button>
+    </div>
+    <div class="col-sm-2" *ngIf="!hasRequirement">
+        <button class="xm-btn xm-btnprimary is-block" style="height: 36px;" (click)="sendProject($event)"
+            [disabled]="isValid" [ngClass]="{'btn-disabled':isValid}">
+            Enviar
+            <i class="material-icons"> send </i>
+        </button>
+    </div>
+    <div class="col-sm-2" *ngIf="hasRequirement">
+        <button type="button" (click)="clickReject()" class="xm-btn xm-btnsecondary">Rechazar
+        </button>
+    </div>
+    <div class="col-sm-2" *ngIf="hasRequirement">
+        <button type="button" (click)="clickAprove()" class="xm-btn xm-btnprimary" [disabled]="isValid"
+            [ngClass]="{'btn-disabled':isValid}">Aprobar
+        </button>
+    </div>
+</div>
+<br><br>
+<app-wait *ngIf="isValid"></app-wait>

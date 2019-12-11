@@ -1,0 +1,12 @@
+<div class="row">
+    <article class="xm-table col-md-12">
+        <app-table-xm [arrayList]="objectSearch.items" [columNameList]="columNameList" [rowNameList]="rowNameList"
+            [columNameSortList]="columNameSortList" [collectionSize]="objectSearch.metadata.pagination.totalCount"
+            [pageSize]="objectSearch.metadata.pagination.limit" [filterInfo]="filterInfo" [buttonList]="buttonList"
+            [load]="load" (tableXmEmitter)="onEventChild($event)" (functionButton)="eventClickInButtons($event)"
+            [page]="objectSearch.metadata.pagination.currentPage">
+        </app-table-xm>
+    </article>
+</div>
+<app-changing-pending-date [(requirementRow)]="idPendingDateRequirement"
+    (filterStateForReloadPage)="filterStateForReloadPage()"></app-changing-pending-date>

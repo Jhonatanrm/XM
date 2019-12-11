@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-md-1 title-lineas-two">
+        <h6>Subestación: </h6>
+    </div>
+    <div class="col-md-3  title-lineas-two">
+        <ng-template #rtsbsttn let-r="result" let-t="term">
+            <ngb-highlight [result]="r.assetName" [term]="t"></ngb-highlight>
+        </ng-template>
+        <input id="typeahead-basic" #filterSubestation class="form-control" type="text" [ngbTypeahead]="searchSubstation"
+            [resultTemplate]="rtsbsttn" [inputFormatter]="formatterSubstation"
+            (selectItem)="onSelectSubstationChange($event)" (blur)="onBlur()" />
+    </div>
+    <div class="col-md-1 title-lineas-two">
+        <h6>Activos:</h6>
+    </div>
+    <div class="col-md-3 title-lineas-two">
+        <ng-select id="assetstypeId" class="select-ng-from-control form-control" placeholder=""
+            [items]="activeTypesList" (change)="onSelectTypeChange($event)">
+            <ng-template ng-option-tmp let-item="item" let-index="index">
+                {{item | lowercaseFormsPipe}}
+            </ng-template>
+        </ng-select>
+    </div>
+    <div class="col-md-2 title-lineas-two">
+        <button class="xm-btn xm-btnprimary is-block" (click)="searchFilters()">
+            Consultar
+        </button>
+    </div>
+</div>

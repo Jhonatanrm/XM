@@ -1,0 +1,121 @@
+<div class="container">
+    <div *ngIf="load">
+        <div class="xm-newet " *ngIf="flagSearch">
+            <div class="row align-items-center">
+
+                <div class="col-md-4 "></div>
+                <div class="col-md-4 "></div>
+
+                <div class="col-md-4 d-flex justify-content-end">
+                    <div class="searchbar">
+
+                        <input class="search_input" type="text" name="" placeholder="Search..." [(ngModel)]="searchText"
+                            (keyup.enter)="onkeyUpSearch()">
+                        <a href="#" (click)="onsearchText($event)" class="search_icon"><i class="material-icons"
+                                style="font-size: 16px">search</i></a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div *ngIf="arrayList?.length > 0">
+
+            <table action="" matSort (matSortChange)="sortData($event)" class="table table-hover">
+                <thead class="xm-campos thead-dark">
+                    <tr class="xm-txt">
+                        <th *ngFor="let column of columNameList; let i = index;" scope="{{column}}"
+                            mat-sort-header="{{columNameSortList[i]}}"
+                            >{{column}}
+                        </th>
+                        <th *ngIf="buttonList != null && buttonList.length" scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr *ngFor="let row of arrayList; let x = index;" style="cursor:pointer; cursor: hand;">
+                        <ng-container *ngFor="let atribute of rowNameList; let y = index;">
+                            <td *ngIf=" !(rowStyle?.length > 0) || (atribute !== 'remainingDays')">{{row[atribute]}}
+                            </td>
+                            <td [class]="rowStyle[x]" *ngIf="rowStyle?.length > 0 && (atribute == 'remainingDays')">
+                                {{row[atribute]}}</td>
+                        </ng-container>
+                        <th *ngIf="buttonList != null && buttonList.length">
+
+                            <div class="btn-group" role="group" aria-label="ButtonsGroup">
+
+                                <button *ngFor="let buttonElement of buttonList"
+                                    (click)="clickedIconButton(row, buttonElement)" type="button"
+                                    class="btn btn-default"><span>
+                                        <i
+                                            class="material-icons {{buttonElement.className}}">{{buttonElement.iconName}}</i></span>
+                                </button>
+                            </div>
+
+                        </th>
+                    </tr>
+
+                </tbody>
+            </table>
+
+
+
+
+            <!--                  
+    
+    
+    <table cdk-table [dataSource]=" dataOnPage$" class="table table-hover" *ngIf="columNameList">
+
+
+                        <ng-container *ngFor="let column of columNameList; let i = index;" cdkColumnDef="{{column}}">
+                <th cdk-header-cell *cdkHeaderCellDef (click)="adjustSort(column)">
+                    <i *ngIf="!(sortDirection$.value === 'asc')" class="material-icons i-flechita"
+                        style="font-size: 16px">unfold_more</i>
+                    {{column}} <span
+                        *ngIf="sortKey$.value === column">{{ sortDirection$.value === 'asc' ? '^' : '↧' }}</span>
+                </th>
+
+
+                <td cdk-cell *cdkCellDef="let row"> {{row.name}} </td>
+
+                </ng-container>
+
+
+            <tr cdk-header-row *cdkHeaderRowDef="displayedColumns.value" class="thead-dark"></tr>
+            <tr cdk-row *cdkRowDef="let row; columns: displayedColumns.value"></tr>
+
+    </table>
+
+    -->
+
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="float-right">
+                        <ngb-pagination [collectionSize]="collectionSize" [pageSize]="pageSize" [page]="page"
+                            (pageChange)="onPageChange($event)">
+                        </ngb-pagination>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div *ngIf="arrayList?.length === 0">
+            <table class="table table-hover">
+                <thead class="xm-campos thead-dark">
+                    <tr>
+                        <th *ngFor="let col of columNameList" scope="col">{{col}}</th>
+                    </tr>
+                </thead>
+            </table>
+            <p class="xm-anuncio-no-back"><b>No hay elementos para mostrar</b></p>
+            <br><br>
+        </div>
+    </div>
+    <div *ngIf="!load" style="text-align: center;">
+        <br><br><br>
+        <div class="spinner-border loader-table-subestation" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+</div>

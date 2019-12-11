@@ -1,0 +1,69 @@
+.xm-topbar
+  background-color: $gray_light
+  height: 68px
+  padding: 0 30px
+  display: flex
+  align-content: center
+  align-items: center
+  width: 100%
+  box-shadow: 0px 2px 0 rgba(0, 0, 0, 0.1)
+
+  .breadcrumb
+    margin: 0
+    padding: 0
+    background-color: transparent
+
+    .breadcrumb-item
+      color: $gray
+      display: flex
+      align-content: center
+      align-items: center
+      font-weight: $normal
+
+    .breadcrumb-item + .breadcrumb-item::before
+      font-family: 'Material Icons'
+      content: '\e409'
+      font-size: 18px
+      color: $gray
+
+
+  .xm-usertop
+    li
+      display: inline-block
+      vertical-align: top
+      margin: 0 10px
+      a
+        display: flex
+        align-content: center
+        align-items: center
+        color: $purple
+        text-decoration: none
+        font-weight: $bold
+        
+
+        i
+          margin-right: 10px
+          font-size: 30px
+
+        span
+          font-weight: $light
+          margin-right: 10px
+          
+      .xm-notf
+        position: relative
+        span
+          position: absolute
+          z-index: 3
+          top: 0
+          right: 0
+          background-color: $orange
+          color: $white
+          font-size: 10px
+          border-radius: 50%
+          width: 16px
+          height: 16px
+          display: flex
+          align-content: center
+          align-items: center
+          justify-content: center
+

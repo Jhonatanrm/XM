@@ -1,0 +1,50 @@
+<div class="row">
+        <div class="col-md-12 pt-3 pb-3 pl-5 xm-titleform ">
+            <h5>Notificaciones</h5>
+        </div>
+    </div>
+
+    <div class="xm-newet xm-newetbuttons">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <h6 class="xm-list">Año consecutivo:<span class="xm-total">{{consecutiveYear}}</span></h6>
+                <h6 class="xm-list">Codigo:<span class="xm-total">{{codeProject}}</span></h6>
+            </div>
+            <div class="col-md-6">
+                <h6 class="xm-list">Operador:<span class="xm-total">{{namePromoter}}</span>
+                </h6>
+                <h6 class="xm-list">Nombre proyecto:<span class="xm-total">{{project.projectName}}</span>
+                </h6>
+            </div>
+        </div>
+    </div>
+
+
+    <article *ngIf="stage != null && stage && stage.fpoDate != null" class="xm-table col-md-12">
+
+            <app-table-xm [arrayList]="arrayList"
+            [columNameList]="columNameList" [rowNameList]="rowNameList" [columNameSortList]="columNameSortList"
+            [collectionSize]="respTable.metadata.pagination.totalCount"
+            [pageSize]="respTable.metadata.pagination.limit" [filterInfo]="filterInfo"
+            (tableXmEmitter)="onEventChild($event)" 
+            [page]="respTable.metadata.pagination.currentPage" ></app-table-xm>
+    </article>
+
+    <article *ngIf="showEmptyTable &&  !(stage != null && stage && stage.fpoDate != null)" class="xm-table col-md-12">
+
+            <app-table-xm [arrayList]="arrayListNull"
+            [columNameList]="columNameList" [rowNameList]="rowNameList" [columNameSortList]="columNameSortList"
+            [collectionSize]="respTable.metadata.pagination.totalCount"
+            [pageSize]="respTable.metadata.pagination.limit" [filterInfo]="filterInfo"
+            (tableXmEmitter)="onEventChild($event)" 
+            [page]="respTable.metadata.pagination.currentPage" ></app-table-xm>
+    </article>
+
+    <div class="col-md-2 offset-md-10">
+        <button class="xm-btn xm-btnterciary">
+            Cancelar
+        </button>
+    </div>
+
+    
+<app-wait *ngIf="!hiddenLoader"></app-wait>

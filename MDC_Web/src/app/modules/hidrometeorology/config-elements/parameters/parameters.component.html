@@ -1,0 +1,25 @@
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-hover table-striped table-bordered">
+                <thead class="thead-light">
+                    <tr>
+                        <th>Parámetros</th>
+                        <th >Valor</th>
+                    </tr>
+                </thead>
+                <tbody class="text-break">
+                    <tr *ngFor="let parameter of provider?.parameters">
+                        <td >{{parameter.parameter}}</td>
+                        <td >
+                            <input type="text" class="form-control" placeholder="Campo editable" required=""
+                                autofocus="" [(ngModel)]="parameter.value" [name]="parameter.parameter"
+                                [id]="parameter.parameter">
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

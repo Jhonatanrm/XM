@@ -1,0 +1,41 @@
+<span *ngIf=" switch === 'required-group'" class="invalid-feedback">
+    <span class="span-tab-waring" *ngIf="errorsRequiredGroup()">
+        <i class="material-icons">warning</i>
+    </span>
+</span>
+
+<span *ngIf=" switch === 'required'" class="invalid-feedback">
+    <span *ngIf="errorsRequired()">
+        Este campo es requerido
+    </span>
+</span>
+
+<span *ngIf=" switch === 'min'" class="invalid-feedback">
+    <span *ngIf="errorsMin()">
+        Se ha excedido el valor minimo para este campo {{ errorsMin()['min'] }}
+    </span>
+</span>
+
+<span *ngIf=" switch === 'max'" class="invalid-feedback">
+    <span *ngIf="errorsMax()">
+        Se ha excedido el valor maximo para este campo {{ errorsMax()['max'] }}
+    </span>
+</span>
+
+<span *ngIf=" switch === 'requiredChild'" class="invalid-feedback">
+    <span *ngIf="errorsRequiredChild()">
+        Este campo es requerido
+    </span>
+</span>
+
+<span *ngIf=" switch === 'maxlengthDecimals'" class="invalid-feedback">
+    <span *ngIf="errorsMaxDecimals()">
+            El valor del campo no cumple con el esquema permitido {{ errorsMaxDecimals() }}
+    </span>
+</span>
+
+<span *ngIf=" switch === 'maxlengthChildDecimals'" class="invalid-feedback">
+    <span *ngIf="errorsChildMaxDecimals()">
+        El valor del campo no cumple con el esquema permitido {{ errorsChildMaxDecimals() }}
+    </span>
+</span>

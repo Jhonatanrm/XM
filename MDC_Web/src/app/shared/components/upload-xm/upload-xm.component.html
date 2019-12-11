@@ -1,0 +1,14 @@
+<div class="form-group upload-btn-wrapper">
+    <button class="xm-btn xm-btnprimary" type="button" for="UPMEId">Adjuntar Archivo</button>
+    <input 
+        type="file" 
+        name="fileName" 
+        id="fileId"
+        class="form-control-file form-control"
+        [accept]="formartFileText"
+        (change)="onSelectFile($event)"
+        multiple
+        style="border-color: transparent;"
+        required 
+        #fileUPMEVar >
+</div>

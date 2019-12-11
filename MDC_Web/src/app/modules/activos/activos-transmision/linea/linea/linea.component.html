@@ -1,0 +1,19 @@
+<div class="row">
+    <div class="col-md-2">
+        <app-modal-form
+            [component]="'app-linea-crear'"
+            [tittle]="'Linea'"
+            [form]='lineaForm'            
+            (formSubmit)='onSubmit($event)'    >
+        </app-modal-form>
+    </div>
+    <div class="col-md-2 offset-md-5 title-lineas">
+        <div>Lineas: <div>34</div>
+        </div>
+    </div>
+    <div class="col-md-3 title-lineas">
+        <div>Bahía de línea:
+            <div>34</div>
+        </div>
+    </div>
+</div>
