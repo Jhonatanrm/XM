@@ -1111,6 +1111,7 @@ button.col-md-6.col-sm-6.xm-btninvi h6:before {
     vertical-align: top;
     border-top: 1px solid #dee2e6;
     font-size: 15px;
+    color: #7E7E7E;
 }
 
 
@@ -1338,11 +1339,6 @@ span.input-group-text {
     font-weight: 900;
 }
 
-.btn-primary:hover {
-    color: #fff;
-    background-color: #0069d9;
-    border-color: #0062cc;
-}
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
@@ -4138,10 +4134,6 @@ textarea.form-control.is-invalid {
     }
 }
 
-.btn:hover {
-    color: #212529;
-    text-decoration: none;
-}
 
 .btn.focus,
 .btn:focus {
@@ -6822,6 +6814,7 @@ input[type="submit"].btn-block {
     padding-left: 0;
     list-style: none;
     border-radius: 0.25rem;
+    align-items: center;
 }
 
 .page-link {
@@ -6854,11 +6847,15 @@ input[type="submit"].btn-block {
     margin-left: 0;
     border-top-left-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .page-item:last-child .page-link {
     border-top-right-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .page-item.active .page-link {
@@ -6866,6 +6863,7 @@ input[type="submit"].btn-block {
     color: #fff;
     background-color: #ff6a13;
     border-color: #ff6a13;
+    line-height: 20px;
 }
 
 .page-item.disabled .page-link {
@@ -12339,11 +12337,11 @@ a.text-dark:hover {
     }
     .table {
         border-collapse: collapse !important;
+        overflow-x: scroll;
+        display: block;
     }
-    .table td,
-    .table th {
-        background-color: #fff !important;
-    }
+ 
+
     .table-bordered td,
     .table-bordered th {
         border: 1px solid #dee2e6 !important;
@@ -13045,6 +13043,7 @@ a:hover main .xm-proyecc {
     background-color: #fe691361;
     border-color: #f5f4f4;
     border-radius: 30px;
+    line-height: 20px;
 }
 
 .filtros-table {
@@ -14014,3 +14013,13 @@ table tr:hover td {
         border-width: 0px 0px 3px;
     }
 }
+
+/*  codigo agregado Daniel */
+
+/*  pagination */
+
+.page-item.disabled.ng-star-inserted{
+    font-weight: bold;
+    font-size: 25px;
+  }
+  
