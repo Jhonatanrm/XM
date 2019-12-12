@@ -7851,7 +7851,7 @@ a.close.disabled {
     opacity: 0.5;
 }
 
-.modal-header {
+.modal-header-alerta {
     display: -ms-flexbox;
     display: -webkit-box;
     display: flex;
