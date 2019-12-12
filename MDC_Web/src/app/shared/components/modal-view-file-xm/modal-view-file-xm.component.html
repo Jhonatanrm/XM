@@ -1,92 +1,88 @@
 <div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLabel">Visualizar archivo - {{file.name}}</h5>
-  <button (click)="dismiss()" type="button" class="close" data-dismiss="modal" aria-label="Close">
+    <h5 class="modal-title" id="exampleModalLabel">Visualizar archivo - {{file.name}}</h5>
+    <button (click)="dismiss()" type="button" class="close" data-dismiss="modal" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <div class="modal-body">
-  <ng-container [ngSwitch]="getFileExtension()">
-    <div *ngSwitchCase="fileTypes.PDF">
-      <ngx-extended-pdf-viewer
-        [showSidebarButton]="false"
-        [sidebarVisible]="false"
-        useBrowserLocale="true" height="67vh"
-        [base64Src]="file.base64">
+    <ng-container [ngSwitch]="getFileExtension()">
+        <div *ngSwitchCase="fileTypes.PDF">
+            <ngx-extended-pdf-viewer [showSidebarButton]="false" [sidebarVisible]="false" useBrowserLocale="true" height="67vh" [base64Src]="file.base64">
 
-      </ngx-extended-pdf-viewer>
-    </div>
-    <div *ngSwitchCase="fileTypes.JPG">
-      <img [src]="'data:image/jpg;base64,' + file.base64 | safeHtml: true" alt="imagen">
-    </div>
-    <div *ngSwitchCase="fileTypes.PNG">
-      <img [src]="'data:image/png;base64,' + file.base64 | safeHtml: true" alt="imagen">
-    </div>
-    <ng-template *ngSwitchCase="fileTypes.TIF"></ng-template>
-    <ng-template *ngSwitchCase="fileTypes.TIFF"></ng-template>
-    <div *ngIf="fileTypes.TIF || fileTypes.TIFF">
-      <div id="myCanvas"></div>
-    </div>
-    <div *ngSwitchCase="fileTypes.MSG">
-      <div class="msg-info" id="msgReader">
-        <div class="info-box wizard-msg">
-          MSG info (<span class="msg-file-name">{{msgModel?.subject}}.msg</span>)
+            </ngx-extended-pdf-viewer>
         </div>
-        <div class="field-block">
-          <div class="field-label">From</div>
-          <div class="msg-from">
-            {{msgModel?.senderName}}
-          </div>
+        <div *ngSwitchCase="fileTypes.JPG">
+            <img [src]="'data:image/jpg;base64,' + file.base64 | safeHtml: true" alt="imagen">
         </div>
-        <div class="field-block">
-          <div class="field-label">To</div>
-          <div class="msg-to">
-            <ng-container *ngFor="let rec of msgModel?.recipients">
-              <p id="to">{{rec.email}}</p>
-            </ng-container>
-          </div>
+        <div *ngSwitchCase="fileTypes.PNG">
+            <img [src]="'data:image/png;base64,' + file.base64 | safeHtml: true" alt="imagen">
         </div>
-        <div class="field-block">
-          <div class="field-label">Date (from Headers, example)</div>
-          <div class="msg-date"></div>
+        <ng-template *ngSwitchCase="fileTypes.TIF"></ng-template>
+        <ng-template *ngSwitchCase="fileTypes.TIFF"></ng-template>
+        <div *ngIf="fileTypes.TIF || fileTypes.TIFF">
+            <div id="myCanvas"></div>
         </div>
-        <div class="field-block">
-          <div class="field-label">Subject</div>
-          <div class="msg-subject">
-            {{msgModel?.subject}}
-          </div>
+        <div *ngSwitchCase="fileTypes.MSG">
+            <div class="msg-info" id="msgReader">
+                <div class="info-box wizard-msg">
+                    MSG info (<span class="msg-file-name">{{msgModel?.subject}}.msg</span>)
+                </div>
+                <div class="field-block">
+                    <div class="field-label">From</div>
+                    <div class="msg-from">
+                        {{msgModel?.senderName}}
+                    </div>
+                </div>
+                <div class="field-block">
+                    <div class="field-label">To</div>
+                    <div class="msg-to">
+                        <ng-container *ngFor="let rec of msgModel?.recipients">
+                            <p id="to">{{rec.email}}</p>
+                        </ng-container>
+                    </div>
+                </div>
+                <div class="field-block">
+                    <div class="field-label">Date (from Headers, example)</div>
+                    <div class="msg-date"></div>
+                </div>
+                <div class="field-block">
+                    <div class="field-label">Subject</div>
+                    <div class="msg-subject">
+                        {{msgModel?.subject}}
+                    </div>
+                </div>
+                <div class="field-block">
+                    <div class="field-label">Body</div>
+                    <div class="msg-body">
+                        {{msgModel?.body}}
+                    </div>
+                </div>
+                <div class="field-block">
+                    <div class="field-label">Attachments</div>
+                    <div class="msg-attachment">
+                        <ng-container *ngFor="let att of msgModel?.attachments">
+                            <p>
+                                {{att.name}}
+                            </p>
+                        </ng-container>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="field-block">
-          <div class="field-label">Body</div>
-          <div class="msg-body">
-            {{msgModel?.body}}
-          </div>
+        <div *ngSwitchDefault>
+            <p>
+                Por favor seleccione una extensión valida
+            </p>
         </div>
-        <div class="field-block">
-          <div class="field-label">Attachments</div>
-          <div class="msg-attachment">
-            <ng-container *ngFor="let att of msgModel?.attachments">
-              <p>
-                {{att.name}}
-              </p>
-            </ng-container>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div *ngSwitchDefault>
-      <p>
-        Por favor seleccione una extensión valida
-      </p>
-    </div>
-  </ng-container>
+    </ng-container>
 </div>
 <div class="modal-footer">
-  <div class="btn-group" role="group" aria-label="Basic example">
-    <button class="xm-btn xm-btnsecondary mr-2" (click)="dismiss()">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <button class="xm-btn xm-btnsecondary mr-2" (click)="dismiss()">
       Cerrar
     </button>
-    <button class="xm-btn xm-btnprimary" (click)="downloadFile()">
+        <button class="xm-btn xm-btnprimary" (click)="downloadFile()">
       Descargar
     </button>
-  </div>
+    </div>
 </div>
