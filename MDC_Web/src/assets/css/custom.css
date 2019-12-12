@@ -902,6 +902,7 @@ textarea[id="exampleFormControlTextarea2"] {
 .xm-contentform .material-icons {
     color: #CBCBCB;
     right: -10px;
+    position: absolute ;
 }
 
 .xm-labels .material-icons {
@@ -1369,22 +1370,12 @@ span.input-group-text {
     display: flex;
 }
 
-.subestacion-detalles {
-    justify-content: left;
-}
-
 .subcontenedor-vigencia,
 .flex-box-center {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-}
-
-.subestacion-detalles .material-icons:first-child {
-    position: relative !important;
-    color: #2ad2c9;
-    margin-right: 20px;
 }
 
 .subestacion-detalles .material-icons:first-child {
@@ -12966,6 +12957,7 @@ a:hover main .xm-proyecc {
     display: flex;
     margin-bottom: 30px;
     background: #FBFBFB;
+    max-width: 68%;
 }
 
 .filtros-table {
@@ -13560,6 +13552,7 @@ table tr:hover td {
     }
     .subestacion-detalles {
         justify-content: left;
+        margin-right: 0px;
     }
     .subestacion-detalles .material-icons:last-child {
         position: relative !important;
@@ -13567,7 +13560,6 @@ table tr:hover td {
     }
     .detail-dashboard {
         margin-top: 1%;
-        margin-left: 2%;
         padding-right: 32px;
     }
     input[type="number"] {
@@ -13740,15 +13732,11 @@ table tr:hover td {
     }
     .xm-modal-before i,
     .xm-modal-next i {
-        border: 2px solid #ff6a13;
         color: #ff6a13;
-        border-radius: 50%;
     }
     .xm-modal-before:hover i,
     .xm-modal-next:hover i {
-        background-color: #ff6a13;
-        border-radius: 50%;
-        color: #dee2e6;
+        color: #2AD2C9;
     }
     #longitudeId {
         /* padding-left: 23px; */
@@ -13840,7 +13828,7 @@ table tr:hover td {
         box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
     }
     #Vigencia-panel .read-input input {
-        background-color: transparent !important;
+        background-color: #ffffff;
     }
     .xm-btn-duplicar {
         color: #440099 !important;
