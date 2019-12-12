@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container p-0">
     <div *ngIf="load">
         <div class="xm-newet " *ngIf="flagSearch">
             <div class="row align-items-center">
@@ -9,8 +9,7 @@
                 <div class="col-md-4 d-flex justify-content-end">
                     <div class="searchbar">
 
-                        <input class="search_input" type="text" name="" placeholder="Search..." [(ngModel)]="searchText"
-                            (keyup.enter)="onkeyUpSearch()">
+                        <input class="search_input" type="text" name="" placeholder="Search..." [(ngModel)]="searchText" (keyup.enter)="onkeyUpSearch()">
                         <a href="#" (click)="onsearchText($event)" class="search_icon"><i class="material-icons"
                                 style="font-size: 16px">search</i></a>
                     </div>
@@ -24,9 +23,7 @@
             <table action="" matSort (matSortChange)="sortData($event)" class="table table-hover">
                 <thead class="xm-campos thead-dark">
                     <tr class="xm-txt">
-                        <th *ngFor="let column of columNameList; let i = index;" scope="{{column}}"
-                            mat-sort-header="{{columNameSortList[i]}}"
-                            >{{column}}
+                        <th *ngFor="let column of columNameList; let i = index;" scope="{{column}}" mat-sort-header="{{columNameSortList[i]}}">{{column}}
                         </th>
                         <th *ngIf="buttonList != null && buttonList.length" scope="col"></th>
                     </tr>
@@ -44,9 +41,7 @@
 
                             <div class="btn-group" role="group" aria-label="ButtonsGroup">
 
-                                <button *ngFor="let buttonElement of buttonList"
-                                    (click)="clickedIconButton(row, buttonElement)" type="button"
-                                    class="btn btn-default"><span>
+                                <button *ngFor="let buttonElement of buttonList" (click)="clickedIconButton(row, buttonElement)" type="button" class="btn btn-default"><span>
                                         <i
                                             class="material-icons {{buttonElement.className}}">{{buttonElement.iconName}}</i></span>
                                 </button>
@@ -92,8 +87,7 @@
             <div class="row">
                 <div class="col-6">
                     <div class="float-right">
-                        <ngb-pagination [collectionSize]="collectionSize" [pageSize]="pageSize" [page]="page"
-                            (pageChange)="onPageChange($event)">
+                        <ngb-pagination [collectionSize]="collectionSize" [pageSize]="pageSize" [page]="page" (pageChange)="onPageChange($event)">
                         </ngb-pagination>
                     </div>
                 </div>
