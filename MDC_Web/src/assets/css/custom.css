@@ -183,6 +183,12 @@
     color: #f9f9f9;
 }
 
+.xm-navleft a:hover{
+    background-color: #FAF5FF;
+    border-left: 5px solid rgba(68,0,153,1);
+}
+
+
 .xm-navleftdeltil .xm-logo img {
     width: 80%;
 }
