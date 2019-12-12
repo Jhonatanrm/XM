@@ -778,7 +778,7 @@ body main {
 }
 
 body main .xm-newet {
-    padding: 30px 0px;
+    padding: 15px 0px;
 }
 
 .xm-newet2 {
@@ -9932,7 +9932,7 @@ button.bg-dark:hover {
 }
 
 .float-right {
-    float: right !important;
+    float: right;
 }
 
 .float-none {
@@ -13643,10 +13643,7 @@ table tr:hover td {
         color: #f76c07;
         font-size: 20px;
     }
-    .xm-contentform .material-icons {
-        color: #f76a13;
-        z-index: 1;
-    }
+
     .search_icon i {
         position: static !important;
     }
