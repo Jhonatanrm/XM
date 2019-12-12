@@ -1,14 +1,13 @@
 <form [formGroup]="barraForm" (ngSubmit)="onSubmit()">
     <div class="row xm-contentform">
         <div class="col">
-            <ngb-tabset [activeId]="ngbTabset" class="tabs-form-beauty tabs-4" (tabChange)="plantaTabChange($event)">
+            <ngb-tabset [activeId]="ngbTabset" class="tabs-list tabs-4" (tabChange)="plantaTabChange($event)">
                 <ngb-tab id="informacionBasica">
                     <ng-template ngbTabTitle>
                         <i class="material-icons modal-tab-icon">
                             list_alt
                         </i>
-                        <span class="form-control tab-control-valid"
-                            [ngClass]="validate.getValidClassGroup(barraForm,'informacionBasica')">
+                        <span class="form-control tab-control-valid" [ngClass]="validate.getValidClassGroup(barraForm,'informacionBasica')">
                             Información Básica</span>
                         <span class="badge bolita-numero">1</span>
                         <app-validate [form]="barraForm" [group]="'informacionBasica'" [switch]="'required-group'">
@@ -21,18 +20,13 @@
                                     <div class="col-md-6">
                                         <ng-template #busbarNameToolTip class="tool-tip">Nombre de la barra
                                         </ng-template>
-                                        <label [ngClass]="requestChangeParameter('informacionBasica','busbarName')" >Nombre de Barra</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="busbarNameToolTip"
-                                            [ngClass]="requestChangeParameter('informacionBasica','busbarName')">help_outline</i>
-                                        <input type="text" id="busbarNameId" class="form-control" placeholder=""
-                                            formControlName="busbarName"
-                                            [ngClass]="[
+                                        <label [ngClass]="requestChangeParameter('informacionBasica','busbarName')">Nombre de Barra</label>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="busbarNameToolTip" [ngClass]="requestChangeParameter('informacionBasica','busbarName')">help_outline</i>
+                                        <input type="text" id="busbarNameId" class="form-control" placeholder="" formControlName="busbarName" [ngClass]="[
                                                 validate.getValidClass(barraForm,'informacionBasica','busbarName',controlRequestChange),
                                                 requestChangeParameter('informacionBasica','busbarName')
                                                 ]">
-                                        <app-validate [form]="barraForm" [group]="'informacionBasica'"
-                                            [name]="'busbarName'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'informacionBasica'" [name]="'busbarName'" [switch]="'required'"></app-validate>
                                     </div>
 
                                     <div class="col-md-6">
@@ -40,45 +34,27 @@
                                             <ngb-highlight [result]="r.substationName" [term]="t"></ngb-highlight>
                                             <!-- <ngb-highlight [result]="r.assetName" [term]="t"></ngb-highlight> -->
                                         </ng-template>
-                                        <ng-template #subestationToolTip class="tool-tip">Nombre de la subestación donde
-                                            esta ubicada la barra
+                                        <ng-template #subestationToolTip class="tool-tip">Nombre de la subestación donde esta ubicada la barra
                                         </ng-template>
-                                        <label [ngClass]="requestChangeParameter('informacionBasica','subestation')" >Subestación</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="subestationToolTip"
-                                            [ngClass]="requestChangeParameter('informacionBasica','subestation')"
-                                            >help_outline</i>
-                                        <input id="typeahead-basic" type="text" class="form-control"
-                                            formControlName="subestation" [ngbTypeahead]="searchSubstation"
-                                            [resultTemplate]="rtsbsttn" [inputFormatter]="formatterSubstation"
-                                            (selectItem)="onSelectSubestation($event)"
-                                            [ngClass]="[
+                                        <label [ngClass]="requestChangeParameter('informacionBasica','subestation')">Subestación</label>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="subestationToolTip" [ngClass]="requestChangeParameter('informacionBasica','subestation')">help_outline</i>
+                                        <input id="typeahead-basic" type="text" class="form-control" formControlName="subestation" [ngbTypeahead]="searchSubstation" [resultTemplate]="rtsbsttn" [inputFormatter]="formatterSubstation" (selectItem)="onSelectSubestation($event)" [ngClass]="[
                                                 validate.getValidClass(barraForm,'informacionBasica','subestation',controlRequestChange),
                                                 requestChangeParameter('informacionBasica','subestation')
-                                                ]"
-                                             />
-                                        <app-validate [form]="barraForm" [group]="'informacionBasica'"
-                                            [name]="'subestation'" [switch]="'required'"></app-validate>
+                                                ]" />
+                                        <app-validate [form]="barraForm" [group]="'informacionBasica'" [name]="'subestation'" [switch]="'required'"></app-validate>
                                     </div>
 
                                 </div>
 
                                 <div class="row xm-row-impar w-100">
                                     <div class="col-md-6">
-                                        <ng-template #nominalTensionToolTip class="tool-tip">Tensión nominal de
-                                            operación la
-                                            barra
+                                        <ng-template #nominalTensionToolTip class="tool-tip">Tensión nominal de operación la barra
                                         </ng-template>
-                                        <label
-                                        [ngClass]="requestChangeParameter('informacionBasica','nominalTension')">
+                                        <label [ngClass]="requestChangeParameter('informacionBasica','nominalTension')">
                                         Tensión nominal de operación (kV)</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="nominalTensionToolTip">help_outline</i>
-                                        <ng-select id="nominalTensionProjectId"
-                                            class="select-ng-from-control form-control" placeholder=""
-                                            [items]="nominaltensions" bindLabel="full_config"
-                                            formControlName="nominalTension"
-                                            [ngClass]="[
+                                        <i class="material-icons" placement="top" [ngbTooltip]="nominalTensionToolTip">help_outline</i>
+                                        <ng-select id="nominalTensionProjectId" class="select-ng-from-control form-control" placeholder="" [items]="nominaltensions" bindLabel="full_config" formControlName="nominalTension" [ngClass]="[
                                                 validate.getValidClass(barraForm,'informacionBasica','nominalTension'),
                                                 requestChangeParameter('informacionBasica','nominalTension')
                                                 ]">
@@ -86,24 +62,19 @@
                                                 {{item.full_config}}
                                             </ng-template>
                                         </ng-select>
-                                        <app-validate [form]="barraForm" [group]="'informacionBasica'"
-                                            [name]="'nominalTension'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'informacionBasica'" [name]="'nominalTension'" [switch]="'required'"></app-validate>
                                     </div>
 
                                     <div class="col-md-6">
                                         <ng-template #busbarNumberToolTip class="tool-tip">Número de barra
                                         </ng-template>
                                         <label>Número de barra</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="busbarNumberToolTip">help_outline</i>
-                                        <input type="text" id="busbarNumberId" class="form-control" placeholder=""
-                                            formControlName="busbarNumber" [readonly]="true"
-                                            [ngClass]="[
+                                        <i class="material-icons" placement="top" [ngbTooltip]="busbarNumberToolTip">help_outline</i>
+                                        <input type="text" id="busbarNumberId" class="form-control" placeholder="" formControlName="busbarNumber" [readonly]="true" [ngClass]="[
                                                 validate.getValidClass(barraForm,'informacionBasica','busbarNumber'),
                                                 requestChangeParameter('informacionBasica','busbarNumber')
                                                 ]">
-                                        <app-validate [form]="barraForm" [group]="'informacionBasica'"
-                                            [name]="'busbarNumber'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'informacionBasica'" [name]="'busbarNumber'" [switch]="'required'"></app-validate>
                                     </div>
                                 </div>
 
@@ -114,69 +85,45 @@
                                         </ng-template>
                                         <ng-template #ownerToolTip class="tool-tip">Es el propietario de la barra
                                         </ng-template>
-                                        <label
-                                        [ngClass]="requestChangeParameter('informacionBasica','owner')">Propietario</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="ownerToolTip"
-                                            [ngClass]="requestChangeParameter('informacionBasica','owner')">help_outline</i>
-                                        <input id="typeahead-basic" type="text" class="form-control"
-                                            formControlName="owner" [ngbTypeahead]="searchOwner"
-                                            [resultTemplate]="rtownr" [inputFormatter]="formatterOwner"
-                                            [ngClass]="[
+                                        <label [ngClass]="requestChangeParameter('informacionBasica','owner')">Propietario</label>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="ownerToolTip" [ngClass]="requestChangeParameter('informacionBasica','owner')">help_outline</i>
+                                        <input id="typeahead-basic" type="text" class="form-control" formControlName="owner" [ngbTypeahead]="searchOwner" [resultTemplate]="rtownr" [inputFormatter]="formatterOwner" [ngClass]="[
                                                 validate.getValidClassNoRequire(barraForm,'informacionBasica','owner'),
                                                 requestChangeParameter('informacionBasica','owner')
-                                                ]"
-                                            (selectItem)="onSelectOwner($event)" />
-                                        <app-validate [form]="barraForm" [group]="'informacionBasica'" [name]="'owner'"
-                                            [switch]="'required'"></app-validate>
+                                                ]" (selectItem)="onSelectOwner($event)" />
+                                        <app-validate [form]="barraForm" [group]="'informacionBasica'" [name]="'owner'" [switch]="'required'"></app-validate>
                                     </div>
 
                                     <div class="col-md-6">
                                         <ng-template #rtoprtr let-r="result" let-t="term">
                                             <ngb-highlight [result]="r.nombreAgente" [term]="t"></ngb-highlight>
                                         </ng-template>
-                                        <ng-template #operatorToolTip class="tool-tip">Es el agente que administra u
-                                            opera
-                                            dicha barra
+                                        <ng-template #operatorToolTip class="tool-tip">Es el agente que administra u opera dicha barra
                                         </ng-template>
-                                        <label
-                                        [ngClass]="requestChangeParameter('informacionBasica','operator')">Operador</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="operatorToolTip"
-                                            [ngClass]="requestChangeParameter('informacionBasica','operator')">help_outline</i>
-                                        <input id="typeahead-basic" type="text" class="form-control"
-                                            formControlName="operator" [ngbTypeahead]="searchOperator"
-                                            [resultTemplate]="rtoprtr" [inputFormatter]="formatterOperator"
-                                            [ngClass]="[
+                                        <label [ngClass]="requestChangeParameter('informacionBasica','operator')">Operador</label>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="operatorToolTip" [ngClass]="requestChangeParameter('informacionBasica','operator')">help_outline</i>
+                                        <input id="typeahead-basic" type="text" class="form-control" formControlName="operator" [ngbTypeahead]="searchOperator" [resultTemplate]="rtoprtr" [inputFormatter]="formatterOperator" [ngClass]="[
                                                 validate.getValidClassNoRequire(barraForm,'informacionBasica','operator'),
                                                 requestChangeParameter('informacionBasica','operator')
                                                 ]" />
-                                        <app-validate [form]="barraForm" [group]="'informacionBasica'"
-                                            [name]="'operator'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'informacionBasica'" [name]="'operator'" [switch]="'required'"></app-validate>
                                     </div>
                                 </div>
 
                                 <div [hidden]="project.stages.length == 1" class="row xm-row-impar w-100">
                                     <div class="col-md-6">
-                                        <ng-template #stageProjectToolTip class="tool-tip">Etapa en la que entra en
-                                            operación la
-                                            subestación
+                                        <ng-template #stageProjectToolTip class="tool-tip">Etapa en la que entra en operación la subestación
                                         </ng-template>
                                         <label>Etapa del Proyecto</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="stageProjectToolTip">help_outline</i>
-                                        <ng-select id="stageProjectId" class="select-ng-from-control form-control"
-                                            placeholder="" [items]="project.stages" bindLabel="stageDescription"
-                                            [loading]="!project.stages" formControlName="stageProject"
-                                            [ngClass]="[
+                                        <i class="material-icons" placement="top" [ngbTooltip]="stageProjectToolTip">help_outline</i>
+                                        <ng-select id="stageProjectId" class="select-ng-from-control form-control" placeholder="" [items]="project.stages" bindLabel="stageDescription" [loading]="!project.stages" formControlName="stageProject" [ngClass]="[
                                                 validate.getValidClassNoRequire(barraForm,'informacionBasica','stageProject'),
                                                 requestChangeParameter('informacionBasica','stageProject')]">
                                             <ng-template ng-option-tmp let-item="item" let-index="index">
                                                 {{item.stageDescription | lowercaseFormsPipe}}
                                             </ng-template>
                                         </ng-select>
-                                        <app-validate [form]="barraForm" [group]="'informacionBasica'"
-                                            [name]="'stageProject'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'informacionBasica'" [name]="'stageProject'" [switch]="'required'"></app-validate>
                                     </div>
                                 </div>
 
@@ -189,8 +136,7 @@
                         <i class="material-icons modal-tab-icon">
                             flash_on
                         </i>
-                        <span class="form-control tab-control-valid"
-                            [ngClass]="validate.getValidClassGroup(barraForm,'datosTecnicos')">
+                        <span class="form-control tab-control-valid" [ngClass]="validate.getValidClassGroup(barraForm,'datosTecnicos')">
                             Datos técnicos</span>
                         <span class="badge bolita-numero">2</span>
                         <app-validate [form]="barraForm" [group]="'datosTecnicos'" [switch]="'required-group'">
@@ -201,92 +147,57 @@
                             <div class="col-md-12 offset-md-0 flex-box-center">
                                 <div class="row xm-row-par w-100">
                                     <div class="col-md-6">
-                                        <ng-template #tensionDisenoToolTip class="tool-tip">El la máxima tensión
-                                            continua
-                                            que puede soportar la barra</ng-template>
-                                        <label
-                                        [ngClass]="requestChangeParameter('datosTecnicos','tensionDiseno')">
+                                        <ng-template #tensionDisenoToolTip class="tool-tip">El la máxima tensión continua que puede soportar la barra</ng-template>
+                                        <label [ngClass]="requestChangeParameter('datosTecnicos','tensionDiseno')">
                                         Tensión de diseño (kV)</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="tensionDisenoToolTip"
-                                            [ngClass]="requestChangeParameter('datosTecnicos','tensionDiseno')"
-                                            >help_outline</i>
-                                        <input type="number" id="tensionDisenoId" class="form-control" step="0.01"
-                                            lang="en" placeholder="" formControlName="tensionDiseno" 
-                                            [ngClass]="
+                                        <i class="material-icons" placement="top" [ngbTooltip]="tensionDisenoToolTip" [ngClass]="requestChangeParameter('datosTecnicos','tensionDiseno')">help_outline</i>
+                                        <input type="number" id="tensionDisenoId" class="form-control" step="0.01" lang="en" placeholder="" formControlName="tensionDiseno" [ngClass]="
                                                 [
                                                     validate.getValidDecimalNumberTreeForTow(barraForm,'datosTecnicos','tensionDiseno',3) ||
                                                     validate.getValidClass(barraForm,'datosTecnicos','tensionDiseno'),
                                                     requestChangeParameter('datosTecnicos','tensionDiseno')
                                                 ]
                                             ">
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'tensionDiseno'" [switch]="'required'"></app-validate>
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'tensionDiseno'" [switch]="'min'"></app-validate>
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'tensionDiseno'" [switch]="'max'"></app-validate>
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'tensionDiseno'" [switch]="'maxlengthDecimals'" [n]="'3'">
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'tensionDiseno'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'tensionDiseno'" [switch]="'min'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'tensionDiseno'" [switch]="'max'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'tensionDiseno'" [switch]="'maxlengthDecimals'" [n]="'3'">
                                         </app-validate>
                                     </div>
 
                                     <div class="col-md-6">
-                                        <ng-template #currentCapacityToolTip class="tool-tip">Capacidad nominal en
-                                            corriente
-                                            que tiene la barra</ng-template>
-                                        <label
-                                        [ngClass]="requestChangeParameter('datosTecnicos','currentCapacity')">
+                                        <ng-template #currentCapacityToolTip class="tool-tip">Capacidad nominal en corriente que tiene la barra</ng-template>
+                                        <label [ngClass]="requestChangeParameter('datosTecnicos','currentCapacity')">
                                         Capacidad de corriente nominal (A)</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="currentCapacityToolTip"
-                                            [ngClass]="requestChangeParameter('datosTecnicos','currentCapacity')">
+                                        <i class="material-icons" placement="top" [ngbTooltip]="currentCapacityToolTip" [ngClass]="requestChangeParameter('datosTecnicos','currentCapacity')">
                                             help_outline</i>
-                                        <input type="number" id="currentCapacityId" class="form-control" step="0.01"
-                                            lang="en" placeholder="" formControlName="currentCapacity" 
-                                            [ngClass]="[
+                                        <input type="number" id="currentCapacityId" class="form-control" step="0.01" lang="en" placeholder="" formControlName="currentCapacity" [ngClass]="[
                                                 validate.getValidDecimalNumberFiveForTow(barraForm,'datosTecnicos','currentCapacity',3) ||
                                                 validate.getValidClass(barraForm,'datosTecnicos','currentCapacity'),
                                                 requestChangeParameter('datosTecnicos','currentCapacity')
                                                 ]
                                             ">
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'currentCapacity'" [switch]="'required'"></app-validate>
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'currentCapacity'" [switch]="'min'"></app-validate>
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'currentCapacity'" [switch]="'max'"></app-validate>
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'currentCapacity'" [switch]="'maxlengthDecimals'" [n]="'3'">
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'currentCapacity'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'currentCapacity'" [switch]="'min'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'currentCapacity'" [switch]="'max'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'currentCapacity'" [switch]="'maxlengthDecimals'" [n]="'3'">
                                         </app-validate>
                                     </div>
                                 </div>
 
                                 <div class="row xm-row-impar w-100">
                                     <div class="col-md-6">
-                                        <ng-template #encapsulateBurBarToolTip class="tool-tip">Hace referencia si la
-                                            barra
-                                            es tipo encapsulada</ng-template>
-                                        <label 
-                                        [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
+                                        <ng-template #encapsulateBurBarToolTip class="tool-tip">Hace referencia si la barra es tipo encapsulada</ng-template>
+                                        <label [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
                                         Barra encapsulada-GIS</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="encapsulateBurBarToolTip"
-                                            [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
+                                        <i class="material-icons" placement="top" [ngbTooltip]="encapsulateBurBarToolTip" [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
                                             help_outline</i>
                                         <div class="col-md-12 flex-box-top-margin">
                                             <div class="col-md-2 offset-md-0">
                                                 <div class="form-group form-check">
-                                                    <input 
-                                                        type="radio" 
-                                                        id="yesBusBarEcapsulateId" 
-                                                        value="true"
-                                                        class="form-check-input" 
-                                                        formControlName="encapsulatedBusbar"
-                                                        [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
+                                                    <input type="radio" id="yesBusBarEcapsulateId" value="true" class="form-check-input" formControlName="encapsulatedBusbar" [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
 
-                                                    <label for="yesBusBarEcapsulateId" class="form-check-label"
-                                                    [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
+                                                    <label for="yesBusBarEcapsulateId" class="form-check-label" [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
                                                         Si
                                                     </label>
                                                 </div>
@@ -294,11 +205,8 @@
 
                                             <div class="col-md-5 offset-md-0">
                                                 <div class="form-group form-check">
-                                                    <input type="radio" id="notbusBarEncapsulateId" value="false"
-                                                        class="form-check-input" formControlName="encapsulatedBusbar"
-                                                        [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
-                                                    <label for="notbusBarEncapsulateId" class="form-check-label"
-                                                    [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
+                                                    <input type="radio" id="notbusBarEncapsulateId" value="false" class="form-check-input" formControlName="encapsulatedBusbar" [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
+                                                    <label for="notbusBarEncapsulateId" class="form-check-label" [ngClass]="{'change-parameter': requestChangeParameter('datosTecnicos','encapsulatedBusbar')}">
                                                         No
                                                     </label>
                                                 </div>
@@ -307,17 +215,13 @@
                                     </div>
 
                                     <div class="col-md-6">
-                                        <ng-template #sectionedBusbarToolTip class="tool-tip">Hace referencia si la
-                                            barra
-                                            tiene seccionamiento</ng-template>
+                                        <ng-template #sectionedBusbarToolTip class="tool-tip">Hace referencia si la barra tiene seccionamiento</ng-template>
                                         <label>Barra seccionada</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="sectionedBusbarToolTip">help_outline</i>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="sectionedBusbarToolTip">help_outline</i>
                                         <div class="col-md-12 flex-box-top-margin">
                                             <div class="col-md-2 offset-md-0">
                                                 <div class="form-group form-check">
-                                                    <input type="radio" id="yessectionedBusbarId" value="true"
-                                                        class="form-check-input" formControlName="sectionedBusbar">
+                                                    <input type="radio" id="yessectionedBusbarId" value="true" class="form-check-input" formControlName="sectionedBusbar">
                                                     <label for="yessectionedBusbarId" class="form-check-label">
                                                         Si
                                                     </label>
@@ -326,8 +230,7 @@
 
                                             <div class="col-md-5 offset-md-0">
                                                 <div class="form-group form-check">
-                                                    <input type="radio" id="notsectionedBusbarId" value="false"
-                                                        class="form-check-input" formControlName="sectionedBusbar">
+                                                    <input type="radio" id="notsectionedBusbarId" value="false" class="form-check-input" formControlName="sectionedBusbar">
                                                     <label for="notsectionedBusbarId" class="form-check-label">
                                                         No
                                                     </label>
@@ -338,11 +241,8 @@
                                 </div>
 
                                 <div class="row xm-row-par w-100">
-                                    <div class="row col-md-12" *ngIf="swichSectionedBusbar"
-                                        formArrayName="sectionsBusbar">
-                                        <div class="col-md-6 panel-form-beauty"
-                                            *ngFor="let busbarSection of barraForm.get('datosTecnicos').get('sectionsBusbar').controls; let i = index;"
-                                            [formGroupName]="i">
+                                    <div class="row col-md-12" *ngIf="swichSectionedBusbar" formArrayName="sectionsBusbar">
+                                        <div class="col-md-6 panel-form-beauty" *ngFor="let busbarSection of barraForm.get('datosTecnicos').get('sectionsBusbar').controls; let i = index;" [formGroupName]="i">
                                             <div class="xm-cards">
                                                 <div class="xm-cardtitle">
                                                     <h6>
@@ -350,71 +250,47 @@
                                                     </h6>
                                                     <div class="xm-carddelt" *ngIf="flagButtonView">
                                                         <a *ngIf="i > 1 " href="" (click)="onDeleteSection(i,$event)">
-                                                            <i class="material-icons i-stage">delete</i>
-                                                            Borrar</a>
-                                                        <a *ngIf="(i == 0 || i == 1) && barraForm.get('datosTecnicos').get('sectionsBusbar').controls.length > 2"
-                                                            href="" (click)="onDeleteSection(i,$event)"> <i
-                                                                class="material-icons i-stage">delete</i>
-                                                            Borrar</a>
-                                                        <i *ngIf="i > 1  && barraForm.get('datosTecnicos').get('sectionsBusbar').controls.length == 1"
-                                                            class="material-icons i-stage">help_outline</i>
+                                                            <i class="material-icons i-stage">delete</i> Borrar
+                                                        </a>
+                                                        <a *ngIf="(i == 0 || i == 1) && barraForm.get('datosTecnicos').get('sectionsBusbar').controls.length > 2" href="" (click)="onDeleteSection(i,$event)"> <i class="material-icons i-stage">delete</i> Borrar
+                                                        </a>
+                                                        <i *ngIf="i > 1  && barraForm.get('datosTecnicos').get('sectionsBusbar').controls.length == 1" class="material-icons i-stage">help_outline</i>
                                                     </div>
                                                 </div>
                                                 <div class="xm-cardform">
                                                     <div class="row">
                                                         <div class="col-md-12">
-                                                            <ng-template #sectionNameToolTip class="tool-tip">Nombre
-                                                                sección barra
+                                                            <ng-template #sectionNameToolTip class="tool-tip">Nombre sección barra
                                                             </ng-template>
-                                                            <label
-                                                            [ngClass]="requestChangeParameterSub('datosTecnicos',i,'sectionName')">
+                                                            <label [ngClass]="requestChangeParameterSub('datosTecnicos',i,'sectionName')">
                                                             Nombre sección barra</label>
-                                                            <i class="material-icons" placement="top"
-                                                                [ngbTooltip]="sectionNameToolTip"
-                                                                [ngClass]="requestChangeParameterSub('datosTecnicos',i,'sectionName')">
+                                                            <i class="material-icons" placement="top" [ngbTooltip]="sectionNameToolTip" [ngClass]="requestChangeParameterSub('datosTecnicos',i,'sectionName')">
                                                                 help_outline</i>
-                                                            <input type="text" id="sectionNameId" class="form-control"
-                                                                placeholder="" formControlName="sectionName" 
-                                                                [ngClass]="[                                                                
+                                                            <input type="text" id="sectionNameId" class="form-control" placeholder="" formControlName="sectionName" [ngClass]="[                                                                
                                                                     validate.getSubValidClass(barraForm,'datosTecnicos','sectionsBusbar',i,'sectionName'),
                                                                     requestChangeParameterSub('datosTecnicos',i,'sectionName')
                                                                 ]">
-                                                            <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                                                [array]="'sectionsBusbar'" [subgroup]="i"
-                                                                [name]="'sectionName'" [switch]="'requiredChild'">
+                                                            <app-validate [form]="barraForm" [group]="'datosTecnicos'" [array]="'sectionsBusbar'" [subgroup]="i" [name]="'sectionName'" [switch]="'requiredChild'">
                                                             </app-validate>
                                                         </div>
 
                                                         <div class="col-md-12">
-                                                            <ng-template #shortCircuitToolTip class="tool-tip">Capacidad
-                                                                de
-                                                                Corto circuito
+                                                            <ng-template #shortCircuitToolTip class="tool-tip">Capacidad de Corto circuito
                                                             </ng-template>
-                                                            <label
-                                                            [ngClass]="requestChangeParameterSub('datosTecnicos',i,'shortCircuit')">
+                                                            <label [ngClass]="requestChangeParameterSub('datosTecnicos',i,'shortCircuit')">
                                                             Capacidad de corto circuito (kA)</label>
-                                                            <i class="material-icons" placement="top"
-                                                                [ngbTooltip]="shortCircuitToolTip"
-                                                                [ngClass]="requestChangeParameterSub('datosTecnicos',i,'shortCircuit')">
+                                                            <i class="material-icons" placement="top" [ngbTooltip]="shortCircuitToolTip" [ngClass]="requestChangeParameterSub('datosTecnicos',i,'shortCircuit')">
                                                                 help_outline</i>
-                                                            <input type="number" id="shortCircuitId"
-                                                                class="form-control" step="0.01" lang="en"
-                                                                placeholder="" formControlName="shortCircuit" 
-                                                                [ngClass]="[
+                                                            <input type="number" id="shortCircuitId" class="form-control" step="0.01" lang="en" placeholder="" formControlName="shortCircuit" [ngClass]="[
                                                                     validate.getValidSubDecimalNumber(barraForm,'datosTecnicos','sectionsBusbar',i,'shortCircuit',3) ||
                                                                     validate.getSubValidClass(barraForm,'datosTecnicos','sectionsBusbar',i,'shortCircuit'),
                                                                     requestChangeParameterSub('datosTecnicos',i,'shortCircuit')]
                                                                 ">
 
-                                                            <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                                                [array]="'sectionsBusbar'" [subgroup]="i"
-                                                                [name]="'shortCircuit'" [switch]="'requiredChild'">
+                                                            <app-validate [form]="barraForm" [group]="'datosTecnicos'" [array]="'sectionsBusbar'" [subgroup]="i" [name]="'shortCircuit'" [switch]="'requiredChild'">
                                                             </app-validate>
 
-                                                            <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                                                [array]="'sectionsBusbar'" [subgroup]="i"
-                                                                [name]="'shortCircuit'"
-                                                                [switch]="'maxlengthChildDecimals'" [n]="'3'">
+                                                            <app-validate [form]="barraForm" [group]="'datosTecnicos'" [array]="'sectionsBusbar'" [subgroup]="i" [name]="'shortCircuit'" [switch]="'maxlengthChildDecimals'" [n]="'3'">
                                                             </app-validate>
                                                             <!--
                                                                 <app-validate [form]="barraForm" [group]="'datosTecnicos'"
@@ -435,8 +311,7 @@
                                                         Sección
                                                     </h6>
                                                     <div class="xm-carddelt">
-                                                        <a href="" (click)="addBusBarSectionElement($event)"> <i
-                                                                class="material-icons i-stage">add_circle_outline</i>
+                                                        <a href="" (click)="addBusBarSectionElement($event)"> <i class="material-icons i-stage">add_circle_outline</i>
                                                         </a>
                                                     </div>
                                                 </div>
@@ -451,29 +326,19 @@
                                     </div>
                                     <div class="row col-md-6" *ngIf="!swichSectionedBusbar">
 
-                                        <ng-template #shortCircuitCapacityToolTip class="tool-tip">Capacidad de corto
-                                            cirtuito de la barra</ng-template>
-                                        <label
-                                            [ngClass]="requestChangeParameter('datosTecnicos','shortCircuitCapacity')">
+                                        <ng-template #shortCircuitCapacityToolTip class="tool-tip">Capacidad de corto cirtuito de la barra</ng-template>
+                                        <label [ngClass]="requestChangeParameter('datosTecnicos','shortCircuitCapacity')">
                                             Capacidad de corto circuito (kA)</label>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="shortCircuitCapacityToolTip"
-                                            [ngClass]="requestChangeParameter('datosTecnicos','shortCircuitCapacity')">
+                                        <i class="material-icons" placement="top" [ngbTooltip]="shortCircuitCapacityToolTip" [ngClass]="requestChangeParameter('datosTecnicos','shortCircuitCapacity')">
                                             help_outline</i>
-                                        <input type="number" id="shortCircuitCapacityId" class="form-control"
-                                            step="0.01" lang="en" placeholder="" formControlName="shortCircuitCapacity"
-                                            [ngClass]="[
+                                        <input type="number" id="shortCircuitCapacityId" class="form-control" step="0.01" lang="en" placeholder="" formControlName="shortCircuitCapacity" [ngClass]="[
                                                 validate.getValidDecimalNumberTreeForTow(barraForm,'datosTecnicos','shortCircuitCapacity',3) ||
                                                 validate.getValidClass(barraForm,'datosTecnicos','shortCircuitCapacity'),
                                                 requestChangeParameter('datosTecnicos','shortCircuitCapacity')]">
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'shortCircuitCapacity'" [switch]="'required'"></app-validate>
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'shortCircuitCapacity'" [switch]="'min'"></app-validate>
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'shortCircuitCapacity'" [switch]="'max'"></app-validate>
-                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'"
-                                            [name]="'shortCircuitCapacity'" [switch]="'maxlengthDecimals'" [n]="'3'">
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'shortCircuitCapacity'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'shortCircuitCapacity'" [switch]="'min'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'shortCircuitCapacity'" [switch]="'max'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'datosTecnicos'" [name]="'shortCircuitCapacity'" [switch]="'maxlengthDecimals'" [n]="'3'">
                                         </app-validate>
                                     </div>
                                 </div>
@@ -489,8 +354,7 @@
                         <i class="material-icons modal-tab-icon">
                             insert_chart_outlined
                         </i>
-                        <span class="form-control tab-control-valid"
-                            [ngClass]="validate.getValidClassGroup(barraForm,'datosAdministrativos')">
+                        <span class="form-control tab-control-valid" [ngClass]="validate.getValidClassGroup(barraForm,'datosAdministrativos')">
                             Datos Administrativos</span>
                         <span class="badge bolita-numero">3</span>
                         <app-validate [form]="barraForm" [group]="'datosAdministrativos'" [switch]="'required-group'">
@@ -503,9 +367,7 @@
                                 <div class="row xm-row-par w-100">
                                     <div class="col-md-4 offset-md-2">
                                         <div class="form-group form-check">
-                                            <input type="radio" id="stnHeropeId" value="stnHerope"
-                                                class="form-check-input" formControlName="Herope"
-                                                (click)="heropeClick('stnHerope')">
+                                            <input type="radio" id="stnHeropeId" value="stnHerope" class="form-check-input" formControlName="Herope" (click)="heropeClick('stnHerope')">
                                             <label for="stnHeropeId" class="form-check-label">
                                                 ¿Es activo STN - Herope?
                                             </label>
@@ -514,9 +376,7 @@
 
                                     <div class="col-md-5 offset-md-0">
                                         <div class="form-group form-check">
-                                            <input type="radio" id="strHeropeId" value="strHerope"
-                                                class="form-check-input" formControlName="Herope"
-                                                (click)="heropeClick('strHerope')">
+                                            <input type="radio" id="strHeropeId" value="strHerope" class="form-check-input" formControlName="Herope" (click)="heropeClick('strHerope')">
                                             <label for="strHeropeId" class="form-check-label">
                                                 ¿Es activo STR - Herope?
                                             </label>
@@ -527,9 +387,7 @@
                                 <div class="row xm-row-impar w-100">
                                     <div class="col-md-4 offset-md-2">
                                         <div class="form-group form-check">
-                                            <input type="radio" id="stnCommercialId" value="stnCommercial"
-                                                class="form-check-input" formControlName="Commercial"
-                                                (click)="heroCommercialpeClick('stnCommercial')">
+                                            <input type="radio" id="stnCommercialId" value="stnCommercial" class="form-check-input" formControlName="Commercial" (click)="heroCommercialpeClick('stnCommercial')">
                                             <label for="stnCommercialId" class="form-check-label">
                                                 ¿Es activo comercial del STN?
                                             </label>
@@ -538,9 +396,7 @@
 
                                     <div class="col-md-5 offset-md-0">
                                         <div class="form-group form-check">
-                                            <input type="radio" id="strCommercialId" value="strCommercial"
-                                                class="form-check-input" formControlName="Commercial"
-                                                (click)="heroCommercialpeClick('strCommercial')">
+                                            <input type="radio" id="strCommercialId" value="strCommercial" class="form-check-input" formControlName="Commercial" (click)="heroCommercialpeClick('strCommercial')">
                                             <label for="strCommercialId" class="form-check-label">
                                                 ¿Es activo comercial del STR?
                                             </label>
@@ -551,8 +407,7 @@
                                 <div class="row xm-row-par w-100">
                                     <div class="col-md-4 offset-md-2">
                                         <div class="form-group form-check">
-                                            <input type="checkbox" id="consignableId" class="form-check-input"
-                                                formControlName="consignable">
+                                            <input type="checkbox" id="consignableId" class="form-check-input" formControlName="consignable">
                                             <label for="consignableId" class="form-check-label">¿Es activo consignable
                                                 del
                                                 sistema - SNC?
@@ -571,8 +426,7 @@
                         <i class="material-icons modal-tab-icon">
                             date_range
                         </i>
-                        <span class="form-control tab-control-valid"
-                            [ngClass]="validate.getValidClassGroup(barraForm,'Vigencia')">
+                        <span class="form-control tab-control-valid" [ngClass]="validate.getValidClassGroup(barraForm,'Vigencia')">
                             Vigencia</span>
                         <span class="badge bolita-numero">4</span>
                         <app-validate [form]="barraForm" [group]="'Vigencia'" [switch]="'required-group'">
@@ -584,11 +438,9 @@
 
                                 <div class="row xm-row-par w-100">
                                     <div class="col-md-4">
-                                        <ng-template #versionToolTip class="tool-tip">Consecutivo de la versión del
-                                            objeto
+                                        <ng-template #versionToolTip class="tool-tip">Consecutivo de la versión del objeto
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="versionToolTip">help_outline</i>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="versionToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>Versión:</label>
                                             <input class="form-control" type="text" readonly value="{{ assetVersion }}">
@@ -598,28 +450,24 @@
                                     <div class="col-md-4">
                                         <ng-template #dateStartToolTip class="tool-tip">Fecha inicio vigencia
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="dateStartToolTip">help_outline</i>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="dateStartToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
                                                 Fecha inicio:
                                             </label>
-                                            <input class="form-control" type="text" readonly
-                                                value="{{project.version.validFrom.slice(0, project.version.validFrom.indexOf('T'))}}">
+                                            <input class="form-control" type="text" readonly value="{{project.version.validFrom.slice(0, project.version.validFrom.indexOf('T'))}}">
                                         </div>
                                     </div>
 
                                     <div class="col-md-4">
                                         <ng-template #dateEndToolTip class="tool-tip">Fecha fin vigencia
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="dateEndToolTip">help_outline</i>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="dateEndToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
                                                 Fecha fin:
                                             </label>
-                                            <input class="form-control" type="text" readonly
-                                                value="{{project.version.validTo.slice(0, project.version.validTo.indexOf('T'))}}">
+                                            <input class="form-control" type="text" readonly value="{{project.version.validTo.slice(0, project.version.validTo.indexOf('T'))}}">
                                         </div>
                                     </div>
                                 </div>
@@ -629,8 +477,7 @@
                                         <ng-template #estadoToolTip class="tool-tip">
                                             Estado
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="estadoToolTip">help_outline</i>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="estadoToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
                                                 Estado:
@@ -642,8 +489,7 @@
                                     <div class="col-md-4">
                                         <ng-template #dateFPOToolTip class="tool-tip">Fecha de energización
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="dateFPOToolTip">help_outline</i>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="dateFPOToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
                                                 Fecha de energización:
@@ -655,8 +501,7 @@
                                     <div class="col-md-4">
                                         <ng-template #dateFPOToolTip class="tool-tip">Fecha de entrada operación
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="dateFPOToolTip">help_outline</i>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="dateFPOToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
                                                 Fecha puesta en operación (FPO):
@@ -668,19 +513,13 @@
 
                                 <div class="row xm-row-par w-100">
                                     <div class="col-md-8">
-                                        <ng-template #observacionesToolTip class="tool-tip">Comentario con respecto al
-                                            cambio
-                                            de version
+                                        <ng-template #observacionesToolTip class="tool-tip">Comentario con respecto al cambio de version
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="observacionesToolTip">help_outline</i>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="observacionesToolTip">help_outline</i>
                                         <label>Observaciones</label>
-                                        <textarea rows="3" id="versionCommentsId" class="form-control" placeholder=""
-                                            formControlName="versionComments"
-                                            [ngClass]="validate.getValidClassNoRequire(barraForm,'Vigencia','versionComments')">
+                                        <textarea rows="3" id="versionCommentsId" class="form-control" placeholder="" formControlName="versionComments" [ngClass]="validate.getValidClassNoRequire(barraForm,'Vigencia','versionComments')">
                                     </textarea>
-                                        <app-validate [form]="barraForm" [group]="'Vigencia'" [name]="'versionComments'"
-                                            [switch]="'required'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'Vigencia'" [name]="'versionComments'" [switch]="'required'"></app-validate>
                                     </div>
                                 </div>
                             </div>
@@ -704,38 +543,25 @@
                                         <ng-template #oservacionesToolTip class="tool-tip">
                                             Justificación para la solicitud de cambio
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="oservacionesToolTip">help_outline</i>
+                                        <i class="material-icons" placement="top" [ngbTooltip]="oservacionesToolTip">help_outline</i>
                                         <label>Justificación*</label>
-                                        <textarea 
-                                            rows="4" 
-                                            id="justificacionId" 
-                                            class="form-control" placeholder=""
-                                            style="width: 100% !important;"
-                                            formControlName="justificacion"
-                                            [ngClass]="validate.getValidClass(barraForm,'Justificacion','justificacion',controlRequestChange)">
+                                        <textarea rows="4" id="justificacionId" class="form-control" placeholder="" style="width: 100% !important;" formControlName="justificacion" [ngClass]="validate.getValidClass(barraForm,'Justificacion','justificacion',controlRequestChange)">
                                                 </textarea>
-                                        <app-validate [form]="barraForm" [group]="'Justificacion'"
-                                            [name]="'justificacion'" [switch]="'required'"></app-validate>
-                                        <app-validate [form]="barraForm" [group]="'Justificacion'"
-                                            [name]="'justificacion'" [switch]="'max'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'Justificacion'" [name]="'justificacion'" [switch]="'required'"></app-validate>
+                                        <app-validate [form]="barraForm" [group]="'Justificacion'" [name]="'justificacion'" [switch]="'max'"></app-validate>
 
                                     </div>
 
-                                    <div class="col-md-12 offset-md-0 xm-labels"
-                                        style="display: flex; flex-wrap: wrap;">
+                                    <div class="col-md-12 offset-md-0 xm-labels" style="display: flex; flex-wrap: wrap;">
                                         <div class="col-md-4 file-bottom-container2" style="display: flex;">
-                                                <ng-template #upLoadToolTip class="tool-tip">
-                                                        En esta opción podrá adjuntar uno o varios documentos que soportan la solicitud del cambio
-                                                </ng-template>
-                                                <i class="material-icons" placement="top"
-                                                    [ngbTooltip]="upLoadToolTip" style="order: 2;" >help_outline</i>
-                                            <app-upload-xm [maxSizeFile]="maxSizeFile" [maxLengthFile]="maxLengthFile"
-                                                [formartFile]="formartFile" [arrayListFiles]="arrayListFiles">
+                                            <ng-template #upLoadToolTip class="tool-tip">
+                                                En esta opción podrá adjuntar uno o varios documentos que soportan la solicitud del cambio
+                                            </ng-template>
+                                            <i class="material-icons" placement="top" [ngbTooltip]="upLoadToolTip" style="order: 2;">help_outline</i>
+                                            <app-upload-xm [maxSizeFile]="maxSizeFile" [maxLengthFile]="maxLengthFile" [formartFile]="formartFile" [arrayListFiles]="arrayListFiles">
                                             </app-upload-xm>
                                         </div>
-                                        <div class="col-md-4 panel-form-beauty"
-                                            *ngFor='let file of arrayListFiles; let i = index;'>
+                                        <div class="col-md-4 panel-form-beauty" *ngFor='let file of arrayListFiles; let i = index;'>
                                             <div class="xm-cards">
                                                 <div class="xm-cardtitle">
                                                     <h6>
@@ -743,8 +569,7 @@
                                                     </h6>
                                                     <div class="xm-carddelt">
                                                         <a (click)="onDeleteFileAndDate(i, $event)">
-                                                            <i class="material-icons i-stage">delete</i>
-                                                            Borrar
+                                                            <i class="material-icons i-stage">delete</i> Borrar
                                                         </a>
                                                     </div>
                                                 </div>
@@ -752,12 +577,9 @@
                                                     <div *ngIf="file.name !== null">
                                                         <label for="inputEmail">Adjunto:</label>
                                                         <div class="form-control">
-                                                            <a href="#" (click)="viewFile(file, $event)"
-                                                                *ngIf="!file.sended">{{file.name | slicePipe:0:15 }}</a>
-                                                            <a href="{{file.urlDocument}}" *ngIf="file.sended"
-                                                                target="_blank">{{file.name}}</a>
-                                                            <a href="#" class="ml-2"
-                                                                (click)="downloadFile(file, $event)">
+                                                            <a href="#" (click)="viewFile(file, $event)" *ngIf="!file.sended">{{file.name | slicePipe:0:15 }}</a>
+                                                            <a href="{{file.urlDocument}}" *ngIf="file.sended" target="_blank">{{file.name}}</a>
+                                                            <a href="#" class="ml-2" (click)="downloadFile(file, $event)">
                                                                 <i class="material-icons i-download">
                                                                     save_alt
                                                                 </i>
@@ -768,7 +590,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                             </div>
                         </div>
