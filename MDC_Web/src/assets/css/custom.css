@@ -13362,6 +13362,8 @@ table tr:nth-child(2n) {
 }
 
 table tr:hover td {
+    background-color: #FAF5FF ;
+    color: rgb(109, 109, 109);
     background-color: #DFC5FF;
     color: #fafafa;
 }
