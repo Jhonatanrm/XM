@@ -1,5 +1,5 @@
 <div class="row flex-box-center">
-    <div class="col-md-12 conteiner-detalles">
+    <div class="col-md-12">
         <div class="col-md-12">
             <app-dashboard-detail [object]='project'></app-dashboard-detail>
         </div>
@@ -8,9 +8,7 @@
         <app-subestacion-tablero [project]='project'></app-subestacion-tablero>
     </div>
     <div class="col-md-2 offset-md-2">
-        <app-modal-form [component]="'app-subestacion-crear'" [tittle]="'Subestación'" [project]='project'
-            [form]='subestacionForm' [flagButton]="!hasRequirement" [flagButtonView]="true"
-            (formSubmit)='onSubmit($event)'>
+        <app-modal-form [component]="'app-subestacion-crear'" [tittle]="'Subestación'" [project]='project' [form]='subestacionForm' [flagButton]="!hasRequirement" [flagButtonView]="true" (formSubmit)='onSubmit($event)'>
         </app-modal-form>
     </div>
 </div>
@@ -25,8 +23,7 @@
         </button>
     </div>
     <div class="col-sm-2" *ngIf="!hasRequirement">
-        <button class="xm-btn xm-btnprimary is-block" style="height: 36px;" (click)="sendProject($event)"
-            [disabled]="isValid" [ngClass]="{'btn-disabled':isValid}">
+        <button class="xm-btn xm-btnprimary is-block" style="height: 36px;" (click)="sendProject($event)" [disabled]="isValid" [ngClass]="{'btn-disabled':isValid}">
             Enviar
             <i class="material-icons"> send </i>
         </button>
@@ -36,8 +33,7 @@
         </button>
     </div>
     <div class="col-sm-2" *ngIf="hasRequirement">
-        <button type="button" (click)="clickAprove()" class="xm-btn xm-btnprimary" [disabled]="isValid"
-            [ngClass]="{'btn-disabled':isValid}">Aprobar
+        <button type="button" (click)="clickAprove()" class="xm-btn xm-btnprimary" [disabled]="isValid" [ngClass]="{'btn-disabled':isValid}">Aprobar
         </button>
     </div>
 </div>

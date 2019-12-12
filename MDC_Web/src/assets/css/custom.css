@@ -12990,20 +12990,26 @@ a:hover main .xm-proyecc {
 
 .nav-tabs {
     background: #ffffff;
+    margin-bottom: 20px;
 }
 
 .nav-tabs .nav-item a {
     margin-bottom: 0px;
-    color: #ff6a13;
+    color: #7e7e7e;
     padding: 15px;
     border-radius: 0px;
 }
 
 .nav-tabs .nav-item a.active {
     color: #ff6a13;
-    background-color: #ff6a1317;
     font-weight: 700;
     border-bottom: solid 4px;
+}
+
+.nav-tabs .nav-item a:hover{
+    color: #ff6a13;
+    font-weight: 700;
+    border-bottom: solid 4px; 
 }
 
 .tab-content>.tab-pane {
@@ -13388,10 +13394,7 @@ table tr:hover td {
         color: #f76c07 !important;
         border-width: 0px 0px 3px;
     }
-    .tabs-form-basic .nav-tabs .nav-item a {
-        text-decoration: none;
-        color: #f76c07 !important;
-    }
+ 
     .tabs-form-basic .nav-tabs .nav-link:focus,
     .tabs-form-basic .nav-tabs .nav-link:hover {
         border-top-width: 0px;
