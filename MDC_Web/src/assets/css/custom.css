@@ -463,12 +463,9 @@
 .xm-forms .xm-contentformbg {
     padding: 30px;
     background-color: #F5F4F4;
+    align-items: baseline;
 }
 
-.xm-forms .xm-contentformbg {
-    padding: 30px;
-    background-color: #f5f4f4;
-}
 
 .xm-forms .xm-contentformbg .xm-labels {
     font-size: 14px;
@@ -3623,7 +3620,7 @@ select.form-control[size] {
 }
 
 textarea.form-control {
-    height: auto;
+   /* height: auto; */
 }
 
 textarea.form-control {
