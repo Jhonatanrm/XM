@@ -20,20 +20,17 @@
 
 
 <article class="xm-table col-md-12">
-        <app-table-xm   [arrayList]="arrayList" [columNameList]="columNameList"
-        [rowNameList]="rowNameList" [columNameSortList]="columNameSortList"
-        [collectionSize]="respTable.metadata.pagination.totalCount"
-        [pageSize]="respTable.metadata.pagination.limit" [filterInfo]="filterInfo" [buttonList]="buttonListReq"
-        (tableXmEmitter)="onEventChild($event)" (functionButton)="eventClickInButtons($event)"
-        [page]="respTable.metadata.pagination.currentPage"
-        [rowStyle]="rowStyle" [load]="!load"
-        >
-    </app-table-xm> 
+    <app-table-xm [arrayList]="arrayList" [columNameList]="columNameList" [rowNameList]="rowNameList" [columNameSortList]="columNameSortList" [collectionSize]="respTable.metadata.pagination.totalCount" [pageSize]="respTable.metadata.pagination.limit" [filterInfo]="filterInfo"
+        [buttonList]="buttonListReq" (tableXmEmitter)="onEventChild($event)" (functionButton)="eventClickInButtons($event)" [page]="respTable.metadata.pagination.currentPage" [rowStyle]="rowStyle" [load]="!load">
+    </app-table-xm>
 
 </article>
 
-<div class="col-md-2 offset-md-10">
-    <button class="xm-btn xm-btnsecondary " (click)="onClickBack()">
-    Atras
-</button>
+<div class="row xm-franjabottom">
+    <div class="col-md-2 offset-md-10">
+        <button class="xm-btn xm-btnterciary " (click)="onClickBack()">
+        Atras
+    </button>
+    </div>
+
 </div>
