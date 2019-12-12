@@ -959,7 +959,7 @@ textarea[id="exampleFormControlTextarea2"] {
     position: relative !important;
 }
 
-.i-circulo {}
+
 
 th .i-flechita {
     padding-left: 10px;
@@ -3611,9 +3611,6 @@ select.form-control[size] {
     height: auto;
 }
 
-textarea.form-control {
-   /* height: auto; */
-}
 
 textarea.form-control {
     background-color: #fdfafa;
@@ -12998,7 +12995,17 @@ a:hover main .xm-proyecc {
     color: #7e7e7e;
     padding: 15px;
     border-radius: 0px;
+    display: flex;
+    align-content: center;
 }
+
+.nav-tabs .nav-item:hover a span{
+color: #FF6A13;
+}
+
+.nav-tabs .nav-item span.active{
+    color: #FF6A13;
+    }
 
 .nav-tabs .nav-item a.active {
     color: #ff6a13;
@@ -13618,7 +13625,7 @@ table tr:hover td {
     }
     .material-icons.modal-tab-icon {
         position: relative !important;
-        font-size: 50px;
+        font-size: 25px;
         right: auto !important;
         margin: 10px 0;
     }
