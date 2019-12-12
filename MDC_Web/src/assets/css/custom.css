@@ -472,17 +472,11 @@
     font-weight: 700;
     color: #75787b;
     margin-bottom: 40px;
-    width: 100%;
-    padding-left: 15px;
-    margin-top: 30px;
+    /* width: 100%;
+     margin-top: 30px; */
+   
 }
 
-.xm-forms .xm-contentformbg .xm-labels {
-    font-size: 14px;
-    font-weight: 700;
-    color: #75787B;
-    margin-bottom: 10px;
-}
 
 .form-control {
     border: none;
@@ -553,16 +547,8 @@
 
 label {
     font-size: 14px;
-    color: #75787B;
-    font-weight: 700;
-}
-
-label {
     display: inline-block;
     margin-bottom: 0.5rem;
-}
-
-label {
     font-size: 14px;
     color: #75787b;
     font-weight: 700;
@@ -575,7 +561,7 @@ label {
     color: #75787b;
     margin-bottom: 40px;
     width: 100%;
-    padding-left: 15px;
+    
 }
 
 .xm-cards {
