@@ -969,7 +969,7 @@ th .i-flechita {
 }
 
 .xm-table {
-    padding: inherit;
+    padding-left: 0px;
 }
 
 
@@ -1354,6 +1354,7 @@ span.input-group-text {
     border-top: 1px solid #dee2e6;
     border-right: 1px solid #dee2e6;
     margin-bottom: 20px;
+    background-color: #fbfbfb;
 }
 
 .conteiner-detalles {
@@ -13000,9 +13001,8 @@ a:hover main .xm-proyecc {
 }
 
 .tab-content>.tab-pane {
-    border: solid 1px #dee2e6;
+    
     border-top: none;
-    margin-bottom: 50px;
 }
 
 .xm-left-calibracion .tab-pane {
@@ -13562,6 +13562,7 @@ table tr:hover td {
     .detail-dashboard {
         margin-top: 1%;
         margin-left: 2%;
+        padding-right: 32px;
     }
     input[type="number"] {
         -moz-appearance: textfield;
@@ -13968,4 +13969,8 @@ table tr:hover td {
   
   .btn.btn-primary.xm-btnrequi span{
       display: block;
+  }
+
+  .xm-franjabottom{
+      background-color: #fbf5ff;
   }
