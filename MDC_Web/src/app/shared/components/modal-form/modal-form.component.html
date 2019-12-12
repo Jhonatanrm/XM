@@ -1,57 +1,48 @@
 <!-- Condicion especial para Subestaciones-->
 <div *ngIf="flagButton">
     <div *ngIf="component !== 'app-subestacion-crear'; else templateSubestacion">
-        <button #createLinea class="xm-btn xm-btnprimary is-block" name="{{ tittle }}"
-            (click)="openModalForm(modalForm)">
+        <button #createLinea class="xm-btn xm-btnprimary is-block" name="{{ tittle }}" (click)="openModalForm(modalForm)">
             Crear {{ tittle }}
         </button>
     </div>
 
     <ng-template #templateSubestacion>
         <ng-template #popContent>
-            <button #createSubestacion id="createSubestacion" name="Subestación" class="xm-btncreate is-block"
-                (click)="openModalForm(modalForm,createSubestacion)">
+            <button #createSubestacion id="createSubestacion" name="Subestación" class="xm-btncreate is-block" (click)="openModalForm(modalForm,createSubestacion)">
                 Subestación
             </button>
-            <button #createBarra id="createBarra" name="Barra" class=" xm-btncreate is-block"
-                (click)="openModalForm(modalForm,createBarra)">
+            <button #createBarra id="createBarra" name="Barra" class=" xm-btncreate is-block" (click)="openModalForm(modalForm,createBarra)">
                 Barra
             </button>
-            <button #createBahiaSeccionamiento id="createBahiaSeccionamiento" name="Bahia Seccionamiento"
-                class=" xm-btncreate is-block" (click)="openModalForm(modalForm,createBahiaSeccionamiento)">
+            <button #createBahiaSeccionamiento id="createBahiaSeccionamiento" name="Bahia Seccionamiento" class=" xm-btncreate is-block" (click)="openModalForm(modalForm,createBahiaSeccionamiento)">
                 Bahías seccionamiento
             </button>
-            <button #createBahiaAcople id="createBahiaAcople" name="Bahia Acople" class=" xm-btncreate is-block"
-                (click)="openModalForm(modalForm,createBahiaAcople)">
+            <button #createBahiaAcople id="createBahiaAcople" name="Bahia Acople" class=" xm-btncreate is-block" (click)="openModalForm(modalForm,createBahiaAcople)">
                 Bahías Acople
             </button>
-            <button #createBahiaCorte id="createBahiaCorte" name="Bahia Corte" class=" xm-btncreate is-block"
-                (click)="openModalForm(modalForm,createBahiaCorte)">
+            <button #createBahiaCorte id="createBahiaCorte" name="Bahia Corte" class=" xm-btncreate is-block" (click)="openModalForm(modalForm,createBahiaCorte)">
                 Bahías Corte central
             </button>
-            <button #createBahiaTransferencia id="createBahiaTransferencia" name="Bahia Transferencia"
-                class=" xm-btncreate is-block" (click)="openModalForm(modalForm,createBahiaTransferencia)">
+            <button #createBahiaTransferencia id="createBahiaTransferencia" name="Bahia Transferencia" class=" xm-btncreate is-block" (click)="openModalForm(modalForm,createBahiaTransferencia)">
                 Bahías Transferencia
             </button>
         </ng-template>
         <ng-template #popTitle></ng-template>
-        <button type="button" class="xm-btn xm-btnprimary is-block" [ngbPopover]="popContent" [popoverTitle]="popTitle"
-            placement="left">
+        <button type="button" class="xm-btn xm-btnprimary is-block" [ngbPopover]="popContent" [popoverTitle]="popTitle" placement="left">
             Crear activos
         </button>
     </ng-template>
 </div>
 
 <ng-template #modalForm let-modal>
-    <div class="modal-header">
+    <div class="modal-header2">
         <div class="row row w-100">
             <div class="col-md-6 col-6">
                 <h4 class="modal-title" id="modal-basic-title">Parámetros {{ tittle }}</h4>
             </div>
 
             <div class="col-md-5 col-5">
-                <ng-select id="formSearchId" class="select-from-search form-control" placeholder="Buscador de Campos"
-                    [items]="controlsForm" *ngIf="controlsForm.length != 0" bindLabel="name" [loading]="!controlsForm" (change)="selectInput($event)">
+                <ng-select id="formSearchId" class="select-from-search form-control" placeholder="Buscador de Campos" [items]="controlsForm" *ngIf="controlsForm.length != 0" bindLabel="name" [loading]="!controlsForm" (change)="selectInput($event)">
                     <ng-template ng-option-tmp let-item="item" let-index="index">
                         {{item.name}}
                     </ng-template>
@@ -70,44 +61,24 @@
         <!-- Orquestador de Fromulario de Transmisión -->
 
         <!-- Componentes de Creación de Subestacion-->
-        <app-subestacion-crear 
-            *ngIf="component === 'app-subestacion-crear' && subAsset === 'createSubestacion'"
-            [subestacionForm]='form' 
-            [project]='project' 
-            [object]='object' 
-            [ngbTabset]='ngbTabset'
-            [flagButtonView]="flagButtonView"
-            (formControls)='onControls($event)'>
+        <app-subestacion-crear *ngIf="component === 'app-subestacion-crear' && subAsset === 'createSubestacion'" [subestacionForm]='form' [project]='project' [object]='object' [ngbTabset]='ngbTabset' [flagButtonView]="flagButtonView" (formControls)='onControls($event)'>
         </app-subestacion-crear>
 
-        <app-barra-crear 
-            *ngIf="component === 'app-subestacion-crear' && subAsset === 'createBarra'" 
-            [barraForm]='form'
-            [project]='project' 
-            [object]='object'
-            [ngbTabset]='ngbTabset'          
-            [flagButtonView]="flagButtonView"
-            (formControls)='onControls($event)' >
+        <app-barra-crear *ngIf="component === 'app-subestacion-crear' && subAsset === 'createBarra'" [barraForm]='form' [project]='project' [object]='object' [ngbTabset]='ngbTabset' [flagButtonView]="flagButtonView" (formControls)='onControls($event)'>
 
         </app-barra-crear>
 
         <!-- OJO FALTA OBJECT-->
-        <app-bahia-seccionamiento-crear
-            *ngIf="component === 'app-subestacion-crear' && subAsset === 'createBahiaSeccionamiento'"
-            [bahiaSeccionamientoForm]='form'>
+        <app-bahia-seccionamiento-crear *ngIf="component === 'app-subestacion-crear' && subAsset === 'createBahiaSeccionamiento'" [bahiaSeccionamientoForm]='form'>
         </app-bahia-seccionamiento-crear>
         <!-- OJO FALTA OBJECT-->
-        <app-bahia-acople-crear *ngIf="component === 'app-subestacion-crear'  && subAsset === 'createBahiaAcople'"
-            [bahiaAcopleForm]='form'>
+        <app-bahia-acople-crear *ngIf="component === 'app-subestacion-crear'  && subAsset === 'createBahiaAcople'" [bahiaAcopleForm]='form'>
         </app-bahia-acople-crear>
         <!-- OJO FALTA OBJECT-->
-        <app-bahia-corte-central-crear *ngIf="component === 'app-subestacion-crear'  && subAsset === 'createBahiaCorte'"
-            [bahiaCorteCentralForm]='form'>
+        <app-bahia-corte-central-crear *ngIf="component === 'app-subestacion-crear'  && subAsset === 'createBahiaCorte'" [bahiaCorteCentralForm]='form'>
         </app-bahia-corte-central-crear>
         <!-- OJO FALTA OBJECT-->
-        <app-bahia-transferencia-crear
-            *ngIf="component === 'app-subestacion-crear'  && subAsset === 'createBahiaTransferencia'"
-            [bahiaTransferenciaForm]='form'>
+        <app-bahia-transferencia-crear *ngIf="component === 'app-subestacion-crear'  && subAsset === 'createBahiaTransferencia'" [bahiaTransferenciaForm]='form'>
         </app-bahia-transferencia-crear>
         <!-- Fin de creacion de componentes de subestacion-->
 
@@ -127,46 +98,28 @@
             </div>
 
             <div class="col-md-4">
-                <button 
-                    id="beforeTab" 
-                    class="xm-btn xm-btnsecondary xm-modal-before float-left"
-                    *ngIf="ngbTabset != mapFormGroups[0]" 
-                    (click)=toTabModal($event.target)>
+                <button id="beforeTab" class="xm-btn xm-btnsecondary xm-modal-before float-left" *ngIf="ngbTabset != mapFormGroups[0]" (click)=toTabModal($event.target)>
                     <i _ngcontent-der-c0="" class="material-icons xm-before-icon">navigate_before</i>
                     Anterior
                 </button>
-                <button 
-                    id="nextTab" 
-                    class="xm-btn xm-btnsecondary xm-modal-next" 
-                    *ngIf="ngbTabset != mapFormGroups[mapFormGroups.length-1]"
-                    (click)=toTabModal($event.target)>
+                <button id="nextTab" class="xm-btn xm-btnsecondary xm-modal-next" *ngIf="ngbTabset != mapFormGroups[mapFormGroups.length-1]" (click)=toTabModal($event.target)>
                     Siguiente
                     <i _ngcontent-der-c0="" class="material-icons next-icon">navigate_next</i>
                 </button>
             </div>
 
             <div class="col-md-4">
-                <button 
-                    *ngIf="flagButton" 
-                    type="submit" 
-                    class="xm-btn xm-btnsecondary xm-modal-submit float-rigth"
-                    [ngClass]="{'btn-disabled':bottonValid}"
-                    [disabled]="bottonValid"
-                    (click)="onSubmit(modal,'save')">
+                <button *ngIf="flagButton" type="submit" class="xm-btn xm-btnsecondary xm-modal-submit float-rigth" [ngClass]="{'btn-disabled':bottonValid}" [disabled]="bottonValid" (click)="onSubmit(modal,'save')">
                     <i _ngcontent-der-c0="" class="material-icons">save</i>
                     Guardar
                 </button>
 
                 <!-- Boton solo para solicitud de cambio -->
-                <button *ngIf="!flagButtonView || !flagButton" type="button" class="xm-btn xm-btnterciary"
-                    (click)="modalFormclose(modal)">
+                <button *ngIf="!flagButtonView || !flagButton" type="button" class="xm-btn xm-btnterciary" (click)="modalFormclose(modal)">
                     Cancelar
                 </button>
 
-                <button 
-                    *ngIf="!flagButtonView" 
-                    [ngClass]="{'btn-disabled':requestChangeValid()}" type="submit"
-                    class="xm-btn xm-btnprimary xm-modal-submit" (click)="onSubmit(modal,'save')">
+                <button *ngIf="!flagButtonView" [ngClass]="{'btn-disabled':requestChangeValid()}" type="submit" class="xm-btn xm-btnprimary xm-modal-submit" (click)="onSubmit(modal,'save')">
                     Solicitar Cambio
                 </button>
 

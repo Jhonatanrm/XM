@@ -1,41 +1,32 @@
 <div class="modal-header">
-  <div class="text-center w-100">
-    <h5>{{titleModal}}</h5>
-  </div>
+    <div class="text-center w-100">
+        <h5>{{titleModal}}</h5>
+    </div>
 </div>
 <div class="modal-body">
-  <form novalidate #stateForm="ngForm">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="justification">Justificación:</label>
-          <textarea id="justification"
-                    class="form-control"
-                    rows="6"
-                    name="justification"
-                    #justificationVar="ngModel"
-                    [(ngModel)]="justification"
-                    [ngClass]="{ 'is-invalid': justificationVar.touched && justificationVar.errors?.required }"
-                    required
-          ></textarea>
-          <span class="invalid-feedback">
+    <form novalidate #stateForm="ngForm">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="justification">Justificación:</label>
+                    <textarea id="justification" class="form-control" rows="6" name="justification" #justificationVar="ngModel" [(ngModel)]="justification" [ngClass]="{ 'is-invalid': justificationVar.touched && justificationVar.errors?.required }" required></textarea>
+                    <span class="invalid-feedback">
                 <!--<span *ngIf="justificationVar.errors?.required">
                     El campo es requerido.
                 </span>-->
-            </span>
+                    </span>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </form>
+    </form>
 </div>
 <div class="modal-footer">
-  <div class="d-flex w-50">
-    <button  type="button" class="xm-btn xm-btnsecondary mr-3">
+    <div class="d-flex w-50">
+        <button type="button" class="xm-btn xm-btnsecondary mr-3">
       Cancelar
     </button>
-    <button  [disabled]="stateForm.invalid"
-            type="button" class="xm-btn xm-btnprimary">
+        <button [disabled]="stateForm.invalid" type="button" class="xm-btn xm-btnprimary">
       Enviar
     </button>
-  </div>
+    </div>
 </div>
