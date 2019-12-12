@@ -471,7 +471,6 @@
     font-size: 14px;
     font-weight: 700;
     color: #75787b;
-    margin-bottom: 40px;
     /* width: 100%;
      margin-top: 30px; */
    
@@ -559,7 +558,7 @@ label {
     font-size: 14px;
     font-weight: 700;
     color: #75787b;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
     width: 100%;
     
 }
@@ -937,7 +936,7 @@ textarea[id="exampleFormControlTextarea2"] {
 }
 
 .check-container {
-    margin-top: 25px;
+    margin-top: 30px;
 }
 
 .i-stage {
