@@ -68,6 +68,7 @@
     -webkit-box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
     box-shadow: inset -1px 0 0 rgba(0, 0, 0, 0.1);
     background-color: white;
+    width: 17%;
 }
 
 .xm-navleft .xm-logo {
@@ -78,10 +79,6 @@
     margin-top: 2px;
     padding-bottom: 4px;
     border-bottom: 1px solid #c7c7c75e;
-}
-
-.xm-navleft .xm-logo img {
-    width: 35%;
 }
 
 .xm-navleft .xm-icoaside {
@@ -170,7 +167,7 @@
 
 .xm-navleft .xm-collapse .xm-collapseiteminter li a {
     background-color: #F8F8F8;
-    padding: 20px 40px;
+    padding: 20px 55px;
     display: block;
     text-decoration: none;
     font-size: 13px;
@@ -247,12 +244,7 @@
     margin: 0;
     padding: 0;
     background-color: transparent;
-}
-
-.xm-topbar .breadcrumb {
-    margin: 0;
-    padding: 0;
-    background-color: transparent;
+    float: left;
 }
 
 .xm-topbar .breadcrumb .breadcrumb-item {
@@ -1097,13 +1089,10 @@ button.col-md-6.col-sm-6.xm-btninvi h6:before {
     padding: 20px 17px;
 }
 
-
-
 .table thead th {
     vertical-align: middle;
     border-bottom: 2px solid #dee2e6;
 }
-
 
 .table td,
 .table th {
@@ -1112,8 +1101,6 @@ button.col-md-6.col-sm-6.xm-btninvi h6:before {
     border-top: 1px solid #dee2e6;
     font-size: 15px;
 }
-
-
 
 .form--check-label-label {
     font-weight: 400;
@@ -1518,7 +1505,6 @@ article,
 aside,
 figcaption,
 figure,
-footer,
 header,
 hgroup,
 main,
@@ -1679,7 +1665,6 @@ svg {
     overflow: hidden;
     vertical-align: middle;
 }
-
 
 table {
     border-collapse: collapse;
@@ -12436,7 +12421,6 @@ details,
 embed,
 figure,
 figcaption,
-footer,
 header,
 hgroup,
 menu,
@@ -12627,7 +12611,7 @@ ul.xm-collapseiteminter li a {
 }
 
 ul.xm-collapseiteminter li {
-    padding: 20px 20px 20px 33%;
+    padding: 0;
     border-bottom: solid 1px #440099;
 }
 
@@ -12926,14 +12910,6 @@ th .xm-icodown {
     align-items: center;
     color: #f9f9f9;
     text-decoration: none;
-}
-
-footer {
-    border-top: 2px solid #440099;
-    display: block;
-    padding: 30px;
-    margin: 0px;
-    font-weight: 300;
 }
 
 footer p {
@@ -13377,7 +13353,6 @@ details,
 embed,
 figure,
 figcaption,
-footer,
 header,
 hgroup,
 menu,
