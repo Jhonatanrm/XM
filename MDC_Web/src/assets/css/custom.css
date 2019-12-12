@@ -571,12 +571,6 @@ label {
     font-weight: 700;
 }
 
-.xm-labels {
-    font-size: 14px;
-    font-weight: 700;
-    color: #75787B;
-    margin-bottom: 10px;
-}
 
 .xm-labels {
     font-size: 14px;
@@ -585,7 +579,6 @@ label {
     margin-bottom: 40px;
     width: 100%;
     padding-left: 15px;
-    margin-top: 30px;
 }
 
 .xm-cards {
@@ -1100,6 +1093,7 @@ button.col-md-6.col-sm-6.xm-btninvi h6:before {
     vertical-align: top;
     border-top: 1px solid #dee2e6;
     font-size: 15px;
+    color: #7E7E7E;
 }
 
 .form--check-label-label {
@@ -1301,11 +1295,11 @@ span.input-group-text {
 }
 
 .xm-btnrequi {
-    color: #DDD6D6;
+    color:#ddd6d6;
     margin: 0;
     white-space: nowrap;
-    background: none;
-    border-color: #DDD6D6;
+    background: 0 0;
+    border-color:#ddd6d6;
     border-radius: 0;
     min-width: 100px;
     min-height: 50px;
@@ -1325,11 +1319,6 @@ span.input-group-text {
     font-weight: 900;
 }
 
-.btn-primary:hover {
-    color: #fff;
-    background-color: #0069d9;
-    border-color: #0062cc;
-}
 
 .btn-primary:not(:disabled):not(.disabled).active,
 .btn-primary:not(:disabled):not(.disabled):active,
@@ -3572,7 +3561,7 @@ table {
 
 .form-control:disabled,
 .form-control[readonly] {
-    background-color: #e9ecef;
+    background-color: #fff;
     opacity: 1;
 }
 
@@ -4095,7 +4084,7 @@ textarea.form-control.is-invalid {
 .btn {
     display: inline-block;
     font-weight: 400;
-    color: #212529;
+    
     text-align: center;
     vertical-align: middle;
     -webkit-user-select: none;
@@ -4103,11 +4092,11 @@ textarea.form-control.is-invalid {
     -ms-user-select: none;
     user-select: none;
     background-color: transparent;
-    border: 1px solid transparent;
+
     padding: 0.375rem 0.75rem;
     font-size: 1rem;
     line-height: 1.5;
-    border-radius: 0.25rem;
+ 
     -webkit-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, -webkit-box-shadow 0.15s ease-in-out;
     -o-transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -4123,10 +4112,6 @@ textarea.form-control.is-invalid {
     }
 }
 
-.btn:hover {
-    color: #212529;
-    text-decoration: none;
-}
 
 .btn.focus,
 .btn:focus {
@@ -4145,39 +4130,7 @@ fieldset:disabled a.btn {
     pointer-events: none;
 }
 
-.btn-primary {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
 
-.btn-primary.focus,
-.btn-primary:focus {
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-}
-
-.btn-primary.disabled,
-.btn-primary:disabled {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-}
-
-.btn-primary:not(:disabled):not(.disabled).active,
-.btn-primary:not(:disabled):not(.disabled):active,
-.show>.btn-primary.dropdown-toggle {
-    color: #fff;
-    background-color: #0062cc;
-    border-color: #005cbf;
-}
-
-.btn-primary:not(:disabled):not(.disabled).active:focus,
-.btn-primary:not(:disabled):not(.disabled):active:focus,
-.show>.btn-primary.dropdown-toggle:focus {
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.5);
-}
 
 .btn-secondary {
     color: #fff;
@@ -6807,6 +6760,7 @@ input[type="submit"].btn-block {
     padding-left: 0;
     list-style: none;
     border-radius: 0.25rem;
+    align-items: center;
 }
 
 .page-link {
@@ -6839,11 +6793,15 @@ input[type="submit"].btn-block {
     margin-left: 0;
     border-top-left-radius: 0.25rem;
     border-bottom-left-radius: 0.25rem;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .page-item:last-child .page-link {
     border-top-right-radius: 0.25rem;
     border-bottom-right-radius: 0.25rem;
+    font-weight: bold;
+    font-size: 25px;
 }
 
 .page-item.active .page-link {
@@ -6851,6 +6809,7 @@ input[type="submit"].btn-block {
     color: #fff;
     background-color: #ff6a13;
     border-color: #ff6a13;
+    line-height: 20px;
 }
 
 .page-item.disabled .page-link {
@@ -12324,11 +12283,11 @@ a.text-dark:hover {
     }
     .table {
         border-collapse: collapse !important;
+        overflow-x: scroll;
+        display: block;
     }
-    .table td,
-    .table th {
-        background-color: #fff !important;
-    }
+ 
+
     .table-bordered td,
     .table-bordered th {
         border: 1px solid #dee2e6 !important;
@@ -12632,11 +12591,6 @@ ul.xm-collapseiteminter li:hover {
     margin-right: 40px;
 }
 
-.btn-group {
-    width: 100% !important;
-    border-bottom: solid 2px #75787b;
-}
-
 
 /*Checkboxes styles*/
 
@@ -12912,6 +12866,18 @@ th .xm-icodown {
     text-decoration: none;
 }
 
+<<<<<<< HEAD
+=======
+footer {
+    border-top: 2px solid #440099 !important;
+    display: block !important;
+    padding: 30px !important;
+margin-top: 20px !important;
+    font-weight: 300 !important;
+
+}
+
+>>>>>>> fb7227b8abbc64ed4535ba5373d97b6f4d760b4f
 footer p {
     color: #440099;
 }
@@ -13021,6 +12987,7 @@ a:hover main .xm-proyecc {
     background-color: #fe691361;
     border-color: #f5f4f4;
     border-radius: 30px;
+    line-height: 20px;
 }
 
 .filtros-table {
@@ -13411,8 +13378,7 @@ table tr:nth-child(2n) {
 }
 
 table tr:hover td {
-    background-color: #440099 !important;
-    opacity: 40%;
+    background-color: #DFC5FF ;
     color: #fafafa;
 }
 
@@ -13918,8 +13884,19 @@ table tr:hover td {
     }
     .btn-disabled {
         cursor: no-drop !important;
-        background-color: gainsboro !important;
+        background-color: transparent;
+        border-color: #C4C4C4;
+        color: #929090;
     }
+
+    .btn-disabled:hover{
+        cursor: no-drop !important;
+        background-color: transparent;
+        border-color: #C4C4C4;
+        color: #929090;
+    }
+
+
     .xm-btn.xm-btnsecondary.xm-modal-submit.btn-disabled {
         background-color: transparent !important;
     }
@@ -13989,3 +13966,24 @@ table tr:hover td {
         border-width: 0px 0px 3px;
     }
 }
+
+/*  codigo agregado Daniel */
+
+/*  pagination */
+
+.page-item.disabled.ng-star-inserted{
+    font-weight: bold;
+    font-size: 25px;
+  }
+
+  .btn-day-stand-out, .btn-primary:hover{
+    color:#409;
+    border-color: #409;
+    background: 0 0;
+    font-size: 25px;
+    font-weight: 900;
+  }
+  
+  .btn.btn-primary.xm-btnrequi span{
+      display: block;
+  }
