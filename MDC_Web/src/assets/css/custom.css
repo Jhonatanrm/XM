@@ -647,6 +647,7 @@ label {
     padding: 20px;
     background-color: white;
     height: 100%;
+    width: ;
 }
 
 .xm-cards .xm-cardform {
@@ -902,12 +903,12 @@ textarea[id="exampleFormControlTextarea2"] {
 .xm-contentform .material-icons {
     color: #CBCBCB;
     right: -10px;
-    position: absolute ;
+    position: inherit ;
 }
 
 .xm-labels .material-icons {
     color: #CBCBCB;
-    position: relative;
+    position: inherit;
     margin-left: 10px;
 }
 
@@ -12987,7 +12988,7 @@ a:hover main .xm-proyecc {
 color: #FF6A13;
 }
 
-.nav-tabs .nav-item span.active{
+.nav-tabs .nav-item.active a span{
     color: #FF6A13;
     }
 
@@ -13716,6 +13717,16 @@ table tr:hover td {
     li.nav-item a.nav-link:hover .modal-tab-icon {
         color: #ff6a13;
     }
+    li.nav-item a.nav-link.active span{
+        color: #FF6A13;
+        font-weight: bolder;
+    }
+
+    li.nav-item a.nav-link .modal-tab-icon{
+        margin-right: 10px;
+    }
+
+
     #formSearchId {
         border-bottom: 1px solid transparent;
         /*
@@ -13967,3 +13978,4 @@ table tr:hover td {
 .xm-franjabottom {
     background-color: #fbf5ff;
 }
+
