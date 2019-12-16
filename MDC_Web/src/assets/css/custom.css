@@ -13985,3 +13985,8 @@ table tr:hover td {
     background-color: #fbf5ff;
 }
 
+.modal ul.nav-tabs{
+    background: #f8f8f8;
+    justify-content: center !important;
+}
+
