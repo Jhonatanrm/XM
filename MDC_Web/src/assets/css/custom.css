@@ -13579,12 +13579,12 @@ table tr:hover td {
         -webkit-appearance: none;
     }
     .tabs-form-beauty .tab-content .material-icons {
-        right: 10px !important;
+       
         bottom: auto !important;
         top: 5px;
     }
     .tabs-form-beauty .tab-content .xm-cards .material-icons {
-        right: 15px !important;
+        
         bottom: auto !important;
         top: 5px;
     }
@@ -13913,6 +13913,9 @@ table tr:hover td {
         display: flex;
         float: right;
         color: #cbcbcb;
+        padding-top: 10px;
+        padding-right: 10px;
+        
     }
     .file-bottom-container2 .xm-btnprimary {
         background-color: #ff6a13 !important;
