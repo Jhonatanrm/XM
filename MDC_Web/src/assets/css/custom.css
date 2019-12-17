@@ -1091,13 +1091,6 @@ button.col-md-6.col-sm-6.xm-btninvi h6:before {
     margin-top: -5px;
 }
 
-.custom-control.custom-radio label:after {
-    margin-top: -5px;
-}
-
-.custom-control.custom-radio label:before {
-    margin-top: -5px;
-}
 
 .custom-control.custom-radio label:before {
     margin-top: -5px;
@@ -1107,12 +1100,6 @@ button.col-md-6.col-sm-6.xm-btninvi h6:before {
     color: #fff;
     border-color: #440099;
     background-color: #440099;
-}
-
-.custom-control-input:checked~.custom-control-label::before {
-    color: #fff;
-    border-color: #007bff;
-    background-color: #007bff;
 }
 
 .custom-control-input:checked~.custom-control-label::before {
