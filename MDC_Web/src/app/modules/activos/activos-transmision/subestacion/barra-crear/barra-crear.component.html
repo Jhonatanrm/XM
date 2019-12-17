@@ -436,9 +436,8 @@
                                     <div class="col-md-4">
                                         <ng-template #versionToolTip class="tool-tip">Consecutivo de la versión del objeto
                                         </ng-template>
-                                        <i class="material-icons" placement="top" [ngbTooltip]="versionToolTip">help_outline</i>
                                         <div class="read-input">
-                                            <label>Versión:</label>
+                                            <label>Versión: <i class="material-icons" placement="top" [ngbTooltip]="versionToolTip">help_outline</i></label>
                                             <input class="form-control" type="text" readonly value="{{ assetVersion }}">
                                         </div>
                                     </div>
@@ -446,10 +445,9 @@
                                     <div class="col-md-4">
                                         <ng-template #dateStartToolTip class="tool-tip">Fecha inicio vigencia
                                         </ng-template>
-                                        <i class="material-icons" placement="top" [ngbTooltip]="dateStartToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
-                                                Fecha inicio:
+                                                Fecha inicio:<i class="material-icons" placement="top" [ngbTooltip]="dateStartToolTip">help_outline</i>
                                             </label>
                                             <input class="form-control" type="text" readonly value="{{project.version.validFrom.slice(0, project.version.validFrom.indexOf('T'))}}">
                                         </div>
@@ -458,10 +456,9 @@
                                     <div class="col-md-4">
                                         <ng-template #dateEndToolTip class="tool-tip">Fecha fin vigencia
                                         </ng-template>
-                                        <i class="material-icons" placement="top" [ngbTooltip]="dateEndToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
-                                                Fecha fin:
+                                                Fecha fin: <i class="material-icons" placement="top" [ngbTooltip]="dateEndToolTip">help_outline</i>
                                             </label>
                                             <input class="form-control" type="text" readonly value="{{project.version.validTo.slice(0, project.version.validTo.indexOf('T'))}}">
                                         </div>
@@ -473,10 +470,9 @@
                                         <ng-template #estadoToolTip class="tool-tip">
                                             Estado
                                         </ng-template>
-                                        <i class="material-icons" placement="top" [ngbTooltip]="estadoToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
-                                                Estado:
+                                                Estado:<i class="material-icons" placement="top" [ngbTooltip]="estadoToolTip">help_outline</i>
                                             </label>
                                             <input class="form-control" type="text" readonly value="{{ assetState }}">
                                         </div>
@@ -485,10 +481,9 @@
                                     <div class="col-md-4">
                                         <ng-template #dateFPOToolTip class="tool-tip">Fecha de energización
                                         </ng-template>
-                                        <i class="material-icons" placement="top" [ngbTooltip]="dateFPOToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
-                                                Fecha de energización:
+                                                Fecha de energización: <i class="material-icons" placement="top" [ngbTooltip]="dateFPOToolTip">help_outline</i>
                                             </label>
                                             <input class="form-control" type="text" readonly value="{{ energizedOn }}">
                                         </div>
@@ -497,10 +492,9 @@
                                     <div class="col-md-4">
                                         <ng-template #dateFPOToolTip class="tool-tip">Fecha de entrada operación
                                         </ng-template>
-                                        <i class="material-icons" placement="top" [ngbTooltip]="dateFPOToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
-                                                Fecha puesta en operación (FPO):
+                                                Fecha puesta en operación (FPO):<i class="material-icons" placement="top" [ngbTooltip]="dateFPOToolTip">help_outline</i>
                                             </label>
                                             <input class="form-control" type="text" readonly value="{{ projectFpo }}">
                                         </div>
@@ -511,8 +505,7 @@
                                     <div class="col-md-8">
                                         <ng-template #observacionesToolTip class="tool-tip">Comentario con respecto al cambio de version
                                         </ng-template>
-                                        <i class="material-icons" placement="top" [ngbTooltip]="observacionesToolTip">help_outline</i>
-                                        <label>Observaciones</label>
+                                        <label>Observaciones <i class="material-icons" placement="top" [ngbTooltip]="observacionesToolTip">help_outline</i></label>
                                         <textarea rows="3" id="versionCommentsId" class="form-control" placeholder="" formControlName="versionComments" [ngClass]="validate.getValidClassNoRequire(barraForm,'Vigencia','versionComments')">
                                     </textarea>
                                         <app-validate [form]="barraForm" [group]="'Vigencia'" [name]="'versionComments'" [switch]="'required'"></app-validate>
@@ -524,10 +517,9 @@
                 </ngb-tab>
                 <ngb-tab id="Justificacion" *ngIf="controlRequestChange">
                     <ng-template ngbTabTitle>
-                        <i class="material-icons modal-tab-icon">
+                        <span class="form-control tab-control-valid">Justificación <i class="material-icons modal-tab-icon">
                             insert_chart_outlined
-                        </i>
-                        <span class="form-control tab-control-valid">Justificación</span>
+                        </i></span>
                         <span class="badge bolita-numero">3</span>
                     </ng-template>
                     <ng-template ngbTabContent>
@@ -539,8 +531,7 @@
                                         <ng-template #oservacionesToolTip class="tool-tip">
                                             Justificación para la solicitud de cambio
                                         </ng-template>
-                                        <i class="material-icons" placement="top" [ngbTooltip]="oservacionesToolTip">help_outline</i>
-                                        <label>Justificación*</label>
+                                        <label>Justificación* <i class="material-icons" placement="top" [ngbTooltip]="oservacionesToolTip">help_outline</i></label>
                                         <textarea rows="4" id="justificacionId" class="form-control" placeholder="" style="width: 100% !important;" formControlName="justificacion" [ngClass]="validate.getValidClass(barraForm,'Justificacion','justificacion',controlRequestChange)">
                                                 </textarea>
                                         <app-validate [form]="barraForm" [group]="'Justificacion'" [name]="'justificacion'" [switch]="'required'"></app-validate>

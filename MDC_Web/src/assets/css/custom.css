@@ -551,9 +551,10 @@
 label {
     display: inline-block;
     margin-bottom: 0.5rem;
-    font-size: 16px;
+    font-size: 14px;
     color: #75787b;
     font-weight: 700;
+    margin-bottom: 5px !important;
 }
 
 .xm-labels {
