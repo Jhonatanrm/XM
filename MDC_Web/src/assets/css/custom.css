@@ -973,6 +973,7 @@ th .i-flechita {
 
 .xm-table {
     padding-left: 0px;
+    overflow-x: scroll;
 }
 
 

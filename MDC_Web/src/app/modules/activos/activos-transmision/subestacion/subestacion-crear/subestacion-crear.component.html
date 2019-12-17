@@ -262,10 +262,9 @@
                                                         </ng-template>
                                                         <label
                                                             [ngClass]="requestChangeParameterSub('datosTecnicos',i,'VoltageLevelKind')">Tensión
-                                                            nominal de operación (kV)</label>
-                                                        <i class="material-icons" placement="top"
+                                                            nominal de operación (kV)<i class="material-icons" placement="top"
                                                             [ngbTooltip]="nivelTensionToolTip"
-                                                            [ngClass]="requestChangeParameterSub('datosTecnicos',i,'VoltageLevelKind')">help_outline</i>
+                                                            [ngClass]="requestChangeParameterSub('datosTecnicos',i,'VoltageLevelKind')">help_outline</i></label>
                                                         <div class="xm-input-append">
                                                             <ng-select id="SubstationConfigurationKindId"
                                                                 class="select-ng-from-control form-control"
@@ -294,9 +293,8 @@
                                                             de corto circuito de diseño del nivel de tensión de la
                                                             subestación.
                                                         </ng-template>
-                                                        <label>Capacidad corto circuito (kA)</label>
-                                                        <i class="material-icons" placement="top"
-                                                            [ngbTooltip]="capadidadCortoToolTip">help_outline</i>
+                                                        <label>Capacidad corto circuito (kA)<i class="material-icons" placement="top"
+                                                            [ngbTooltip]="capadidadCortoToolTip">help_outline</i></label>
                                                         <input type="text" id="shortCircuitCapacityId" placeholder="kA"
                                                             class="form-control" formControlName="shortCircuitCapacity"
                                                             [readonly]="true">
@@ -478,10 +476,9 @@
                                         <ng-template #versionToolTip class="tool-tip">Consecutivo de la versión del
                                             objeto
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="versionToolTip">help_outline</i>
                                         <div class="read-input">
-                                            <label>Versión:</label>
+                                            <label>Versión:<i class="material-icons" placement="top"
+                                                [ngbTooltip]="versionToolTip">help_outline</i></label>
                                             <input class="form-control" type="text" readonly value="{{ assetVersion }}">
                                         </div>
                                     </div>
@@ -489,11 +486,10 @@
                                     <div class="col-md-6">
                                         <ng-template #dateStartToolTip class="tool-tip">Fecha inicio vigencia
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="dateStartToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
-                                                Fecha inicio:
+                                                Fecha inicio:<i class="material-icons" placement="top"
+                                                [ngbTooltip]="dateStartToolTip">help_outline</i>
                                             </label>
                                             <input class="form-control" type="text" readonly
                                                 value="{{project.version.validFrom.slice(0, project.version.validFrom.indexOf('T'))}}">
@@ -504,11 +500,10 @@
                                     <div class="col-md-6">
                                         <ng-template #dateEndToolTip class="tool-tip">Fecha fin vigencia
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="dateEndToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
-                                                Fecha fin:
+                                                Fecha fin:<i class="material-icons" placement="top"
+                                                [ngbTooltip]="dateEndToolTip">help_outline</i>
                                             </label>
                                             <input class="form-control" type="text" readonly
                                                 value="{{project.version.validTo.slice(0, project.version.validTo.indexOf('T'))}}">
@@ -517,11 +512,10 @@
                                     <div class="col-md-6">
                                         <ng-template #dateFPOToolTip class="tool-tip">Fecha de entrada operación
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="dateFPOToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
-                                                Fecha puesta en operación (FPO):
+                                                Fecha puesta en operación (FPO):<i class="material-icons" placement="top"
+                                                [ngbTooltip]="dateFPOToolTip">help_outline</i>
                                             </label>
                                             <input class="form-control" type="text" readonly value="{{ projectFpo }}">
                                         </div>
@@ -532,11 +526,10 @@
                                         <ng-template #estadoToolTip class="tool-tip">
                                             Estado
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="estadoToolTip">help_outline</i>
                                         <div class="read-input">
                                             <label>
-                                                Estado:
+                                                Estado:<i class="material-icons" placement="top"
+                                                [ngbTooltip]="estadoToolTip">help_outline</i>
                                             </label>
                                             <input class="form-control" type="text" readonly value="{{ assetState }}">
                                         </div>
@@ -547,9 +540,8 @@
                                             cambio
                                             de version
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="oservacionesToolTip">help_outline</i>
-                                        <label>Observaciones</label>
+                                        <label>Observaciones <i class="material-icons" placement="top"
+                                            [ngbTooltip]="oservacionesToolTip">help_outline</i></label>
                                         <textarea rows="3" id="versionCommentsId" class="form-control" placeholder=""
                                             formControlName="versionComments">
                                         </textarea>
@@ -561,10 +553,9 @@
                 </ngb-tab>
                 <ngb-tab id="Justificacion" *ngIf="controlRequestChange">
                     <ng-template ngbTabTitle>
-                        <i class="material-icons modal-tab-icon">
+                        <span class="form-control tab-control-valid">Justificación<i class="material-icons modal-tab-icon">
                             insert_chart_outlined
-                        </i>
-                        <span class="form-control tab-control-valid">Justificación</span>
+                        </i></span>
                         <span class="badge bolita-numero">3</span>
                     </ng-template>
                     <ng-template ngbTabContent>
@@ -575,9 +566,8 @@
                                         <ng-template #oservacionesToolTip class="tool-tip">
                                             Justificación para la solicitud de cambio
                                         </ng-template>
-                                        <i class="material-icons" placement="top"
-                                            [ngbTooltip]="oservacionesToolTip">help_outline</i>
-                                        <label>Justificación*</label>
+                                        <label>Justificación*<i class="material-icons" placement="top"
+                                            [ngbTooltip]="oservacionesToolTip">help_outline</i></label>
                                         <textarea rows="4" id="justificacionId" class="form-control" placeholder=""
                                             formControlName="justificacion"
                                             [ngClass]="validate.getValidClass(subestacionForm,'Justificacion','justificacion',controlRequestChange)">
