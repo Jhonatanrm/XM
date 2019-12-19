@@ -1,18 +1,9 @@
-<div class="row">
+<div class="row align-items-center">
     <div class="col-md-3">
         <h6>Estado del requerimiento:</h6>
     </div>
     <div class="col-md-3">
-        <ng-select 
-            id="XMstatesRequirementId"
-            [clearable]="false"
-            class="select-ng-from-control form-control" 
-            placeholder=""
-            [items]="states" 
-            [(ngModel)]="selectedItem" 
-            bindLabel="detailValue" 
-            [loading]="!states"
-            (change)="onSelectChange($event)">
+        <ng-select id="XMstatesRequirementId" [clearable]="false" class="select-ng-from-control form-control" placeholder="" [items]="states" [(ngModel)]="selectedItem" bindLabel="detailValue" [loading]="!states" (change)="onSelectChange($event)">
             <ng-template ng-option-tmp #selectedState let-item="item" let-index="index">
                 {{item.detailValue | lowercaseFormsPipe}}
             </ng-template>
