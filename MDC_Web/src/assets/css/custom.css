@@ -13966,3 +13966,8 @@ table tr:hover td {
     background: #f8f8f8;
     justify-content: center !important;
 }
+
+.tabla-firs-col-center table tr td:first-child{
+    text-align: center
+    ;
+}
