@@ -13970,3 +13970,7 @@ table tr:hover td {
 .tabla-firs-col-center table tr td:first-child{
     text-align: cente;
 }
+
+#XMstatesRequirementId{
+    margin-left: -115px;
+}
