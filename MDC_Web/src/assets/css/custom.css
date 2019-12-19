@@ -183,11 +183,11 @@
     color: #f9f9f9;
 }
 
-.xm-navleft a:hover {
+div#heading1:hover,
+div#heading3:hover {
     background-color: #FAF5FF;
     border-left: 5px solid rgba(68, 0, 153, 1);
     transition: all ease-in 200ms;
-    
 }
 
 .xm-navleftdeltil .xm-logo img {
@@ -460,11 +460,7 @@
 }
 
 .xm-forms .xm-contentform {
-    padding: 15px 30px;
-}
-
-.xm-forms .xm-contentform {
-    padding: 15px 30px;
+    padding: 0;
 }
 
 .xm-forms .xm-contentformbg {
@@ -905,7 +901,7 @@ textarea[id="exampleFormControlTextarea2"] {
 .xm-contentform .material-icons {
     color: #CBCBCB;
     right: -10px;
-    position: inherit ;
+    position: inherit;
 }
 
 .xm-labels .material-icons {
@@ -956,8 +952,6 @@ textarea[id="exampleFormControlTextarea2"] {
     color: #FF6A13;
     position: relative !important;
 }
-
-
 
 th .i-flechita {
     padding-left: 10px;
@@ -1090,7 +1084,6 @@ button.col-md-6.col-sm-6.xm-btninvi h6:before {
 .custom-control.custom-radio label:after {
     margin-top: -5px;
 }
-
 
 .custom-control.custom-radio label:before {
     margin-top: -5px;
@@ -3585,7 +3578,6 @@ select.form-control[multiple],
 select.form-control[size] {
     height: auto;
 }
-
 
 textarea.form-control {
     background-color: #fdfafa;
@@ -12976,13 +12968,13 @@ a:hover main .xm-proyecc {
     background-color: transparent;
 }
 
-.nav-tabs .nav-item:hover a span{
-color: #FF6A13;
+.nav-tabs .nav-item:hover a span {
+    color: #FF6A13;
 }
 
-.nav-tabs .nav-item.active a span{
+.nav-tabs .nav-item.active a span {
     color: #FF6A13;
-    }
+}
 
 .nav-tabs .nav-item a.active {
     color: #ff6a13;
@@ -13357,7 +13349,7 @@ table tr:nth-child(2n) {
 }
 
 table tr:hover td {
-    background-color: #FAF5FF ;
+    background-color: #FAF5FF;
     color: rgb(109, 109, 109);
     background-color: #DFC5FF;
     color: #fafafa;
@@ -13370,7 +13362,6 @@ table tr:hover td {
     .tabs-form-basic .nav.nav-tabs {
         /* margin-bottom: 25px; */
         padding-bottom: 15px;
-        
     }
     .tabs-form-basic .nav-tabs .nav-item {
         box-sizing: border-box;
@@ -13568,12 +13559,10 @@ table tr:hover td {
         -webkit-appearance: none;
     }
     .tabs-form-beauty .tab-content .material-icons {
-       
         bottom: auto !important;
         top: 5px;
     }
     .tabs-form-beauty .tab-content .xm-cards .material-icons {
-        
         bottom: auto !important;
         top: 5px;
     }
@@ -13712,16 +13701,13 @@ table tr:hover td {
     li.nav-item a.nav-link:hover .modal-tab-icon {
         color: #ff6a13;
     }
-    li.nav-item a.nav-link.active span{
+    li.nav-item a.nav-link.active span {
         color: #FF6A13;
         font-weight: bolder;
     }
-
-    li.nav-item a.nav-link .modal-tab-icon{
+    li.nav-item a.nav-link .modal-tab-icon {
         margin-right: 10px;
     }
-
-
     #formSearchId {
         border-bottom: 1px solid transparent;
         /*
@@ -13904,7 +13890,6 @@ table tr:hover td {
         color: #cbcbcb;
         padding-top: 10px;
         padding-right: 10px;
-        
     }
     .file-bottom-container2 .xm-btnprimary {
         background-color: #ff6a13 !important;
@@ -13977,8 +13962,7 @@ table tr:hover td {
     background-color: #fbf5ff;
 }
 
-.modal ul.nav-tabs{
+.modal ul.nav-tabs {
     background: #f8f8f8;
     justify-content: center !important;
 }
-
