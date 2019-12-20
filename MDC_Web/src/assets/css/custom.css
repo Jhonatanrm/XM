@@ -13495,7 +13495,6 @@ table tr:hover td {
     .span-tab-waring {
         position: absolute;
         top: 8px;
-        width: 80px;
     }
     .span-tab-waring .material-icons {
         color: #ac145a !important;
@@ -13973,4 +13972,8 @@ table tr:hover td {
 
 #XMstatesRequirementId{
     margin-left: -115px;
+}
+
+.col-md-6.panel-form-beauty.ng-untouched.ng-pristine.ng-invalid.ng-star-inserted .xm-cards .xm-cardtitle{
+    background-color: #ff6a13;
 }
