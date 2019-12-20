@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, Output, EventEmitter, OnChanges, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Sort } from '@angular/material';
 import { IFilter } from '@shared/model/filter';
 import { Util } from '@shared/util';
@@ -7,8 +7,7 @@ import { Button } from '@core/entry-projects/model/IButton';
 @Component({
   selector: 'app-table-xm',
   templateUrl: './table-xm.component.html',
-  styleUrls: ['./table-xm.component.scss'],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ['./table-xm.component.scss']
 })
 export class TableXmComponent implements OnInit, OnChanges {
 
