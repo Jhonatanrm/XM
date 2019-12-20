@@ -84,10 +84,10 @@
     -->
 
 
-            <div class="row justify-content-center">
-                <div class="col-md-6 text-center">
-                    <div class="float-right">
-                        <ngb-pagination [collectionSize]="collectionSize" [pageSize]="pageSize" [page]="page" (pageChange)="onPageChange($event)">
+            <div class="row">
+                <div class="col-md-12">
+                    <div>
+                        <ngb-pagination [collectionSize]="collectionSize" class="xm-pagination" [pageSize]="pageSize" [page]="page" (pageChange)="onPageChange($event)">
                         </ngb-pagination>
                     </div>
                 </div>
