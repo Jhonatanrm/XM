@@ -32,7 +32,7 @@
     "@toverux/ngx-sweetalert2": "3.4.0",
     "angular-route": "^1.7.9",
     "file-saver": "^2.0.2",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.0",
     "lodash.chunk": "^4.2.0",
     "ngx-extended-pdf-viewer": "^1.7.7",
     "numeral": "^2.0.6",
